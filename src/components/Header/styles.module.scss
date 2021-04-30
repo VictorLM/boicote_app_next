@@ -1,0 +1,53 @@
+.header {
+  background: var(--white);
+
+  div {
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+
+      span {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        color: var(--purple-800);
+
+        span {
+          color: var(--orange-800);
+        }
+      }
+  }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      ul {
+          display: flex;
+          align-items: center;
+
+          li {
+            margin: 0 1rem 0 1rem;
+
+            a {
+              color: var(--purple-800);
+
+              &:hover {
+                color: var(--orange-800);
+              }
+            }
+          }
+      }
+    }
+
+    div a {
+      margin: 0 .25rem 0 .25rem;
+    }
+  }
+
+}
