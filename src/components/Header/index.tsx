@@ -1,40 +1,46 @@
+import Link from 'next/link';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
 const Header: React.FC = () => (
 
-  <header className={styles.header}>
+  <header className={`shadow ${styles.header}`}>
 
-    <div className="container">
+    <div className={`content ${styles.content_header}`}>
 
-      <a href="/" className="zoom-hover">
-        <span className="font-size-2">
-          boicote.
-          <span>app</span>
-        </span>
-      </a>
+      <div className={styles.logo_div}>
+        <a href="/" className="zoom-hover">
+          <span className="logo font-size-2">
+            boicote.
+            <span>app</span>
+          </span>
+        </a>
+      </div>
 
       <nav>
         {/* <img
-        id="mobile-exit"
-        className="mobile-menu-exit"
-        src="images/exit.svg"
-        alt="Close Navigation"
-      > */}
+          id="mobile-exit"
+          className="mobile-menu-exit"
+          src="images/exit.svg"
+          alt="Close Navigation"
+        > */}
         <ul>
-          <li className="menu-active"><a href="/">Home</a></li>
-          <li><a href="/boicotes">Boicotes</a></li>
-          <li><a href="/sobre">Sobre Nós</a></li>
+          <li><Link href="/">Home</Link></li>
+          <li><Link href="/boicotes">Boicotes</Link></li>
+          <li><Link href="/sobre">Sobre Nós</Link></li>
           <li>
-            <a href="/criar-boicote" className="link-btn">
-              <button type="button" className="btn-orange">Criar Boicote</button>
-            </a>
+            <Link href="/criar-boicote">
+              <button type="button" className="btn-cta">
+                <img src="assets/images/megaphone-rotated.svg" alt="Megaphone" />
+                <text>Criar Boicote</text>
+              </button>
+            </Link>
           </li>
         </ul>
       </nav>
 
-      <div className="social-header">
+      <div className={styles.social_div}>
         <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
           <img className="social-icon" src="/assets/images/twitter.svg" alt="Twitter" />
         </a>
