@@ -1,4 +1,4 @@
-.card_boicote {
+div.card_boicote {
   padding: 0;
   margin-bottom: 2rem;
   text-align: left;
@@ -10,7 +10,7 @@
 
 }
 
-.boicote_left_div {
+div.boicote_left_div {
   display: flex;
   flex-direction: column;
   background: var(--gray-100);
@@ -35,7 +35,7 @@
   }
 }
 
-.boicote_right_div {
+div.boicote_right_div {
   padding: 1rem 2rem 1rem 1rem;
 
   header {
@@ -80,7 +80,7 @@
 
 }
 
-.header_boicote_right{
+header.header_boicote_right{
   display: flex;
   align-items: center;
   max-width: 20vw;

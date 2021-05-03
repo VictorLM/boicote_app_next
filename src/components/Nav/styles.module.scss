@@ -1,0 +1,136 @@
+.open_menu_mobile {
+  transform: translateX(0);
+}
+
+.close_menu_mobile {
+  transform: translateX(100%);
+}
+
+nav.nav {
+  position: fixed;
+  z-index: 999;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background: var(--purple-800);
+  padding: 1rem;
+  transition: all 0.2s linear;
+
+  button.mobile_menu_exit_btn {
+    font-size: 2rem;
+    color: var(--orange-300);
+    float: right;
+    border: none;
+    background: inherit;
+
+    &:hover {
+      color: var(--orange-800);
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+  }
+
+  ul {
+    margin: 5rem 0 3rem 0;
+
+    hr {
+      margin: 2rem 0;
+    }
+
+    li {
+      padding: .5rem;
+      font-size: 1.5rem;
+      text-align: right;
+
+      a {
+        color: var(--white);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--orange-800);
+          text-decoration: none;
+        }
+      }
+
+      &.menu_active a {
+        border-bottom: solid 2px var(--orange-800);
+        font-weight: 700;
+      }
+
+      button {
+        &:hover {
+          background-color: var(--orange-800);
+        }
+      }
+
+    }
+  }
+
+  div.social_div_mobile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+  .close_menu_mobile {
+    transform: translateX(0);
+  }
+
+  nav.nav {
+    position: unset;
+    z-index: auto;
+    height: 100%;
+    background: unset;
+    padding: 0;
+    display: flex;
+
+    button.mobile_menu_exit_btn {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      margin: 0;
+
+      hr {
+        display: none;
+      }
+
+      li {
+        padding: 0;
+        font-size: 1rem;
+        text-align: unset;
+        margin: 0 1rem 0 1rem;
+
+        a {
+          color: var(--purple-800);
+
+          &:hover {
+            color: var(--orange-800);
+          }
+        }
+
+        &.menu_active a {
+          border-bottom: solid 2px var(--orange-800);
+          font-weight: 700;
+
+          &:hover {
+            border-bottom: solid 2px var(--purple-800);
+          }
+        }
+
+      }
+    }
+  }
+
+  div.social_div_mobile {
+    display: none !important;
+  }
+
+}

@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => (
 
     <div className={`content ${styles.content_hero}`}>
 
-      <div>
+      <div className={styles.left}>
         <h1>
           Consumir é um
           {' '}
@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => (
         </Link>
       </div>
 
-      <img src="assets/images/illustration.png" alt="Illustration" />
+      <img className={styles.illustration} src="assets/images/illustration.png" alt="Illustration" />
 
     </div>
 

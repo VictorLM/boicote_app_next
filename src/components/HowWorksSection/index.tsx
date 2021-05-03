@@ -17,8 +17,10 @@ const HowWorksSection: React.FC = () => (
       <div className={styles.cards}>
 
         <div className={`card ${styles.card}`}>
-          <img src="/assets/images/like.svg" alt="Joinha" />
-          <h3>Interaja</h3>
+          <header>
+            <img src="/assets/images/like.svg" alt="Joinha" />
+            <h3>Interaja</h3>
+          </header>
           <p className="font-size-small">
             Interaja com a comunidade votando e comentando nos
             {' '}
@@ -29,8 +31,10 @@ const HowWorksSection: React.FC = () => (
         </div>
 
         <div className={`card ${styles.card}`}>
-          <img src="/assets/images/plus.svg" alt="Curtir" />
-          <h3>Crie</h3>
+          <header>
+            <img src="/assets/images/plus.svg" alt="Adicionar" />
+            <h3>Crie</h3>
+          </header>
           <p className="font-size-small">
             Você também pode criar seu próprio boicote e interagir
             com a comunidade. É só preencher
@@ -42,8 +46,10 @@ const HowWorksSection: React.FC = () => (
         </div>
 
         <div className={`card ${styles.card}`}>
-          <img src="/assets/images/megaphone.svg" alt="Curtir" />
-          <h3>Compartilhe</h3>
+          <header>
+            <img src="/assets/images/megaphone.svg" alt="Megafone" />
+            <h3>Compartilhe</h3>
+          </header>
           <p className="font-size-small">
             Compartilhe os boicotes nas redes sociais para ter um maior alcance e engajamento.
             Utilize o link Compartilhar, localizado à direita do rodapé dos boicotes.
@@ -51,8 +57,10 @@ const HowWorksSection: React.FC = () => (
         </div>
 
         <div className={`card ${styles.card}`}>
-          <img src="/assets/images/flag.svg" alt="Curtir" />
-          <h3>Denuncie</h3>
+          <header>
+            <img src="/assets/images/flag.svg" alt="Bandeira" />
+            <h3>Denuncie</h3>
+          </header>
           <p className="font-size-small">
             Denuncie boicotes e comentários inapropriados utilizando o link Denunciar,
             localizado à direita do rodapé tanto dos boicotes quanto dos comentários.

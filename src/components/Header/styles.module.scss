@@ -1,78 +1,78 @@
-.header {
+header.header {
   background: var(--white);
+
+  div.content_header {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button.mobile_menu_btn {
+      font-size: 1.5rem;
+      border: none;
+      background: inherit;
+      padding: 0;
+      &:hover {
+        color: var(--orange-800);
+      }
+
+      svg {
+        vertical-align: middle;
+      }
+    }
+
+    div.logo_div {
+      display: flex;
+
+      a {
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    div.social_div {
+      display: none;
+    }
+
+  }
 }
 
-@media (min-width: 1920px) {
+@media only screen and (min-width: 768px) {
+  button.mobile_menu_btn {
+    display: none;
+  }
+}
 
-  .header {
-    background: var(--white);
+@media only screen and (min-width: 1024px) {
+  div.content_header {
 
-    .content_header {
-      height: 10vh;
+    div.logo_div {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-grow: 1;
+      flex-basis: 0;
+    }
 
-      .logo_div {
-        display: flex;
-        flex-grow: 1;
-        flex-basis: 0;
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-grow: 3;
+      flex-basis: 0;
+    }
 
-        a {
-          text-decoration: none;
-          cursor: pointer;
+    div.social_div {
+      display: flex !important;
+      justify-content: flex-end;
+      flex-grow: 1;
+      flex-basis: 0;
+
+      a {
+        margin: 0 .25rem 0 .25rem;
+
+        img {
+          height: 1.5rem;
+          vertical-align: middle;
         }
       }
-
-
-      nav {
-        display: flex;
-        justify-content: center;
-        flex-grow: 2;
-        flex-basis: 0;
-
-        ul {
-          display: flex;
-          align-items: center;
-
-          li {
-            margin: 0 1rem 0 1rem;
-
-            a {
-              color: var(--purple-800);
-
-              &:hover {
-                color: var(--orange-800);
-              }
-
-              &.menu-active {
-                border-bottom: solid 2px var(--orange-800);
-                font-weight: 700;
-                &:hover {
-                  border-bottom: solid 2px var(--purple-800);
-                }
-              }
-            }
-          }
-        }
-      }
-
-      .social_div {
-        display: flex;
-        justify-content: flex-end;
-        flex-grow: 1;
-        flex-basis: 0;
-
-        a {
-          margin: 0 .25rem 0 .25rem;
-
-          img {
-            height: 1.5rem;
-            vertical-align: middle;
-          }
-        }
-      }
-
     }
 
   }

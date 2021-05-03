@@ -1,50 +1,153 @@
 .content_hero {
   min-height: 90vh; // 10vh do header
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-}
 
-@media (min-width: 1920px) {
+  div.left {
+    padding: .5rem;
+    text-align: center;
 
-  .content_hero {
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--purple-800);
+      margin-bottom: 1rem;
 
-    div {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: flex-start;
-
-      h1 {
+      span {
         font-family: 'Poppins', sans-serif;
-        font-size: 4.5rem;
-        line-height: 6rem;
-        font-weight: 700;
-        color: var(--purple-800);
-        margin-bottom: 1rem;
-
-        span {
-          font-family: 'Poppins', sans-serif;
-          font-weight: 800;
-          color: var(--orange-300);
-          display: block;
-          font-size: 5.5rem;
-        }
+        font-weight: 800;
+        color: var(--orange-300);
+        font-size: 3.5rem;
       }
-
-      p {
-        font-size: 2rem;
-        color: var(--gray-300);
-        margin-bottom: 5rem;
-      }
-
     }
 
-    img {
-      max-height: 70vh;
+    p {
+      font-size: 1.3rem;
+      color: var(--gray-300);
+      margin: 2rem 0 3rem 0;
+    }
+
+    button {
+      width: 85%;
+      font-size: 1.2rem;
+    }
+
+  }
+
+  img.illustration  {
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+
+  div.left {
+    text-align: center;
+
+    h1 {
+      span {
+        display: block;
+      }
+    }
+
+    button {
+      width: auto !important;
     }
   }
 
 }
 
+@media only screen and (min-width: 768px) {
+  div.content_hero {
 
+    div.left {
+
+      h1 {
+        font-size: 4rem;
+        span {
+          font-size: 4.5rem;
+        }
+      }
+
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  div.content_hero {
+    justify-content: space-around;
+
+    div.left {
+      text-align: left !important;
+
+      h1 {
+        font-size: 3.5rem;
+
+        span {
+          display: block;
+          font-size: 4rem;
+        }
+      }
+
+    }
+
+    img.illustration {
+      display: block !important;
+      max-height: 70vh;
+    }
+
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  div.content_hero {
+
+    div.left {
+
+      h1 {
+        font-size: 4rem;
+
+        span {
+          font-size: 4.5rem;
+        }
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    img.illustration {
+      max-height: 70vh;
+    }
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  div.content_hero {
+
+    div.left {
+
+      h1 {
+        font-size: 5.5rem;
+        span {
+          font-size: 6rem;
+        }
+      }
+
+      p {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1.5rem;
+        padding: 1rem 1.5rem;
+      }
+    }
+
+  }
+}
