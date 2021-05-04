@@ -56,6 +56,10 @@ footer.footer {
           background: var(--white);
           padding: .2rem 1rem;
           border-radius: 2rem;
+
+          span {
+            cursor: default;
+          }
         }
       }
 

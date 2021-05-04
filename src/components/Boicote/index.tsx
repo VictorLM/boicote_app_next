@@ -5,7 +5,25 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 import styles from './styles.module.scss';
 
-const Boicote: React.FC = () => (
+type BoicoteType = {
+  id: string;
+  titulo: string;
+  marca: string;
+  texto: string;
+  tags: string[];
+  createdAt: string;
+  cimaVotos: number;
+  baixoVotos: number;
+  comentariosCount: number;
+  autor: string;
+}
+
+type BoicotePropTypes = {
+  boicote: BoicoteType;
+  boicoteUnico: boolean;
+}
+
+const Boicote: React.FC<BoicotePropTypes> = ({ boicote, boicoteUnico }) => (
 
   <div className={`${styles.card_boicote} card`}>
 
@@ -13,7 +31,7 @@ const Boicote: React.FC = () => (
       <button type="button" className="vote-btn voted">
         <FaArrowUp />
       </button>
-      <span>0</span>
+      <span>{boicote.cimaVotos - boicote.baixoVotos}</span>
       <button type="button" className="vote-btn">
         <FaArrowDown />
       </button>
@@ -23,29 +41,36 @@ const Boicote: React.FC = () => (
       <header>
 
         <div className={styles.header_boicote_left}>
-          <small> # Carrefour, Defesa Animal, Violência Animal</small>
+          <small>
+            {'# '}
+            {boicote.tags.map((tag, key) => (
+              `${tag}${boicote.tags.length !== key + 1 ? ',' : ''} `
+            ))}
+          </small>
           <h3>
-            <Link href="/boicotes/id">
-              Cachorro abandonado é envenenado e espancado por
-              funcionário de Carrefour em Osasco
+            <Link href={`/boicotes/${boicote.id}`}>
+              {boicote.titulo}
             </Link>
           </h3>
           <small className={styles.posted_by}>
-            Postado por Victor Meireles em 06/04/2021 10:47
+            {'Postado por '}
+            {boicote.autor}
+            {' em '}
+            {boicote.createdAt}
           </small>
         </div>
 
         <div className={styles.header_boicote_right}>
+          <p className="font-size-small">
+            {boicote.marca}
+          </p>
           <img src="/assets/images/angry.svg" alt="Emoji bravo" />
-          <p className="font-size-small">Carrefour do Brasil Ltda.</p>
         </div>
 
       </header>
       <hr />
       <p className={styles.p_boicote_text}>
-        Um cachorro abandonado morreu após ser envenenado e espancado por um
-        funcionário de uma loja da rede do supermercado Carrefour, em Osasco,
-        na Grande São Paulo, no dia 30/11/2018, segundo relato de ativistas...
+        {boicoteUnico ? boicote.texto : `${boicote.texto.substr(0, 275)}...`}
       </p>
       <hr />
       <footer className={styles.footer_boicote}>
@@ -53,7 +78,7 @@ const Boicote: React.FC = () => (
           <button type="button" className="vote-btn voted">
             <FaArrowUp />
           </button>
-          <span>0</span>
+          <span>{boicote.cimaVotos - boicote.baixoVotos}</span>
           <button type="button" className="vote-btn">
             <FaArrowDown />
           </button>
@@ -61,9 +86,13 @@ const Boicote: React.FC = () => (
         <div className={styles.div_boicote_footer_mobile_right}>
           <div>
             <img src="/assets/images/comment.svg" alt="Comentários" />
-            <span className="font-size-small"> 1 comentário</span>
+            <span className="font-size-small">
+              {' '}
+              {boicote.comentariosCount}
+              {boicote.comentariosCount === 1 ? ' comentário' : ' comentários'}
+            </span>
           </div>
-          <Link href="/boicotes/id">
+          <Link href={`/boicotes/${boicote.id}`}>
             <button type="button" className="btn-sm">Ver tudo</button>
           </Link>
         </div>

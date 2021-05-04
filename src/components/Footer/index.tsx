@@ -11,7 +11,7 @@ const Footer: React.FC = () => (
 
       <div className={styles.footer_left_div}>
 
-        <div>
+        <div className="zoom-hover">
           <span className="logo">
             boicote.
             <span>app</span>
