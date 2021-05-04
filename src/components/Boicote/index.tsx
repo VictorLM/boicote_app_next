@@ -10,15 +10,19 @@ const Boicote: React.FC = () => (
   <div className={`${styles.card_boicote} card`}>
 
     <div className={styles.boicote_left_div}>
-      <FaArrowUp className={styles.voted} />
+      <button type="button" className="vote-btn voted">
+        <FaArrowUp />
+      </button>
       <span>0</span>
-      <FaArrowDown />
+      <button type="button" className="vote-btn">
+        <FaArrowDown />
+      </button>
     </div>
 
     <div className={styles.boicote_right_div}>
       <header>
 
-        <div>
+        <div className={styles.header_boicote_left}>
           <small> # Carrefour, Defesa Animal, Violência Animal</small>
           <h3>
             <Link href="/boicotes/id">
@@ -26,7 +30,7 @@ const Boicote: React.FC = () => (
               funcionário de Carrefour em Osasco
             </Link>
           </h3>
-          <small>
+          <small className={styles.posted_by}>
             Postado por Victor Meireles em 06/04/2021 10:47
           </small>
         </div>
@@ -38,20 +42,31 @@ const Boicote: React.FC = () => (
 
       </header>
       <hr />
-      <p>
+      <p className={styles.p_boicote_text}>
         Um cachorro abandonado morreu após ser envenenado e espancado por um
         funcionário de uma loja da rede do supermercado Carrefour, em Osasco,
         na Grande São Paulo, no dia 30/11/2018, segundo relato de ativistas...
       </p>
       <hr />
-      <footer>
-        <div>
-          <img src="/assets/images/comment.svg" alt="Comentários" />
-          <span className="font-size-small"> 1 comentário</span>
+      <footer className={styles.footer_boicote}>
+        <div className={styles.div_boicote_footer_mobile_left}>
+          <button type="button" className="vote-btn voted">
+            <FaArrowUp />
+          </button>
+          <span>0</span>
+          <button type="button" className="vote-btn">
+            <FaArrowDown />
+          </button>
         </div>
-        <Link href="/boicotes/id">
-          <button type="button" className="btn-sm">Ver tudo</button>
-        </Link>
+        <div className={styles.div_boicote_footer_mobile_right}>
+          <div>
+            <img src="/assets/images/comment.svg" alt="Comentários" />
+            <span className="font-size-small"> 1 comentário</span>
+          </div>
+          <Link href="/boicotes/id">
+            <button type="button" className="btn-sm">Ver tudo</button>
+          </Link>
+        </div>
       </footer>
     </div>
 

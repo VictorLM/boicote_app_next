@@ -7,7 +7,7 @@ const HowWorksSection: React.FC = () => (
 
   <section className={styles.how_works}>
 
-    <div className={`content ${styles.content_how_works}`}>
+    <div className={`content full-height-landscape ${styles.content_how_works}`}>
 
       <div className={styles.headers}>
         <h2 className="headers">Como funciona?</h2>
@@ -16,7 +16,7 @@ const HowWorksSection: React.FC = () => (
 
       <div className={styles.cards}>
 
-        <div className={`card ${styles.card}`}>
+        <div className={`card zoom-hover ${styles.card}`}>
           <header>
             <img src="/assets/images/like.svg" alt="Joinha" />
             <h3>Interaja</h3>
@@ -30,7 +30,7 @@ const HowWorksSection: React.FC = () => (
           </p>
         </div>
 
-        <div className={`card ${styles.card}`}>
+        <div className={`card zoom-hover ${styles.card}`}>
           <header>
             <img src="/assets/images/plus.svg" alt="Adicionar" />
             <h3>Crie</h3>
@@ -45,7 +45,7 @@ const HowWorksSection: React.FC = () => (
           </p>
         </div>
 
-        <div className={`card ${styles.card}`}>
+        <div className={`card zoom-hover ${styles.card}`}>
           <header>
             <img src="/assets/images/megaphone.svg" alt="Megafone" />
             <h3>Compartilhe</h3>
@@ -56,7 +56,7 @@ const HowWorksSection: React.FC = () => (
           </p>
         </div>
 
-        <div className={`card ${styles.card}`}>
+        <div className={`card zoom-hover ${styles.card}`}>
           <header>
             <img src="/assets/images/flag.svg" alt="Bandeira" />
             <h3>Denuncie</h3>

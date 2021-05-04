@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import styles from '../styles/Home.module.scss';
 import Boicote from '../components/Boicote';
 import HeroSection from '../components/HeroSection';
 import HowWorksSection from '../components/HowWorksSection';
@@ -18,7 +17,7 @@ const Home: React.FC = () => (
 
     <HowWorksSection />
 
-    <section className={styles.boicotes_recentes}>
+    <section>
       <div className="content">
         <h2 className="headers">Boicotes recentes</h2>
         <p className="sub-headers">

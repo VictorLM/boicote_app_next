@@ -44,37 +44,40 @@ header.header {
 }
 
 @media only screen and (min-width: 1024px) {
-  div.content_header {
+  header.header {
 
-    div.logo_div {
-      display: flex;
-      flex-grow: 1;
-      flex-basis: 0;
-    }
+    div.content_header {
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-grow: 3;
-      flex-basis: 0;
-    }
+      div.logo_div {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+      }
 
-    div.social_div {
-      display: flex !important;
-      justify-content: flex-end;
-      flex-grow: 1;
-      flex-basis: 0;
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-grow: 3;
+        flex-basis: 0;
+      }
 
-      a {
-        margin: 0 .25rem 0 .25rem;
+      div.social_div {
+        display: flex;
+        justify-content: flex-end;
+        flex-grow: 1;
+        flex-basis: 0;
 
-        img {
-          height: 1.5rem;
-          vertical-align: middle;
+        a {
+          margin: 0 .25rem 0 .25rem;
+
+          img {
+            height: 1.5rem;
+            vertical-align: middle;
+          }
         }
       }
-    }
 
+    }
   }
 
 }

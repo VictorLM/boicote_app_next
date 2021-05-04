@@ -7,10 +7,10 @@ const HeroSection: React.FC = () => (
 
   <section>
 
-    <div className={`content ${styles.content_hero}`}>
+    <div className={`content ninety-height-landscape  ${styles.content_hero}`}>
 
       <div className={styles.left}>
-        <h1>
+        <h1 className="zoom-hover">
           Consumir é um
           {' '}
           <span>ato político!</span>
@@ -25,7 +25,18 @@ const HeroSection: React.FC = () => (
         </Link>
       </div>
 
-      <img className={styles.illustration} src="assets/images/illustration.png" alt="Illustration" />
+      <div className={styles.right}>
+        <img
+          className={`hero-illustration zoom-hover ${styles.illustration}`}
+          src="assets/images/illustration.png"
+          alt="Ilustração"
+        />
+        <img
+          className={`hero-illustration illustration-animation ${styles.illustration_animation}`}
+          src="assets/images/illustration_animation.png"
+          alt="Animação ilustração"
+        />
+      </div>
 
     </div>
 

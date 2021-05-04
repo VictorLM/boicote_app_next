@@ -4,94 +4,196 @@ div.card_boicote {
   text-align: left;
   display: flex;
   color: var(--gray-500);
+
+  div.boicote_left_div {
+    display: none;
+  }
+
+  div.boicote_right_div {
+    padding: 1.5rem;
+
+    div.header_boicote_left {
+      h3 {
+        margin: .8rem 0;
+        text-align: justify;
+      }
+
+      a {
+        color: var(--purple-800);
+        text-decoration: none;
+
+          &:hover{
+          text-decoration: none;
+          color: var(--purple-300);
+        }
+      }
+      small.posted_by {
+        display: none;
+      }
+
+      small {
+        font-style: italic;
+        color: var(--gray-300);
+      }
+    }
+
+    div.header_boicote_right {
+      display: flex;
+      align-items: center;
+      color: var(--gray-300);
+      font-style: italic;
+      gap: .5rem;
+      cursor: default;
+      transition: all .3s ease-in-out;
+      &:hover {
+        transform: scale(1.05);
+        p {
+          color: var(--gray-500);
+        }
+      }
+
+      img {
+        height: 2rem;
+      }
+    }
+
+    p.p_boicote_text {
+      text-align: justify;
+    }
+
+    footer.footer_boicote {
+      color: var(--gray-300);
+      display: flex;
+      justify-content: space-between;
+
+      div.div_boicote_footer_mobile_left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      div.div_boicote_footer_mobile_right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        img {
+          vertical-align: middle;
+          height: 20px;
+        }
+
+        span {
+          vertical-align: middle;
+        }
+
+        button {
+          width: 100%;
+          font-size: .9rem;
+        }
+      }
+
+    }
+  }
 }
 
-@media (min-width: 1920px) {
-
+@media only screen and (min-width: 360px) {
+  div.card_boicote {
+    div.boicote_right_div {
+      footer.footer_boicote {
+        justify-content: space-evenly;
+      }
+    }
+  }
 }
 
-div.boicote_left_div {
-  display: flex;
-  flex-direction: column;
-  background: var(--gray-100);
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-  padding: 1.5rem 1rem;
-  text-align: center;
+@media only screen and (min-width: 576px) {
+  div.card_boicote {
+    padding-right: 1rem;
 
-  svg {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--gray-300);
-    &.voted {
-      color: var(--orange-300);
+    div.boicote_left_div {
+      display: flex;
+      flex-direction: column;
+      background: var(--gray-100);
+      border-top-left-radius: 2rem;
+      border-bottom-left-radius: 2rem;
+      padding: 2rem 1rem;
+      text-align: center;
+
+      span {
+        margin: .2rem 0;
+        color: var(--gray-300);
+      }
+    }
+
+    div.boicote_right_div {
+
+      div.header_boicote_left {
+        h3 {
+          margin: .5rem 0;
+        }
+      }
+      footer.footer_boicote {
+
+        div.div_boicote_footer_mobile_left {
+          display: none;
+        }
+
+        div.div_boicote_footer_mobile_right {
+          width: 100%;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+
+          button {
+            width: auto;
+          }
+        }
+      }
     }
   }
 
-  span {
-    margin: .5rem 0 .5rem 0;
-    color: var(--gray-300);
-    font-weight: 700;
+}
+
+@media only screen and (min-width: 1024px) {
+
+  div.card_boicote {
+    div.boicote_right_div {
+      header {
+        display: flex;
+        gap: 3rem;
+
+        div.header_boicote_left {
+          flex-basis: 0;
+          flex-grow: 4;
+
+          h3 {
+            text-align: left;
+          }
+
+          small.posted_by {
+            display: block;
+          }
+        }
+
+        div.header_boicote_right {
+          flex-basis: 0;
+          flex-grow: 1;
+        }
+      }
+    }
   }
 }
 
-div.boicote_right_div {
-  padding: 1rem 2rem 1rem 1rem;
+@media only screen and (min-width: 1366px) {
 
-  header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  a {
-    text-decoration: none;
-
-      &:hover{
-      text-decoration: none;
+  div.card_boicote {
+    div.boicote_left_div {
+      padding: 2rem 1.5rem;
     }
-  }
-
-  h3 {
-    margin: .2rem 0 .2rem 0;
-    font-size: 1.5rem;
-  }
-
-  small {
-    font-style: italic;
-    color: var(--gray-300);
-  }
-
-  footer {
-    color: var(--gray-300);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    img {
-      vertical-align: middle;
-      height: 20px;
+    div.boicote_right_div {
+      padding: 2rem 2.5rem 2rem 1.25rem;
     }
-
-    span {
-      vertical-align: middle;
-    }
-
-  }
-
-}
-
-header.header_boicote_right{
-  display: flex;
-  align-items: center;
-  max-width: 20vw;
-  color: var(--gray-500);
-  font-style: italic;
-  margin-left: 2rem;
-
-  img {
-    height: 60px;
-    margin-right: .5rem;
   }
 }
-
-

@@ -27,13 +27,11 @@ body {
   color: var(--gray-500);
 }
 
-.container, .content {
-  margin: auto;
-}
-
 .content {
-  padding: 2rem 1rem;
-  max-width: 1820px;
+  margin: auto;
+  padding: 2rem;
+  max-width: 1366px;
+  text-align: center;
 }
 
 a {
@@ -66,10 +64,10 @@ ul li, ol li {
   list-style-type: none;
 }
 
-// hr {
-//   border-top: 1px solid var(--gray-100);
-//   margin: .8rem 0 .8rem 0;
-// }
+hr {
+  border-top: 1px solid var(--gray-100);
+  margin: .8rem 0 .8rem 0;
+}
 
 .logo {
   font-size: 1.2rem;
@@ -83,6 +81,10 @@ ul li, ol li {
     font-weight: 700;
     color: var(--orange-800);
   }
+}
+
+.hero-illustration {
+  max-height: 30rem;
 }
 
 .btn-cta {
@@ -135,6 +137,7 @@ ul li, ol li {
 .sub-headers {
   color: var(--gray-300);
   margin: 1rem 0 2rem 0;
+  text-align: justify;
 }
 
 .card {
@@ -153,12 +156,42 @@ ul li, ol li {
   -moz-box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }
 
+.vote-btn {
+  border: none;
+  padding: 0;
+  font-size: 1.5rem;
+  color: var(--gray-300);
+
+  &:hover {
+    background: inherit;
+    color: var(--orange-300);
+  }
+
+  &.voted {
+    color: var(--orange-300);
+    &:hover {
+      color: var(--gray-300);
+    }
+  }
+
+  svg {
+    height: 95%; // para alinhar o span do meio no centro
+  }
+
+}
+
 .react-icons {
   vertical-align: middle;
 }
 
 // Media Querys //
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 359px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 360px) {
   html {
     font-size: 15px;
   }
@@ -168,8 +201,8 @@ ul li, ol li {
   html {
     font-size: 16px;
   }
-  .content {
-    padding: 2rem 2rem;
+  .sub-headers {
+    text-align: center;
   }
 }
 
@@ -180,20 +213,12 @@ ul li, ol li {
 }
 
 @media only screen and (min-width: 1024px) {
-  .content {
-    padding: 2rem 2.5rem;
-  }
-
   .headers {
     font-size: 2rem;
   }
 }
 
 @media only screen and (min-width: 1366px) {
-  .content {
-    padding: 2rem 3rem;
-  }
-
   .headers {
     font-size: 2.5rem;
   }
@@ -204,15 +229,29 @@ ul li, ol li {
     font-size: 18px;
   }
 
-  .content {
-    padding: 2rem 6rem;
-  }
-
   .headers {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .sub-headers {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (orientation: landscape) {
+  .full-height-landscape {
+    min-height: 100vh;
+  }
+  .ninety-height-landscape {
+    min-height: 90vh;
+  }
+}
+
+@media (orientation: portrait) {
+  .full-height-landscape {
+    min-height: auto;
+  }
+  .ninety-height-landscape {
+    min-height: auto;
   }
 }

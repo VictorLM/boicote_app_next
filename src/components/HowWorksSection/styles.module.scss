@@ -3,12 +3,11 @@ section.how_works {
 }
 
 div.content_how_works {
-  min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   div.headers{
     display: flex;
@@ -36,11 +35,17 @@ div.content_how_works {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      flex-grow: 1;
       flex-basis: 0;
-      gap: 1rem;
+      flex-grow: 1;
       padding: 1.2rem;
       min-width: 15rem;
+      cursor: default;
+
+      &:hover {
+        img {
+          transform: rotate(360deg);
+        }
+      }
 
       header {
         display: flex;
@@ -52,6 +57,7 @@ div.content_how_works {
         img {
           height: 1.5rem;
           margin-right: .5rem;
+          transition: all .5s ease-in-out;
         }
 
         h3 {
@@ -72,7 +78,7 @@ div.content_how_works {
     color: var(--gray-100);
     text-align: justify;
     font-size: .9rem;
-    padding: 2rem 5% 1rem 5%;
+    padding: 2rem 0 1rem 0;
   }
 }
 
@@ -81,7 +87,6 @@ div.content_how_works {
     div.cards {
       gap: 1.5rem;
       div.card {
-        gap: 2rem;
         padding: 2rem;
       }
     }

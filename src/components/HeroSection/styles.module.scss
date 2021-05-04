@@ -1,5 +1,4 @@
-.content_hero {
-  min-height: 90vh; // 10vh do header
+div.content_hero {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -15,6 +14,7 @@
       font-weight: 700;
       color: var(--purple-800);
       margin-bottom: 1rem;
+      cursor: default;
 
       span {
         font-family: 'Poppins', sans-serif;
@@ -37,28 +37,33 @@
 
   }
 
-  img.illustration  {
+  div.right {
     display: none;
+
+    img.illustration_animation {
+      opacity: 0;
+      transform: translate(-100%);
+    }
   }
 
 }
 
 @media only screen and (min-width: 500px) {
+  div.content_hero {
+    div.left {
+      text-align: center;
 
-  div.left {
-    text-align: center;
+      h1 {
+        span {
+          display: block;
+        }
+      }
 
-    h1 {
-      span {
-        display: block;
+      button {
+        width: auto;
       }
     }
-
-    button {
-      width: auto !important;
-    }
   }
-
 }
 
 @media only screen and (min-width: 768px) {
@@ -79,25 +84,44 @@
 
 @media only screen and (min-width: 1024px) {
   div.content_hero {
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     div.left {
-      text-align: left !important;
+      text-align: left;
 
       h1 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
 
         span {
           display: block;
-          font-size: 4rem;
+          font-size: 3.9rem;
         }
       }
 
     }
 
-    img.illustration {
-      display: block !important;
-      max-height: 70vh;
+    div.right {
+      display: block;
+      position: relative;
+
+      img.illustration {
+        position: relative;
+        transition: all .3s ease-in-out;
+
+        &:hover ~ img.illustration_animation {
+          opacity: 1;
+          transform: translate(0);
+        }
+      }
+
+      img.illustration_animation {
+        position: absolute;
+        top: 0;
+        right: -6%;
+        transition: all .6s ease-in-out;
+      }
+
+
     }
 
   }
@@ -109,20 +133,16 @@
     div.left {
 
       h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
 
         span {
-          font-size: 4.5rem;
+          font-size: 4rem;
         }
       }
 
       p {
         font-size: 1.5rem;
       }
-    }
-
-    img.illustration {
-      max-height: 70vh;
     }
   }
 }
@@ -133,14 +153,15 @@
     div.left {
 
       h1 {
-        font-size: 5.5rem;
+        font-size: 4rem;
         span {
-          font-size: 6rem;
+          font-size: 4rem;
         }
       }
 
       p {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin: 2rem 0 5rem 0;
       }
 
       button {

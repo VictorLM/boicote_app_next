@@ -36,7 +36,7 @@ const Footer: React.FC = () => (
           </a>
         </div>
 
-        <p className="font-size-small">Copyright © 2021 - Boicote.App - Todos os direitos reservados</p>
+        <p>Copyright © 2021 - Boicote.App - Todos os direitos reservados</p>
 
       </div>
 
