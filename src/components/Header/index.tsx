@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { FaTwitterSquare, FaInstagramSquare, FaFacebookSquare } from 'react-icons/fa';
+
 import Nav from '../Nav';
 
 import styles from './styles.module.scss';
@@ -33,13 +35,13 @@ const Header: React.FC = () => {
 
         <div className={styles.social_div}>
           <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <img className="social-icons" src="/assets/images/twitter.svg" alt="Twitter" />
+            <FaTwitterSquare className="social-icons twitter" title="Twitter" />
           </a>
           <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <img className="social-icons" src="/assets/images/instagram.svg" alt="Instagram" />
+            <FaInstagramSquare className="social-icons instagram" title="Instagram" />
           </a>
           <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <img className="social-icons" src="/assets/images/facebook.svg" alt="Facebook" />
+            <FaFacebookSquare className="social-icons facebook" title="Facebook" />
           </a>
         </div>
 

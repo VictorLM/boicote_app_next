@@ -1,7 +1,10 @@
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { VscChromeClose } from 'react-icons/vsc';
+import { FaTwitterSquare, FaInstagramSquare, FaFacebookSquare } from 'react-icons/fa';
+
 import styles from './styles.module.scss';
 
 type NavProps = {
@@ -19,16 +22,16 @@ const Nav : React.FC<NavProps> = ({ mobileMenuIsOpen, setMobileMenuIsOpen }) => 
 
     <ul>
       <hr />
-      <li className={styles.menu_active}>
+      <li className={useRouter().asPath === '/' ? styles.menu_active : ''}>
         <Link href="/">Home</Link>
       </li>
-      <li>
+      <li className={useRouter().asPath === '/boicotes' ? styles.menu_active : ''}>
         <Link href="/boicotes">Boicotes</Link>
       </li>
-      <li>
+      <li className={useRouter().asPath === '/sobre' ? styles.menu_active : ''}>
         <Link href="/sobre">Sobre Nós</Link>
       </li>
-      <li>
+      <li className={useRouter().asPath === '/criar-boicote' ? styles.menu_active_cta : ''}>
         <Link href="/criar-boicote">
           <button type="button" className="btn-cta">
             <img src="assets/images/megaphone-rotated.svg" alt="Megafone" />
@@ -40,13 +43,13 @@ const Nav : React.FC<NavProps> = ({ mobileMenuIsOpen, setMobileMenuIsOpen }) => 
     </ul>
     <div className={styles.social_div_mobile}>
       <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
-        <img src="/assets/images/twitter-white.svg" className="zoom-hover" alt="Twitter" />
+        <FaTwitterSquare className="social-icons twitter" title="Twitter" />
       </a>
       <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
-        <img src="/assets/images/instagram-white.svg" className="zoom-hover" alt="Instagram" />
+        <FaInstagramSquare className="social-icons instagram" title="Instagram" />
       </a>
       <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
-        <img src="/assets/images/facebook-white.svg" className="zoom-hover" alt="Facebook" />
+        <FaFacebookSquare className="social-icons facebook" title="Facebook" />
       </a>
     </div>
 

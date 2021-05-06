@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { FaTwitterSquare, FaInstagramSquare, FaFacebookSquare } from 'react-icons/fa';
 
 import styles from './styles.module.scss';
 
@@ -24,15 +25,15 @@ const Footer: React.FC = () => (
 
       <div className={styles.footer_center_div}>
 
-        <div>
+        <div className={styles.social_div}>
           <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <img className="social-icons" src="/assets/images/twitter-white.svg" alt="Twitter" />
+            <FaTwitterSquare className="social-icons twitter" title="Twitter" />
           </a>
           <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <img className="social-icons" src="/assets/images/instagram-white.svg" alt="Instagram" />
+            <FaInstagramSquare className="social-icons instagram" title="Instagram" />
           </a>
           <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <img className="social-icons" src="/assets/images/facebook-white.svg" alt="Facebook" />
+            <FaFacebookSquare className="social-icons facebook" title="Facebook" />
           </a>
         </div>
 

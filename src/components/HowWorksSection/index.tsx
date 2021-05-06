@@ -1,6 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
+import {
+  FaRegThumbsUp, FaRegPlusSquare, FaBullhorn, FaRegFlag, FaRegCheckSquare,
+} from 'react-icons/fa';
+
 import styles from './styles.module.scss';
 
 const HowWorksSection: React.FC = () => (
@@ -9,16 +13,20 @@ const HowWorksSection: React.FC = () => (
 
     <div className={`content full-height-landscape ${styles.content_how_works}`}>
 
-      <div className={styles.headers}>
-        <h2 className="headers">Como funciona?</h2>
-        <p className="sub-headers">Aqui você encontra e organiza seus boicotes</p>
-      </div>
-
       <div className={styles.cards}>
+
+        <div className={styles.headers}>
+          <h2 className="headers">Como funciona?</h2>
+          <p className={`sub-headers ${styles.p_sub_header}`}>
+            Aqui você encontra e organiza seus boicotes
+          </p>
+        </div>
 
         <div className={`card zoom-hover ${styles.card}`}>
           <header>
-            <img src="/assets/images/like.svg" alt="Joinha" />
+            <div>
+              <FaRegThumbsUp title="Joinha" />
+            </div>
             <h3>Interaja</h3>
           </header>
           <p className="font-size-small">
@@ -32,7 +40,9 @@ const HowWorksSection: React.FC = () => (
 
         <div className={`card zoom-hover ${styles.card}`}>
           <header>
-            <img src="/assets/images/plus.svg" alt="Adicionar" />
+            <div>
+              <FaRegPlusSquare title="Adicionar" />
+            </div>
             <h3>Crie</h3>
           </header>
           <p className="font-size-small">
@@ -47,7 +57,9 @@ const HowWorksSection: React.FC = () => (
 
         <div className={`card zoom-hover ${styles.card}`}>
           <header>
-            <img src="/assets/images/megaphone.svg" alt="Megafone" />
+            <div>
+              <FaBullhorn title="Megafone" />
+            </div>
             <h3>Compartilhe</h3>
           </header>
           <p className="font-size-small">
@@ -58,7 +70,9 @@ const HowWorksSection: React.FC = () => (
 
         <div className={`card zoom-hover ${styles.card}`}>
           <header>
-            <img src="/assets/images/flag.svg" alt="Bandeira" />
+            <div>
+              <FaRegFlag title="Bandeira" />
+            </div>
             <h3>Denuncie</h3>
           </header>
           <p className="font-size-small">
@@ -68,14 +82,22 @@ const HowWorksSection: React.FC = () => (
           </p>
         </div>
 
-      </div>
+        <div className={`card zoom-hover ${styles.card}`}>
+          <header>
+            <div>
+              <FaRegCheckSquare title="Bandeira" />
+            </div>
+            <h3>Pratique</h3>
+          </header>
+          <p className="font-size-small">
+            Boicote empresas e marcas com seu poder de compra.
+            Não de lucros para quem apoia, pratica ou corrobora
+            com atos e ideias nocivas, fake news, discurso de ódio, etc.
+            Pratique o consumo consciente.
+          </p>
+        </div>
 
-      <p className={`font-size-small ${styles.p_footer}`}>
-        Boicote empresas e marcas com seu poder de compra.
-        Não de lucros para quem apoia, pratica ou corrobora
-        com atos e ideias nocivas, fake news, discurso de ódio, etc.
-        Pratique o consumo consciente.
-      </p>
+      </div>
 
     </div>
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import {
+  FaArrowUp, FaArrowDown, FaRegCommentAlt, FaAngry,
+} from 'react-icons/fa';
 
 import styles from './styles.module.scss';
 
@@ -21,19 +23,20 @@ type BoicoteType = {
 type BoicotePropTypes = {
   boicote: BoicoteType;
   boicoteUnico: boolean;
+  voto: number | null;
 }
 
-const Boicote: React.FC<BoicotePropTypes> = ({ boicote, boicoteUnico }) => (
+const Boicote: React.FC<BoicotePropTypes> = ({ boicote, boicoteUnico, voto }) => (
 
   <div className={`${styles.card_boicote} card`}>
 
     <div className={styles.boicote_left_div}>
-      <button type="button" className="vote-btn voted">
-        <FaArrowUp />
+      <button type="button" className={`vote-btn ${voto ? 'voted' : ''}`}>
+        <FaArrowUp title="Votor para cima" />
       </button>
       <span>{boicote.cimaVotos - boicote.baixoVotos}</span>
-      <button type="button" className="vote-btn">
-        <FaArrowDown />
+      <button type="button" className={`vote-btn ${voto === 0 ? 'voted' : ''}`}>
+        <FaArrowDown title="Votor para baixo" />
       </button>
     </div>
 
@@ -61,10 +64,10 @@ const Boicote: React.FC<BoicotePropTypes> = ({ boicote, boicoteUnico }) => (
         </div>
 
         <div className={styles.header_boicote_right}>
+          <FaAngry title="Emoji bravo" />
           <p className="font-size-small">
             {boicote.marca}
           </p>
-          <img src="/assets/images/angry.svg" alt="Emoji bravo" />
         </div>
 
       </header>
@@ -75,17 +78,17 @@ const Boicote: React.FC<BoicotePropTypes> = ({ boicote, boicoteUnico }) => (
       <hr />
       <footer className={styles.footer_boicote}>
         <div className={styles.div_boicote_footer_mobile_left}>
-          <button type="button" className="vote-btn voted">
-            <FaArrowUp />
+          <button type="button" className={`vote-btn ${voto ? 'voted' : ''}`}>
+            <FaArrowUp title="Votor para cima" />
           </button>
           <span>{boicote.cimaVotos - boicote.baixoVotos}</span>
-          <button type="button" className="vote-btn">
-            <FaArrowDown />
+          <button type="button" className={`vote-btn ${voto === 0 ? 'voted' : ''}`}>
+            <FaArrowDown title="Votor para baixo" />
           </button>
         </div>
         <div className={styles.div_boicote_footer_mobile_right}>
           <div>
-            <img src="/assets/images/comment.svg" alt="Comentários" />
+            <FaRegCommentAlt title="Comentários" />
             <span className="font-size-small">
               {' '}
               {boicote.comentariosCount}

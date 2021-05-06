@@ -40,25 +40,24 @@ div.card_boicote {
     div.header_boicote_right {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
       color: var(--gray-300);
       font-style: italic;
       gap: .5rem;
       cursor: default;
       transition: all .3s ease-in-out;
       &:hover {
-        transform: scale(1.05);
-        p {
-          color: var(--gray-500);
-        }
+        filter: brightness(.8);
       }
 
       p {
         text-align: left;
       }
 
-      img {
-        height: 2rem;
+      svg {
+        font-size: 2rem;
+        color: red;
+        opacity: .2;
       }
     }
 
@@ -84,9 +83,9 @@ div.card_boicote {
         align-items: flex-end;
         justify-content: space-between;
 
-        img {
+        svg {
           vertical-align: middle;
-          height: 20px;
+          font-size: 1rem;
         }
 
         span {
@@ -162,16 +161,16 @@ div.card_boicote {
 }
 
 @media only screen and (min-width: 1024px) {
-
   div.card_boicote {
     div.boicote_right_div {
       header {
         display: flex;
-        gap: 3rem;
+        justify-content: space-between;
+        gap: 1rem;
 
         div.header_boicote_left {
           flex-basis: 0;
-          flex-grow: 4;
+          flex-grow: 4.5;
 
           h3 {
             text-align: left;
@@ -184,7 +183,17 @@ div.card_boicote {
 
         div.header_boicote_right {
           flex-basis: 0;
-          flex-grow: 1;
+          flex-grow: 1.5;
+          border-right: 1px var(--purple-300) dashed;
+          border-radius: 2rem;
+
+          svg {
+            font-size: 2.5rem;
+          }
+
+          p {
+            margin-right: .8rem;
+          }
         }
       }
     }
@@ -192,13 +201,26 @@ div.card_boicote {
 }
 
 @media only screen and (min-width: 1366px) {
-
   div.card_boicote {
     div.boicote_left_div {
       padding: 2rem 1.5rem;
     }
     div.boicote_right_div {
       padding: 2rem 2.5rem 2rem 1.25rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  div.card_boicote {
+    div.boicote_right_div {
+      header {
+        div.header_boicote_right {
+          svg {
+            font-size: 3rem;
+          }
+        }
+      }
     }
   }
 }

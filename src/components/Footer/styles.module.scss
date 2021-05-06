@@ -17,10 +17,15 @@ footer.footer {
       justify-content: space-between;
       height: 5rem;
 
-      div {
+      div.social_div {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        svg {
+          font-size: 2rem;
+          color: var(--white);
+        }
 
         a {
           margin: 0 .5rem;
