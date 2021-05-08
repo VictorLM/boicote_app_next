@@ -1,47 +1,75 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
+// import { TimelineLite } from 'gsap';
 
+import { FaBullhorn } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
-const HeroSection: React.FC = () => (
+type TimelineType = {
+  timeline: any, // TODO
+};
 
-  <section>
+const HeroSection: React.FC<TimelineType> = ({ timeline }) => {
+  const divRef = useRef<HTMLInputElement>();
+  // const tl = new TimelineLite();
 
-    <div className={`content ninety-height-landscape  ${styles.content_hero}`}>
+  useEffect(() => {
+    divRef.current.childNodes.forEach((el) => {
+      timeline.from([el], {
+        opacity: 0,
+        y: -100,
+        duration: 1,
+        // ease: Power3.easeOut,
+        // immediateRender: false,
+      });
+    });
+  }, []);
 
-      <div className={styles.left}>
-        <h1 className="zoom-hover">
-          Consumir é um
-          {' '}
-          <span>ato político!</span>
-        </h1>
-        <p className="font-size-2">Pratique o consumo consciente</p>
+  return (
 
-        <Link href="/criar-boicote">
-          <button type="button" className="btn-cta shadow font-size-2">
-            <img src="assets/images/megaphone-rotated.svg" alt="Megaphone" />
-            <text>Criar Boicote</text>
-          </button>
-        </Link>
+    <section>
+
+      <div
+        className={`content ninety-height-landscape  ${styles.content_hero}`}
+        ref={divRef}
+      >
+
+        <div className={styles.left}>
+          <h1 className="zoom-hover">
+            {'Consumir é um '}
+            <p>
+              {'ato '}
+              <span>político!</span>
+            </p>
+          </h1>
+          <p className="font-size-2">Pratique o consumo consciente</p>
+
+          <Link href="/criar-boicote">
+            <button type="button" className="btn-cta shadow font-size-2">
+              <FaBullhorn title="Megafone" />
+              <span>Criar Boicote</span>
+            </button>
+          </Link>
+        </div>
+
+        <div className={styles.right}>
+          <img
+            className={`hero-illustration ${styles.illustration_animation}`}
+            src="assets/images/illustration_animation.svg"
+            alt="Animação ilustração"
+          />
+          <img
+            className="hero-illustration"
+            src="assets/images/illustration.svg"
+            alt="Ilustração"
+          />
+        </div>
+
       </div>
 
-      <div className={styles.right}>
-        <img
-          className={`hero-illustration zoom-hover ${styles.illustration}`}
-          src="assets/images/illustration.png"
-          alt="Ilustração"
-        />
-        <img
-          className={`hero-illustration illustration-animation ${styles.illustration_animation}`}
-          src="assets/images/illustration_animation.png"
-          alt="Animação ilustração"
-        />
-      </div>
+    </section>
 
-    </div>
-
-  </section>
-
-);
+  );
+};
 
 export default HeroSection;

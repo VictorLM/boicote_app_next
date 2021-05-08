@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { FaTwitterSquare, FaInstagramSquare, FaFacebookSquare } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaFacebookF } from 'react-icons/fa';
 
 import Nav from '../Nav';
 
@@ -11,13 +11,13 @@ const Header: React.FC = () => {
 
   return (
 
-    <header className={`shadow ${styles.header}`}>
+    <header className={styles.header}>
 
-      <div className={`content ${styles.content_header}`}>
+      <div className={`content ten-height-landscape ${styles.content_header}`}>
 
         <div className={styles.logo_div}>
           <a href="/" className="zoom-hover">
-            <span className="logo font-size-2">
+            <span className="logo">
               boicote.
               <span>app</span>
             </span>
@@ -35,13 +35,13 @@ const Header: React.FC = () => {
 
         <div className={styles.social_div}>
           <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaTwitterSquare className="social-icons twitter" title="Twitter" />
+            <FaTwitter className="social-icons twitter" title="Twitter" />
           </a>
           <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaInstagramSquare className="social-icons instagram" title="Instagram" />
+            <FaInstagram className="social-icons instagram" title="Instagram" />
           </a>
           <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaFacebookSquare className="social-icons facebook" title="Facebook" />
+            <FaFacebookF className="social-icons facebook" title="Facebook" />
           </a>
         </div>
 

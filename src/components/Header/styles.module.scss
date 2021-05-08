@@ -1,14 +1,15 @@
 header.header {
-  background: var(--white);
+  //background: var(--white);
 
   div.content_header {
-    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
 
     button.mobile_menu_btn {
       font-size: 1.5rem;
+      color: var(--purple-800);
       border: none;
       background: inherit;
       padding: 0;
@@ -26,7 +27,6 @@ header.header {
 
       a {
         text-decoration: none;
-        cursor: pointer;
       }
     }
 
@@ -68,11 +68,10 @@ header.header {
         flex-basis: 0;
 
         a {
-          margin: 0 .25rem 0 .25rem;
-
           svg {
-            font-size: 1.8rem;
-            vertical-align: middle;
+            font-size: 1.6rem;
+            fill: var(--gray-400);
+            border: 1px solid var(--gray-400);
           }
         }
       }

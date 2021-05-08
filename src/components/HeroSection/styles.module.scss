@@ -10,29 +10,48 @@ div.content_hero {
 
     h1 {
       font-family: 'Poppins', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 3rem;
       color: var(--purple-800);
       margin-bottom: 1rem;
       cursor: default;
 
-      span {
+      p {
         font-family: 'Poppins', sans-serif;
         font-weight: 800;
-        color: var(--orange-300);
-        font-size: 3.5rem;
+        font-size: 3rem;
+        color: var(--purple-800);
+        display: inline;
+        margin: 0;
+
+        span {
+          // color: var(--purple-800);
+          font-family: 'Abril Fatface', cursive;
+          font-size: 3.8rem;
+          text-decoration: underline;
+          text-decoration-color: var(--orange-800);
+        }
       }
+
     }
 
     p {
       font-size: 1.3rem;
-      color: var(--gray-300);
+      color: var(--gray-400);
       margin: 2rem 0 3rem 0;
     }
 
     button {
       width: 85%;
       font-size: 1.2rem;
+      padding: .6rem 1rem;
+
+      svg {
+        vertical-align: middle;
+        transform: rotate(-30deg);
+        margin-right: .5rem;
+      }
+
     }
 
   }
@@ -42,23 +61,42 @@ div.content_hero {
 
     img.illustration_animation {
       opacity: 0;
-      transform: translate(-100%);
+      transform: translateX(5%) translateY(-5%);
     }
   }
 
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 360px) {
+  div.content_hero {
+    div.left {
+      h1 {
+        font-size: 4rem;
+        p {
+          font-size: 4rem;
+          span {
+            font-size: 5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 567px) {
   div.content_hero {
     div.left {
       text-align: center;
-
       h1 {
-        span {
+        font-size: 3.5rem;
+        p {
           display: block;
+          font-size: 3.5rem;
+          span {
+            font-size: 4.8rem;
+          }
         }
       }
-
       button {
         width: auto;
       }
@@ -68,16 +106,16 @@ div.content_hero {
 
 @media only screen and (min-width: 768px) {
   div.content_hero {
-
     div.left {
-
       h1 {
         font-size: 4rem;
-        span {
-          font-size: 4.5rem;
+        p {
+          font-size: 4rem;
+          span {
+            font-size: 5.5rem;
+          }
         }
       }
-
     }
   }
 }
@@ -85,63 +123,58 @@ div.content_hero {
 @media only screen and (min-width: 1024px) {
   div.content_hero {
     justify-content: space-evenly;
-
     div.left {
       text-align: left;
-
       h1 {
         font-size: 3.2rem;
-
-        span {
-          display: block;
-          font-size: 3.9rem;
+        p {
+          font-size: 3.2rem;
+          span {
+            font-size: 4.5rem;
+          }
         }
       }
-
+      p {
+        font-size: 1.2rem;
+      }
     }
 
     div.right {
       display: block;
       position: relative;
-
-      img.illustration {
-        position: relative;
-        transition: all .3s ease-in-out;
-
-        &:hover ~ img.illustration_animation {
-          opacity: 1;
-          transform: translate(0);
-        }
-      }
+      max-width: 50%;
 
       img.illustration_animation {
         position: absolute;
         top: 0;
-        right: -6%;
-        transition: all .6s ease-in-out;
+        right: 0;
+        transition: all .5s ease-in-out;
+
+        &:hover  {
+          opacity: 1;
+          transform: translateX(0) translateY(0);
+          z-index: 2;
+        }
       }
 
-
     }
-
   }
 }
 
 @media only screen and (min-width: 1366px) {
   div.content_hero {
-
     div.left {
-
       h1 {
         font-size: 3.5rem;
-
-        span {
-          font-size: 4rem;
+        p {
+          font-size: 3.5rem;
+          span {
+            font-size: 5rem;
+          }
         }
       }
-
       p {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
     }
   }
@@ -149,26 +182,24 @@ div.content_hero {
 
 @media only screen and (min-width: 1920px) {
   div.content_hero {
-
     div.left {
-
       h1 {
         font-size: 4rem;
-        span {
+        p {
           font-size: 4rem;
+          span {
+            font-size: 5.5rem;
+          }
         }
       }
-
       p {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin: 2rem 0 5rem 0;
       }
-
       button {
         font-size: 1.5rem;
-        padding: 1rem 1.5rem;
+        padding: .8rem 1.2rem;
       }
     }
-
   }
 }

@@ -15,8 +15,8 @@ const HowWorksSection: React.FC = () => (
 
       <div className={styles.cards}>
 
-        <div className={styles.headers}>
-          <h2 className="headers">Como funciona?</h2>
+        <div className={`${styles.headers} zoom-hover`}>
+          <h2 className="headers zoom-hover">Como funciona?</h2>
           <p className={`sub-headers ${styles.p_sub_header}`}>
             Aqui você encontra e organiza seus boicotes
           </p>
@@ -33,7 +33,7 @@ const HowWorksSection: React.FC = () => (
             Interaja com a comunidade votando e comentando nos
             {' '}
             <Link href="/boicotes">boicotes</Link>
-            . Use as setas ao lado esquerdo do título. Para comentar,
+            . Para votar, use as setas ao lado esquerdo dos títulos. Para comentar,
             preencha o formulário na página do boicote.
           </p>
         </div>
@@ -90,7 +90,7 @@ const HowWorksSection: React.FC = () => (
             <h3>Pratique</h3>
           </header>
           <p className="font-size-small">
-            Boicote empresas e marcas com seu poder de compra.
+            Boicote marcas com seu poder de compra.
             Não de lucros para quem apoia, pratica ou corrobora
             com atos e ideias nocivas, fake news, discurso de ódio, etc.
             Pratique o consumo consciente.

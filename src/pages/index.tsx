@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { format, parseISO } from 'date-fns';
-// import Cookies from 'js-cookie';
+import { TimelineLite } from 'gsap';
 
 import api from '../services/api';
 
@@ -36,36 +36,41 @@ type HomePropsType = {
 }
 
 const Home: React.FC<HomePropsType> = ({ boicotes, votosVisitante }) => {
+  const [timeline, setTimeline] = useState(new TimelineLite({ paused: true }));
+
   useEffect(() => {
     const visitantesCheckMiddleware = async () => {
       // CHECA COOKIE VISITANTEID
       await visitanteCheck();
     };
     visitantesCheckMiddleware();
+    // gsap
+    timeline.play();
   }, []);
 
   return (
-
     <>
       <Head>
         <title>Boicote.App | Consumir é um ato político</title>
         {/* meta tags - TODO */}
       </Head>
 
-      <HeroSection />
+      <HeroSection timeline={timeline} />
 
       <HowWorksSection />
 
       <section>
         <div className="content">
-          <h2 className="headers">Boicotes recentes</h2>
-          <p className="sub-headers">
-            Veja abaixo os últimos Boicotes cadastrados. Para visualizar todos,
-            {' '}
-            <Link href="/boicotes">
-              clique aqui.
-            </Link>
-          </p>
+          <div className="zoom-hover" style={{ cursor: 'default', width: 'fit-content', margin: 'auto' }}>
+            <h2 className="headers">Boicotes recentes</h2>
+            <p className="sub-headers">
+              Veja abaixo os últimos Boicotes cadastrados. Para visualizar todos,
+              {' '}
+              <Link href="/boicotes">
+                clique aqui.
+              </Link>
+            </p>
+          </div>
 
           {boicotes?.map((boicote) => ( // TODO CHECAR SE VAZIO
             <Boicote
@@ -82,7 +87,9 @@ const Home: React.FC<HomePropsType> = ({ boicotes, votosVisitante }) => {
             />
           ))}
 
-          <Link href="/boicotes">Ver todos os boicotes &#8594;</Link>
+          <p>
+            <Link href="/boicotes">Ver todos os boicotes &#8594;</Link>
+          </p>
         </div>
       </section>
     </>
