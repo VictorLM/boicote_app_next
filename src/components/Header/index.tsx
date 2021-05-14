@@ -1,51 +1,29 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { FaTwitter, FaInstagram, FaFacebookF } from 'react-icons/fa';
-
+import { VscChromeClose } from 'react-icons/vsc';
 import Nav from '../Nav';
 
 import styles from './styles.module.scss';
 
 const Header: React.FC = () => {
-  const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
 
-    <header className={styles.header}>
+    <header className={`container ${styles.header}`}>
 
-      <div className={`content ten-height-landscape ${styles.content_header}`}>
+      <div className={styles.icons}>
+        <Link href="/">
+          <img src="images/logo-bw.svg" className="logo" alt="Logo" style={{ cursor: 'pointer' }} />
+        </Link>
 
-        <div className={styles.logo_div}>
-          <a href="/" className="zoom-hover">
-            <span className="logo">
-              boicote.
-              <span>app</span>
-            </span>
-          </a>
-        </div>
-
-        <button type="button" className={styles.mobile_menu_btn} onClick={() => setMobileMenuIsOpen(!mobileMenuIsOpen)}>
-          <AiOutlineMenu />
+        <button type="button" className={styles.menu_btn} onClick={() => setToggleMenu(!toggleMenu)}>
+          { toggleMenu ? <VscChromeClose /> : <AiOutlineMenu /> }
         </button>
-
-        <Nav
-          mobileMenuIsOpen={mobileMenuIsOpen}
-          setMobileMenuIsOpen={setMobileMenuIsOpen}
-        />
-
-        <div className={styles.social_div}>
-          <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaTwitter className="social-icons twitter" title="Twitter" />
-          </a>
-          <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaInstagram className="social-icons instagram" title="Instagram" />
-          </a>
-          <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaFacebookF className="social-icons facebook" title="Facebook" />
-          </a>
-        </div>
-
       </div>
+
+      { toggleMenu && <Nav setToggleMenu={setToggleMenu} /> }
 
     </header>
   );

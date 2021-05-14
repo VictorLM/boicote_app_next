@@ -1,0 +1,37 @@
+ul.social_icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & li:nth-child(2) {
+    padding: 0 .5rem;
+  }
+}
+
+.icons {
+  vertical-align: middle;
+  font-size: 1.8rem;
+  color: var(--black);
+  transition: all .2s ease-in-out;
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.twitter {
+  &:hover {
+    background: #1DA1F2;
+  }
+}
+
+.instagram {
+  &:hover {
+    background: #E1306C;
+  }
+}
+
+.facebook {
+  &:hover {
+    background: #4267B2;
+  }
+}

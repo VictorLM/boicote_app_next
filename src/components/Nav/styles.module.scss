@@ -1,168 +1,192 @@
-.open_menu_mobile {
-  transform: translateX(0);
-}
-
-.close_menu_mobile {
-  transform: translateX(100%);
-}
-
 nav.nav {
+  background: var(--white);
   position: fixed;
-  z-index: 999;
+  min-height: 90vh;
+  min-width: 100vw;
+  bottom: 0;
   right: 0;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  background: var(--bg-color);
-  padding: 2rem;
-  // padding: 2rem 2rem 2rem 3rem; // Bugado nos testes desktop. Não sei pq não pega 1rem na direita
-  transition: all 0.2s linear;
+  margin: auto;
+  padding: var(--padding);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
 
-  div.div_mobile_menu_exit_btn {
-    width: 100%;
-    text-align: right;
+div.illustrations {
+  display: none;
+}
 
-    button.mobile_menu_exit_btn {
-      font-size: 3rem;
-      color: var(--purple-800);
-      border: none;
-      background: inherit;
-      padding: 0;
+ul.nav_items {
+  text-align: center;
 
-      &:hover {
-        color: var(--orange-800);
-      }
-    }
+  li {
+    padding: 0 1rem;
+    transition: all .2s ease-in-out;
 
-  }
-
-  ul {
-    width: 100%;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    hr {
-      width: 100%;
-      border-color: var(--purple-800);
-    }
-
-    li {
-      font-size: 2rem;
-
-      svg {
-        display: none;
-      }
-
+    &:hover {
+      background: var(--black);
       a {
-        color: var(--purple-800);
-        text-decoration: none;
-        font-weight: 500;
-
-        &:hover {
-          color: var(--orange-800);
-          text-decoration: none;
-        }
+        color: var(--white);
       }
 
-      &.menu_active a {
-        text-decoration: underline;
-        text-decoration-color: var(--orange-300);
-        text-decoration-thickness: 3px;
+      & div.red_square {
+        transform: rotate(10deg);
       }
-
     }
-  }
 
-  div.social_div_mobile {
-    svg {
-      font-size: 1.6rem;
-      fill: var(--purple-800);
-      border: 2px solid var(--purple-800);
-      font-size: 2.5rem;
-      padding: .5rem;
+    a {
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      color: var(--black);
+      display: block;
+    }
+
+    &.active a {
+      text-decoration: underline;
+      text-decoration-color: var(--red);
+      text-decoration-thickness: 5px;
+      text-underline-offset: -3%;
     }
   }
 
 }
 
-@media only screen and (min-width: 768px) {
-  .close_menu_mobile {
-    transform: translateX(0);
+div.footer {
+  width: 100%;
+  min-height: 10vh; // TODO - VERIFICAR SE ESTÁ SEMPRE DO MESMO TAMANHO DO NAVBAR
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+div.red_line {
+  width: 50px;
+  height: 5px;
+  background: var(--red);
+  margin-bottom: .1rem;
+  transition: transform .2s ease-in-out;
+  &:hover{
+    transform: rotate(45deg);
   }
+}
 
-  nav.nav {
-    position: unset;
-    z-index: auto;
-    background: unset;
-    flex-direction: row;
-    padding: 0;
-    height: 100%;
-    width: auto;
-
-    div.div_mobile_menu_exit_btn {
-      display: none;
-    }
-
-    ul {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0;
-      min-height: auto;
-      width: auto;
-
-      hr {
-        display: none;
+@media only screen and (min-width: 360px) {
+  ul.nav_items {
+    li {
+      a {
+        font-size: 3.5rem;
       }
+    }
+  }
+}
 
+@media only screen and (min-width: 540px) and (orientation: portrait)  {
+  ul.nav_items {
+    li {
+      a {
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (orientation: portrait) {
+  ul.nav_items {
+    li {
+      a {
+        font-size: 5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  @media (orientation: portrait) {
+    ul.nav_items {
       li {
-        padding: 0;
-        font-size: 1rem;
-        text-align: unset;
-        padding: 0 1rem;
-        display: flex;
-        align-items: center;
-
-        &:hover {
-          a {
-            color: var(--purple-800);
-            transform: scale(1.1);
-            font-weight: 500;
-          }
-          svg {
-            color: var(--purple-800);
-          }
-        }
-
-        svg {
-          display: block;
-          transform: rotate(-30deg);
-          color: var(--gray-400);
-          margin-right: .25rem;
-        }
-
         a {
-          color: var(--gray-400);
-          font-weight: 400;
-          display: block;
-          display: flex;
-          align-items: center;
-          transition: all .2s ease-in-out;
+          font-size: 6rem;
+        }
+        &.active a {
+          text-underline-offset: -2%;
         }
       }
     }
+  }
 
-    div.social_div_mobile {
-      display: none;
+  @media (orientation: landscape) {
+    ul.nav_items {
+      text-align: right;
+    }
+
+    div.content {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    div.illustrations {
+      display: block;
+      width: calc(50vw - (var(--padding) * 2) - 10px);
+      height: calc(80vh - (var(--padding) * 2) - 10px);
+      border: 10px solid var(--black);
+      padding: var(--padding);
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 10px solid var(--red);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
   }
 
+}
+
+@media only screen and (min-width: 1600px) {
+  div.illustrations {
+    border: 20px solid var(--black);
+    width: calc(50vw - (var(--padding) * 2) - 20px);
+    height: calc(80vh - (var(--padding) * 2) - 20px);
+    &:before {
+      border: 20px solid var(--red);
+    }
+  }
+  ul.nav_items {
+    li {
+      a {
+        font-size: 4.8rem;
+      }
+      &.active a {
+        text-underline-offset: -2%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  ul.nav_items {
+    li {
+      a {
+        font-size: 5.5rem;
+      }
+    }
+  }
 }

@@ -25,17 +25,17 @@ type BoicoteType = {
   autor: string;
 }
 
-type VotoVisitanteType = {
+type VisitanteVotosType = {
   boicoteId: string;
   cima: boolean;
 }
 
 type HomePropsType = {
   boicotes: BoicoteType[];
-  votosVisitante: VotoVisitanteType[];
+  visitanteVotos: VisitanteVotosType[];
 }
 
-const Home: React.FC<HomePropsType> = ({ boicotes, votosVisitante }) => {
+const Home: React.FC<HomePropsType> = ({ boicotes, visitanteVotos }) => {
   const [timeline, setTimeline] = useState(new TimelineLite({ paused: true }));
 
   useEffect(() => {
@@ -57,11 +57,13 @@ const Home: React.FC<HomePropsType> = ({ boicotes, votosVisitante }) => {
 
       <HeroSection timeline={timeline} />
 
+      {/* <HeroSection timeline={timeline} />
+
       <HowWorksSection />
 
       <section>
         <div className="content">
-          <div className="zoom-hover" style={{ cursor: 'default', width: 'fit-content', margin: 'auto' }}>
+          <div className="zoom-hover">
             <h2 className="headers">Boicotes recentes</h2>
             <p className="sub-headers">
               Veja abaixo os últimos Boicotes cadastrados. Para visualizar todos,
@@ -77,10 +79,10 @@ const Home: React.FC<HomePropsType> = ({ boicotes, votosVisitante }) => {
               key={String(boicote.id)}
               boicote={boicote}
               boicoteUnico={false}
-              voto={votosVisitante.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
+              voto={visitanteVotos.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
                 ? Number(
-                  votosVisitante[
-                    votosVisitante.findIndex((voto) => voto.boicoteId === boicote.id)
+                  visitanteVotos[
+                    visitanteVotos.findIndex((voto) => voto.boicoteId === boicote.id)
                   ].cima,
                 )
                 : null}
@@ -91,7 +93,7 @@ const Home: React.FC<HomePropsType> = ({ boicotes, votosVisitante }) => {
             <Link href="/boicotes">Ver todos os boicotes &#8594;</Link>
           </p>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
@@ -122,11 +124,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       headers: ctx.req ? { cookie: ctx.req.headers.cookie } : undefined,
     });
 
-    const votosVisitante = dataVisitanteVotos.data;
+    const visitanteVotos = dataVisitanteVotos.data;
 
     // console.log(ctx.req.headers.cookie);
 
-    return { props: { boicotes, votosVisitante } };
+    return { props: { boicotes, visitanteVotos } };
 
     // setVotos(response.data);
   } catch (err) {

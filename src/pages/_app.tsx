@@ -7,11 +7,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => (
-  <div className="container">
+  <>
     <Header />
     <Component {...pageProps} />
-    <Footer />
-  </div>
+    {/* <Footer /> */}
+  </>
 );
 
 export default MyApp;

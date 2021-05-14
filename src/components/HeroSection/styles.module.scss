@@ -1,204 +1,175 @@
-div.content_hero {
+section.hero {
+  padding: var(--padding);
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(90vh - 1rem);
+  flex-direction: column;
+}
+
+div.red {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: calc(65vw - (var(--padding) * 2));
+  height: calc(50vh - (var(--padding) * 2));
+  background: var(--red);
+}
 
-  div.left {
-    padding: .5rem;
-    text-align: center;
-
-    h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 3rem;
-      color: var(--purple-800);
-      margin-bottom: 1rem;
-      cursor: default;
-
-      p {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 800;
-        font-size: 3rem;
-        color: var(--purple-800);
-        display: inline;
-        margin: 0;
-
-        span {
-          // color: var(--purple-800);
-          font-family: 'Abril Fatface', cursive;
-          font-size: 3.8rem;
-          text-decoration: underline;
-          text-decoration-color: var(--orange-800);
-        }
-      }
-
-    }
-
-    p {
-      font-size: 1.3rem;
-      color: var(--gray-400);
-      margin: 2rem 0 3rem 0;
-    }
-
-    button {
-      width: 85%;
-      font-size: 1.2rem;
-      padding: .6rem 1rem;
-
-      svg {
-        vertical-align: middle;
-        transform: rotate(-30deg);
-        margin-right: .5rem;
-      }
-
-    }
-
-  }
-
-  div.right {
-    display: none;
-
-    img.illustration_animation {
-      opacity: 0;
-      transform: translateX(5%) translateY(-5%);
+h1.text {
+  text-align: center;
+  span {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    &:nth-child(2) {
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--white);
     }
   }
+}
 
+div.footer {
+  width: 100%;
+  min-height: 10vh; // TODO - VERIFICAR SE ESTÁ SEMPRE DO MESMO TAMANHO DO NAVBAR
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+div.red_line {
+  width: 50px;
+  height: 5px;
+  background: var(--red);
+  margin-bottom: .1rem;
+  transition: transform .2s ease-in-out;
+  &:hover{
+    transform: rotate(45deg);
+  }
+}
+
+svg.arrow_down {
+  font-size: 2rem;
+  color: var(--black);
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    color: var(--gray);
+  }
 }
 
 @media only screen and (min-width: 360px) {
-  div.content_hero {
-    div.left {
-      h1 {
-        font-size: 4rem;
-        p {
-          font-size: 4rem;
-          span {
-            font-size: 5rem;
-          }
-        }
+  div.red {
+    width: calc(70vw - (var(--padding) * 2));
+  }
+  h1.text {
+    span {
+      font-size: 4.2rem;
+      &:nth-child(2) {
+        font-size: 3rem;
       }
     }
   }
 }
 
-@media only screen and (min-width: 567px) {
-  div.content_hero {
-    div.left {
-      text-align: center;
-      h1 {
-        font-size: 3.5rem;
-        p {
-          display: block;
-          font-size: 3.5rem;
-          span {
-            font-size: 4.8rem;
-          }
-        }
-      }
-      button {
-        width: auto;
+@media only screen and (min-width: 540px) and (orientation: portrait)  {
+  div.red {
+    width: calc(60vw - (var(--padding) * 2));
+  }
+  h1.text {
+    span {
+      font-size: 5.5rem;
+      &:nth-child(2) {
+        font-size: 4rem;
       }
     }
   }
 }
 
-@media only screen and (min-width: 768px) {
-  div.content_hero {
-    div.left {
-      h1 {
-        font-size: 4rem;
-        p {
-          font-size: 4rem;
-          span {
-            font-size: 5.5rem;
-          }
-        }
+@media only screen and (min-width: 768px) and (orientation: portrait)  {
+  h1.text {
+    span {
+      font-size: 7rem;
+      &:nth-child(2) {
+        font-size: 5rem;
       }
     }
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  div.content_hero {
-    justify-content: space-evenly;
-    div.left {
-      text-align: left;
-      h1 {
-        font-size: 3.2rem;
-        p {
-          font-size: 3.2rem;
-          span {
-            font-size: 4.5rem;
-          }
+
+  @media (orientation: portrait) {
+    h1.text {
+      span {
+        font-size: 10rem;
+        &:nth-child(2) {
+          font-size: 6rem;
         }
-      }
-      p {
-        font-size: 1.2rem;
       }
     }
+  }
 
-    div.right {
-      display: block;
-      position: relative;
-      max-width: 50%;
-
-      img.illustration_animation {
-        position: absolute;
-        top: 0;
-        right: 0;
-        transition: all .5s ease-in-out;
-
-        &:hover  {
-          opacity: 1;
-          transform: translateX(0) translateY(0);
-          z-index: 2;
+  @media (orientation: landscape) {
+    div.hide_landscape {
+      display: none ;
+    }
+    div.red {
+      width: calc(50vw - (var(--padding) * 2));
+      height: calc(75vh - (var(--padding) * 2));
+    }
+    h1.text {
+      line-height: 7.5rem;
+      span {
+        font-size: 9rem;
+        &:nth-child(2) {
+          font-size: 6rem;
         }
       }
+    }
+  }
 
+}
+
+@media only screen and (min-width: 1366px) {
+  div.red {
+    width: calc(45vw - (var(--padding) * 2));
+  }
+  h1.text {
+    line-height: 8rem;
+    span {
+      font-size: 10rem;
+      &:nth-child(2) {
+        font-size: 7rem;
+      }
     }
   }
 }
 
-@media only screen and (min-width: 1366px) {
-  div.content_hero {
-    div.left {
-      h1 {
-        font-size: 3.5rem;
-        p {
-          font-size: 3.5rem;
-          span {
-            font-size: 5rem;
-          }
-        }
-      }
-      p {
-        font-size: 1.4rem;
+@media only screen and (min-width: 1600px) {
+  h1.text {
+    line-height: 9rem;
+    span {
+      font-size: 12rem;
+      &:nth-child(2) {
+        font-size: 7rem;
       }
     }
   }
 }
 
 @media only screen and (min-width: 1920px) {
-  div.content_hero {
-    div.left {
-      h1 {
-        font-size: 4rem;
-        p {
-          font-size: 4rem;
-          span {
-            font-size: 5.5rem;
-          }
-        }
-      }
-      p {
-        font-size: 1.5rem;
-        margin: 2rem 0 5rem 0;
-      }
-      button {
-        font-size: 1.5rem;
-        padding: .8rem 1.2rem;
+  div.red {
+    width: calc(50vw - (var(--padding) * 2));
+  }
+  h1.text {
+    line-height: 12rem;
+    span {
+      font-size: 15rem;
+      &:nth-child(2) {
+        font-size: 10rem;
       }
     }
   }
