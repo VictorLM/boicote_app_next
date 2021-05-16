@@ -1,31 +1,7 @@
 header.header {
   background: var(--white);
-  min-height: 10vh;
-  // padding: var(--padding);
-  padding: var(--padding) var(--padding) 1rem var(--padding);
-
-  div.icons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    img {
-      height: 2rem;
-    }
-
-    button {
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      &:hover {
-        color: var(--gray);
-      }
-      svg {
-        font-size: 2rem;
-        vertical-align: middle;
-      }
-    }
-
-  }
-
+  height: 10vh;
+  padding: var(--padding);
+  padding-bottom: .5rem;
+  width: 100%;
 }

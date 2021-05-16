@@ -7,10 +7,17 @@ import {
 
 import styles from './styles.module.scss';
 
-const HowWorksSection: React.FC = () => (
+const EntendaSection: React.FC = () => (
 
-  <section className={styles.how_works}>
+  <section className={styles.how_works} id="entenda">
+    Teste
+  </section>
 
+);
+
+export default EntendaSection;
+
+/*
     <div className={`content full-height-landscape ${styles.content_how_works}`}>
 
       <div className={styles.cards}>
@@ -100,9 +107,4 @@ const HowWorksSection: React.FC = () => (
       </div>
 
     </div>
-
-  </section>
-
-);
-
-export default HowWorksSection;
+    */

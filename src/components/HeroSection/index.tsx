@@ -1,35 +1,41 @@
 import Link from 'next/link';
 import React, { useRef, useEffect } from 'react';
-import { FaArrowDown } from 'react-icons/fa';
+import { HiOutlineArrowDown } from 'react-icons/hi';
+import { TimelineLite } from 'gsap';
 
 import styles from './styles.module.scss';
 
-type TimelineType = {
-  timeline: any, // TODO
-};
-
-const HeroSection: React.FC<TimelineType> = ({ timeline }) => {
-  const sectionRef = useRef<HTMLInputElement>();
+const HeroSection: React.FC = () => {
+  const redDivRef = useRef<HTMLInputElement>();
+  const textH1Ref = useRef<HTMLInputElement>();
+  const timeline = new TimelineLite();
 
   useEffect(() => {
-    sectionRef.current.childNodes.forEach((el) => {
-      timeline.from([el], {
-        opacity: 0,
-        y: -100,
-        duration: 0.1,
+    timeline.fromTo(redDivRef.current, { y: -100 }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    });
+
+    textH1Ref.current.childNodes.forEach((el) => {
+      timeline.to(el, {
+        opacity: 1,
+        duration: 0,
+        ease: 'none',
+        delay: 0.3,
       });
     });
   }, []);
 
   return (
 
-    <section className={styles.hero} ref={sectionRef}>
+    <section className={`container ${styles.hero}`}>
 
       <div className={styles.hide_landscape} />
       {/* Só para o content-align da section centralizar */}
 
-      <div className={styles.red}>
-        <h1 className={styles.text}>
+      <div className={styles.red} ref={redDivRef}>
+        <h1 className={styles.text} ref={textH1Ref}>
           <span>Consumir</span>
           <span>é um ato</span>
           <span>político!</span>
@@ -38,9 +44,9 @@ const HeroSection: React.FC<TimelineType> = ({ timeline }) => {
 
       <div className={styles.footer}>
         <div className={styles.red_line} />
-        <Link href="/#entenda">
-          <FaArrowDown className={styles.arrow_down} />
-        </Link>
+        <a href="/#entenda">
+          <HiOutlineArrowDown className={styles.arrow_down} />
+        </a>
       </div>
 
     </section>

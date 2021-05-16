@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { format, parseISO } from 'date-fns';
-import { TimelineLite } from 'gsap';
 
 import api from '../services/api';
 
-import Boicote from '../components/Boicote';
+// import Boicote from '../components/Boicote';
 import HeroSection from '../components/HeroSection';
-import HowWorksSection from '../components/HowWorksSection';
+// import HowWorksSection from '../components/HowWorksSection';
 import visitanteCheck from '../middlewares/visitanteCheck';
+import EntendaSection from '../components/EntendaSection';
 
 type BoicoteType = {
   id: string;
@@ -36,16 +36,12 @@ type HomePropsType = {
 }
 
 const Home: React.FC<HomePropsType> = ({ boicotes, visitanteVotos }) => {
-  const [timeline, setTimeline] = useState(new TimelineLite({ paused: true }));
-
   useEffect(() => {
     const visitantesCheckMiddleware = async () => {
       // CHECA COOKIE VISITANTEID
       await visitanteCheck();
     };
     visitantesCheckMiddleware();
-    // gsap
-    timeline.play();
   }, []);
 
   return (
@@ -55,7 +51,8 @@ const Home: React.FC<HomePropsType> = ({ boicotes, visitanteVotos }) => {
         {/* meta tags - TODO */}
       </Head>
 
-      <HeroSection timeline={timeline} />
+      <HeroSection />
+      <EntendaSection />
 
       {/* <HeroSection timeline={timeline} />
 

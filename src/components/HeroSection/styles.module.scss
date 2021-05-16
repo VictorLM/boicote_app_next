@@ -3,7 +3,7 @@ section.hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: calc(90vh - 1rem);
+  height: calc(90vh);
   flex-direction: column;
 }
 
@@ -12,17 +12,26 @@ div.red {
   justify-content: center;
   align-items: center;
   width: calc(65vw - (var(--padding) * 2));
+  max-width: 950px;
   height: calc(50vh - (var(--padding) * 2));
+  max-height: 900px;
   background: var(--red);
+  opacity: 0; // gsap
 }
 
 h1.text {
   text-align: center;
+  cursor: default;
   span {
     display: block;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 3rem;
+    transition: transform .2s ease-out;
+    opacity: 0; // gsap
+    &:hover {
+      transform: scale(1.05) !important;
+    }
     &:nth-child(2) {
       font-weight: 700;
       font-size: 2rem;
@@ -57,6 +66,7 @@ svg.arrow_down {
   cursor: pointer;
   &:hover {
     color: var(--gray);
+    transform: translateY(5px);
   }
 }
 

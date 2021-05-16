@@ -1,0 +1,24 @@
+div.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    height: 2rem;
+  }
+
+  button {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--gray);
+    }
+
+    svg {
+      font-size: 2rem;
+      vertical-align: middle;
+    }
+  }
+}
