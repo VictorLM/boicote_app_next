@@ -44,77 +44,80 @@ const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
 
   return (
 
-    <nav className={styles.nav} ref={navRef}>
+    <nav className={`${styles.nav}`} ref={navRef}>
 
-      <header className={`container ${styles.header}`}>
-        <TopBar>
-          <button type="button" className={styles.menu_btn} onClick={() => setToggleMenu(false)}>
-            <VscChromeClose />
-          </button>
-        </TopBar>
-      </header>
+      <div className={`container ${styles.container}`}>
 
-      <div className={styles.content} ref={contentRef}>
+        <header className={styles.header}>
+          <TopBar>
+            <button type="button" className={styles.menu_btn} onClick={() => setToggleMenu(false)}>
+              <VscChromeClose />
+            </button>
+          </TopBar>
+        </header>
 
-        <div className={styles.illustrations}>
-          <img src={illustration} alt="menu" />
+        <div className={styles.content} ref={contentRef}>
+
+          <div className={styles.illustrations}>
+            <img src={illustration} alt="menu" />
+          </div>
+
+          <ul className={styles.nav_items}>
+            <li
+              className={useRouter().asPath === '/' ? styles.active : ''}
+              onMouseEnter={() => setIllustration('images/home-lg.svg')}
+              onMouseLeave={() => setIllustration(defaultIllustration)}
+            >
+              <Link href="/">
+                <a onClick={() => setToggleMenu(false)}>Home</a>
+              </Link>
+            </li>
+            <li
+              className={useRouter().asPath === '/#entenda' ? styles.active : ''}
+              onMouseEnter={() => setIllustration('images/entenda-lg.svg')}
+              onMouseLeave={() => setIllustration(defaultIllustration)}
+            >
+              <Link href="/#entenda">
+                <a onClick={() => setToggleMenu(false)}>Entenda</a>
+              </Link>
+            </li>
+            <li
+              className={useRouter().asPath === '/boicotes' ? styles.active : ''}
+              onMouseEnter={() => setIllustration('images/boicotes-lg.svg')}
+              onMouseLeave={() => setIllustration(defaultIllustration)}
+            >
+              <Link href="/boicotes">
+                <a onClick={() => setToggleMenu(false)}>Boicotes</a>
+              </Link>
+            </li>
+            <li
+              className={useRouter().asPath === '/boicotar' ? styles.active : ''}
+              onMouseEnter={() => setIllustration('images/boicotar-lg.svg')}
+              onMouseLeave={() => setIllustration(defaultIllustration)}
+            >
+              <Link href="/boicotar">
+                <a onClick={() => setToggleMenu(false)}>Boicotar</a>
+              </Link>
+            </li>
+            <li
+              className={useRouter().asPath === '/#sobre' ? styles.active : ''}
+              onMouseEnter={() => setIllustration('images/sobre-lg.svg')}
+              onMouseLeave={() => setIllustration(defaultIllustration)}
+            >
+              <Link href="/#sobre">
+                <a onClick={() => setToggleMenu(false)}>Sobre</a>
+                </Link>
+            </li>
+          </ul>
+
         </div>
 
-        <ul className={styles.nav_items}>
-          <li
-            className={useRouter().asPath === '/' ? styles.active : ''}
-            onMouseEnter={() => setIllustration('images/home-lg.svg')}
-            onMouseLeave={() => setIllustration(defaultIllustration)}
-          >
-            <Link href="/">
-              <a onClick={() => setToggleMenu(false)}>Home</a>
-            </Link>
-          </li>
-          <li
-            className={useRouter().asPath === '/#entenda' ? styles.active : ''}
-            onMouseEnter={() => setIllustration('images/entenda-lg.svg')}
-            onMouseLeave={() => setIllustration(defaultIllustration)}
-          >
-            <Link href="/#entenda">
-              <a onClick={() => setToggleMenu(false)}>Entenda</a>
-            </Link>
-          </li>
-          <li
-            className={useRouter().asPath === '/boicotes' ? styles.active : ''}
-            onMouseEnter={() => setIllustration('images/boicotes-lg.svg')}
-            onMouseLeave={() => setIllustration(defaultIllustration)}
-          >
-            <Link href="/boicotes">
-              <a onClick={() => setToggleMenu(false)}>Boicotes</a>
-            </Link>
-          </li>
-          <li
-            className={useRouter().asPath === '/boicotar' ? styles.active : ''}
-            onMouseEnter={() => setIllustration('images/boicotar-lg.svg')}
-            onMouseLeave={() => setIllustration(defaultIllustration)}
-          >
-            <Link href="/boicotar">
-              <a onClick={() => setToggleMenu(false)}>Boicotar</a>
-            </Link>
-          </li>
-          <li
-            className={useRouter().asPath === '/#sobre' ? styles.active : ''}
-            onMouseEnter={() => setIllustration('images/sobre-lg.svg')}
-            onMouseLeave={() => setIllustration(defaultIllustration)}
-          >
-            <Link href="/#sobre">
-              <a onClick={() => setToggleMenu(false)}>Sobre</a>
-              </Link>
-          </li>
-        </ul>
+        <div className={styles.footer}>
+          <div className={styles.red_line} />
+          <SocialIcons />
+        </div>
 
       </div>
-
-      <div className={styles.footer}>
-        <div className={styles.red_line} />
-        <SocialIcons />
-      </div>
-
     </nav>
 
   );

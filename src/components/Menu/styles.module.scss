@@ -4,23 +4,27 @@ nav.nav {
   height: 100vh;
   width: 100vw;
   top: 0;
-  right: 0;
+  left: 0;
+  // right: 0;
   margin: auto;
-  padding: var(--padding);
-  padding-left: calc(var(--padding) + 1rem); // BUG BARALHO DA SCROLLBAR
+  // padding: var(--padding);
+  padding: var(--padding) calc(var(--padding) + 1rem); // BUG BARALHO DA SCROLLBAR
+  z-index: 2;
+  transform: translateY(-100vh); //gsap
+}
+
+div.container {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  z-index: 2;
-  transform: translateY(-100vh); //gsap
 }
 
 header.header {
   height: 10vh;
   width: 100%;
 }
-
 
 div.illustrations {
   display: none;
@@ -56,7 +60,7 @@ ul.nav_items {
     &.active a {
       text-decoration: underline;
       text-decoration-color: var(--red);
-      text-decoration-thickness: 5px;
+      text-decoration-thickness: var(--line-height);
       text-underline-offset: -3%;
     }
   }
@@ -143,7 +147,7 @@ div.red_line {
       display: block;
       width: calc(50vw - (var(--padding) * 2) - 10px);
       height: calc(80vh - (var(--padding) * 2) - 10px);
-      border: 10px solid var(--black);
+      border: calc(var(--line-height) * 2) solid var(--black);
       padding: var(--padding);
       position: relative;
 
@@ -155,7 +159,7 @@ div.red_line {
         left: 0;
         width: 100%;
         height: 100%;
-        border: 10px solid var(--red);
+        border: calc(var(--line-height) * 2) solid var(--red);
       }
 
       img {
@@ -170,11 +174,12 @@ div.red_line {
 
 @media only screen and (min-width: 1600px) {
   div.illustrations {
-    border: 20px solid var(--black);
+    border: calc(var(--line-height) * 2) solid var(--black);
     width: calc(50vw - (var(--padding) * 2) - 20px);
     height: calc(80vh - (var(--padding) * 2) - 20px);
+    padding: calc(var(--padding) * 2 );
     &:before {
-      border: 20px solid var(--red);
+      border: calc(var(--line-height) * 2) solid var(--red);
     }
   }
   ul.nav_items {
