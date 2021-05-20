@@ -29,7 +29,7 @@ const HeroSection: React.FC = () => {
 
   return (
 
-    <section className={`container ${styles.hero}`}>
+    <section className={`container ninety-vh ${styles.hero}`}>
 
       <div className={styles.hide_landscape} />
       {/* Só para o content-align da section centralizar */}

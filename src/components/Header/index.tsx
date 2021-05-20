@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <header className={`container ${styles.header}`} id="header">
+    <header className={`container ten-vh ${styles.header}`} id="header">
       <TopBar>
         <button type="button" className={styles.menu_btn} onClick={() => setToggleMenu(true)}>
           <AiOutlineMenu />

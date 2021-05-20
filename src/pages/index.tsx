@@ -11,6 +11,7 @@ import HeroSection from '../components/HeroSection';
 // import HowWorksSection from '../components/HowWorksSection';
 import visitanteCheck from '../middlewares/visitanteCheck';
 import EntendaSection from '../components/EntendaSection';
+import SobreSection from '../components/SobreSection';
 
 type BoicoteType = {
   id: string;
@@ -53,6 +54,7 @@ const Home: React.FC<HomePropsType> = ({ boicotes, visitanteVotos }) => {
 
       <HeroSection />
       <EntendaSection />
+      <SobreSection />
 
       {/* <HeroSection timeline={timeline} />
 

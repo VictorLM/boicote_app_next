@@ -10,13 +10,13 @@ const EntendaSection: React.FC = () => {
   const ulRefs = useRef<HTMLUListElement>();
 
   const scrollIntoView = () => {
-    ulRefs.current.childNodes[currentItem].scrollIntoView({ inline: 'center' });
+    ulRefs.current.childNodes[currentItem].scrollIntoView({ inline: 'center', block: 'nearest' });
     setCurrentItem(currentItem === (ulRefs.current.childNodes.length - 1) ? 0 : currentItem + 1);
   };
 
   return (
 
-    <section className={`${styles.entenda} container`} id="entenda">
+    <section className={`${styles.entenda} container full-vh`} id="entenda">
 
       <div className={styles.headings}>
         <h2 className="heading">Entenda</h2>
