@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-// import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { format, parseISO } from 'date-fns';
 
 import api from '../services/api';
 
-// import Boicote from '../components/Boicote';
-import HeroSection from '../components/HeroSection';
-// import HowWorksSection from '../components/HowWorksSection';
 import visitanteCheck from '../middlewares/visitanteCheck';
+import HeroSection from '../components/HeroSection';
 import EntendaSection from '../components/EntendaSection';
 import SobreSection from '../components/SobreSection';
+import UltimosBoicotesSection from '../components/UltimosBoicotesSection';
 
 type BoicoteType = {
   id: string;
@@ -33,10 +31,41 @@ type VisitanteVotosType = {
 
 type HomePropsType = {
   boicotes: BoicoteType[];
+  boicotesTotalCount: number;
   visitanteVotos: VisitanteVotosType[];
 }
 
-const Home: React.FC<HomePropsType> = ({ boicotes, visitanteVotos }) => {
+const Home: React.FC<HomePropsType> = ({ boicotes, boicotesTotalCount, visitanteVotos }) => {
+  const tweets = [
+    {
+      name: 'Boicote.App',
+      photo: 'url to photo',
+      postedAt: '21/05/2021',
+      tweet: 'Teste de tweet. Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.',
+      comments: 5,
+      likes: 12,
+      shares: 3,
+    },
+    {
+      name: 'Boicote.App',
+      photo: 'url to photo',
+      postedAt: '21/05/2021',
+      tweet: 'Teste de tweet. Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.',
+      comments: 5,
+      likes: 12,
+      shares: 3,
+    },
+    {
+      name: 'Boicote.App',
+      photo: 'url to photo',
+      postedAt: '21/05/2021',
+      tweet: 'Teste de tweet. Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.',
+      comments: 5,
+      likes: 12,
+      shares: 3,
+    },
+  ];
+
   useEffect(() => {
     const visitantesCheckMiddleware = async () => {
       // CHECA COOKIE VISITANTEID
@@ -50,11 +79,16 @@ const Home: React.FC<HomePropsType> = ({ boicotes, visitanteVotos }) => {
       <Head>
         <title>Boicote.App | Consumir é um ato político</title>
         {/* meta tags - TODO */}
+        {/* Google Analytics - TODO */}
       </Head>
 
       <HeroSection />
       <EntendaSection />
       <SobreSection />
+      <UltimosBoicotesSection
+        boicotes={boicotes}
+        tweets={tweets}
+      />
 
       {/* <HeroSection timeline={timeline} />
 
@@ -112,12 +146,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       marca: boicote.marca,
       texto: boicote.texto,
       tags: boicote.tags,
-      createdAt: format(parseISO(boicote.createdAt), 'dd/MM/yyyy HH:MM'),
+      createdAt: format(parseISO(boicote.createdAt), 'dd/MM/yyyy'),
       cimaVotos: Number(boicote.cimaVotos),
       baixoVotos: Number(boicote.baixoVotos),
       comentariosCount: Number(boicote.comentariosCount),
       autor: boicote.autor.nome,
+      // links: boicote.links,
     }));
+
+    const boicotesTotalCount = Number(data.boicotesTotalCount);
 
     const dataVisitanteVotos = await api.get('/visitantes/votos', {
       headers: ctx.req ? { cookie: ctx.req.headers.cookie } : undefined,
@@ -127,7 +164,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     // console.log(ctx.req.headers.cookie);
 
-    return { props: { boicotes, visitanteVotos } };
+    return { props: { boicotes, boicotesTotalCount, visitanteVotos } };
 
     // setVotos(response.data);
   } catch (err) {

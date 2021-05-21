@@ -69,6 +69,17 @@ ul li, ol li {
   list-style-type: none;
 }
 
+a {
+  color: var(--blue);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: var(--blue);
+  }
+}
+
 img.logo {
   transition: all .2s ease-in-out;
   &:hover {
@@ -93,6 +104,7 @@ img.logo {
   display: flex;
   align-items: center;
   gap: .5rem;
+  white-space: nowrap;
   &:after {
     content: '';
     width: 100%;
@@ -109,7 +121,7 @@ img.logo {
 
 .card {
   border: var(--line-height) solid var(--black);
-  padding: 1rem;
+  // padding: 1rem;
 }
 
 .card-left {
@@ -190,20 +202,9 @@ img.logo {
   }
 }
 
-@media (orientation: portrait) and (min-width: 769px) {
-  // .full-height-landscape {
-  //   min-height: 50vh;
-  // }
-  // .ninety-height-landscape {
-  //   min-height: 45vh;
-  // }
-  // .ten-height-landscape {
-  //   min-height: 5vh;
-  // }
-}
+// @media (orientation: portrait) and (min-width: 769px) {
 
-
-
+// }
 
 // h1 {
 //   font-size: calc(#{1rem * 1.618} * 1.618 * 1.618 * 1.618);

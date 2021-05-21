@@ -1,0 +1,16 @@
+section.last_boicotes_section {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+div.content_flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+div.tweets {
+  display: none !important;
+}
