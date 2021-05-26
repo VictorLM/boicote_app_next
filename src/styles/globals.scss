@@ -40,6 +40,7 @@ button {
   padding: .25rem 1rem;
   background: none;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 button.btn-black {
@@ -131,11 +132,12 @@ img.logo {
   align-items: center;
   color: var(--white);
   background: var(--black);
-  padding: calc(var(--padding) * 1.5);
-  div {
+  padding: var(--padding);
+  & div:last-of-type {
     content: '';
     width: var(--line-height);
-    height: calc(100% - 4rem);
+    height: 100%;
+    margin: 1rem 0 0 0;
     background: var(--white);
   }
 }
@@ -173,7 +175,7 @@ img.logo {
 
 @media only screen and (min-width: 1024px) {
   :root {
-    --padding: 2rem;
+    // --padding: 2rem;
   }
 }
 

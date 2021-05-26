@@ -1,16 +1,29 @@
 section.last_boicotes_section {
   padding: var(--padding);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 }
 
 div.content_flex {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
+  gap: 2rem;
+}
+
+div.last_boicotes {
+  width: 100%;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 div.tweets {
-  display: none !important;
+  display: none;
+}
+
+@media only screen and (min-width: 1366px) {
+
+  div.tweets {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
 }

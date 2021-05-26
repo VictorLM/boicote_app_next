@@ -1,5 +1,6 @@
 import React from 'react';
 import Boicote from '../Boicote';
+import TweetsPanel from '../TweetsPanel';
 
 import styles from './styles.module.scss';
 
@@ -16,14 +17,41 @@ type BoicoteType = {
   autor: string;
 }
 
-type UltimosBoicotesType = {
-  boicotes: BoicoteType[];
-  tweets: any; // TODO
+type VotoType = {
+  boicoteId: string;
+  cima: boolean;
 }
 
-const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({ boicotes, tweets }) => {
+type AuthorType = {
+  id: string;
+  name: string;
+  userName: string;
+  profileImageUrl: string;
+};
+
+type PublicMetricsType = {
+  replyCount: number;
+  retweetCount: number;
+  likeCount: number;
+};
+
+type TweetsType = {
+  id: string;
+  text: string;
+  createdAt: string;
+  author: AuthorType;
+  publicMetrics: PublicMetricsType;
+}
+
+type UltimosBoicotesType = {
+  boicotes: BoicoteType[];
+  votos: VotoType[];
+  tweets: TweetsType[];
+}
+
+const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({ boicotes, votos, tweets }) => {
   const teste = null;
-  // console.log(boicotes);
+
   return (
 
     <section className={`${styles.last_boicotes_section} container full-vh`} id="ultimos-boicotes">
@@ -38,28 +66,29 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({ boicotes, tweet
           </div>
 
           <div className={styles.last_boicotes_content}>
-            {/* {JSON.stringify(boicotes)} */}
-            <Boicote
-              boicote={boicotes[2]}
-              compact={false}
-              singleBoicote
-              voto={1} /* TODO */
-            />
+
+            {boicotes?.map((boicote) => (
+
+              <Boicote
+                key={boicote.id}
+                boicote={boicote}
+                compact
+                singleBoicote={false}
+                voto={votos.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
+                  ? Number(votos[votos.findIndex((voto) => voto.boicoteId === boicote.id)].cima)
+                  : null}
+              />
+
+            ))}
+
           </div>
+
+          <p>Ver todos boicotes</p>
 
         </div>
 
         <div className={styles.tweets}>
-
-          <div className={styles.headings}>
-            <h2 className="heading">Tweets</h2>
-            <p className="sub-heading">Veja o que está acontecendo no Twitter.</p>
-          </div>
-
-          <div className={`card ${styles.tweets_content}`}>
-            Teste
-          </div>
-
+          <TweetsPanel tweets={tweets} />
         </div>
 
       </div>

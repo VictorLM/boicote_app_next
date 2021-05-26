@@ -10,6 +10,7 @@ import HeroSection from '../components/HeroSection';
 import EntendaSection from '../components/EntendaSection';
 import SobreSection from '../components/SobreSection';
 import UltimosBoicotesSection from '../components/UltimosBoicotesSection';
+import getTweets from '../utils/getTweets';
 
 type BoicoteType = {
   id: string;
@@ -29,43 +30,37 @@ type VisitanteVotosType = {
   cima: boolean;
 }
 
+type AuthorType = {
+  id: string;
+  name: string;
+  userName: string;
+  profileImageUrl: string;
+};
+
+type PublicMetricsType = {
+  replyCount: number;
+  retweetCount: number;
+  likeCount: number;
+};
+
+type TweetsType = {
+  id: string;
+  text: string;
+  createdAt: string;
+  author: AuthorType;
+  publicMetrics: PublicMetricsType;
+}
+
 type HomePropsType = {
   boicotes: BoicoteType[];
   boicotesTotalCount: number;
   visitanteVotos: VisitanteVotosType[];
+  tweets: TweetsType[];
 }
 
-const Home: React.FC<HomePropsType> = ({ boicotes, boicotesTotalCount, visitanteVotos }) => {
-  const tweets = [
-    {
-      name: 'Boicote.App',
-      photo: 'url to photo',
-      postedAt: '21/05/2021',
-      tweet: 'Teste de tweet. Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.',
-      comments: 5,
-      likes: 12,
-      shares: 3,
-    },
-    {
-      name: 'Boicote.App',
-      photo: 'url to photo',
-      postedAt: '21/05/2021',
-      tweet: 'Teste de tweet. Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.',
-      comments: 5,
-      likes: 12,
-      shares: 3,
-    },
-    {
-      name: 'Boicote.App',
-      photo: 'url to photo',
-      postedAt: '21/05/2021',
-      tweet: 'Teste de tweet. Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.Teste de tweet.',
-      comments: 5,
-      likes: 12,
-      shares: 3,
-    },
-  ];
-
+const Home: React.FC<HomePropsType> = ({
+  boicotes, boicotesTotalCount, visitanteVotos, tweets,
+}) => {
   useEffect(() => {
     const visitantesCheckMiddleware = async () => {
       // CHECA COOKIE VISITANTEID
@@ -87,46 +82,9 @@ const Home: React.FC<HomePropsType> = ({ boicotes, boicotesTotalCount, visitante
       <SobreSection />
       <UltimosBoicotesSection
         boicotes={boicotes}
+        votos={visitanteVotos}
         tweets={tweets}
       />
-
-      {/* <HeroSection timeline={timeline} />
-
-      <HowWorksSection />
-
-      <section>
-        <div className="content">
-          <div className="zoom-hover">
-            <h2 className="headers">Boicotes recentes</h2>
-            <p className="sub-headers">
-              Veja abaixo os últimos Boicotes cadastrados. Para visualizar todos,
-              {' '}
-              <Link href="/boicotes">
-                clique aqui.
-              </Link>
-            </p>
-          </div>
-
-          {boicotes?.map((boicote) => ( // TODO CHECAR SE VAZIO
-            <Boicote
-              key={String(boicote.id)}
-              boicote={boicote}
-              boicoteUnico={false}
-              voto={visitanteVotos.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
-                ? Number(
-                  visitanteVotos[
-                    visitanteVotos.findIndex((voto) => voto.boicoteId === boicote.id)
-                  ].cima,
-                )
-                : null}
-            />
-          ))}
-
-          <p>
-            <Link href="/boicotes">Ver todos os boicotes &#8594;</Link>
-          </p>
-        </div>
-      </section> */}
     </>
   );
 };
@@ -162,9 +120,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const visitanteVotos = dataVisitanteVotos.data;
 
-    // console.log(ctx.req.headers.cookie);
+    const tweets = await getTweets('boicote,boicotem,boicotar');
 
-    return { props: { boicotes, boicotesTotalCount, visitanteVotos } };
+    return {
+      props: {
+        boicotes, boicotesTotalCount, visitanteVotos, tweets,
+      },
+    };
 
     // setVotos(response.data);
   } catch (err) {
