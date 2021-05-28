@@ -2,55 +2,23 @@ import React from 'react';
 import Boicote from '../Boicote';
 import TweetsPanel from '../TweetsPanel';
 
+import { GetTweetsType } from '../../utils/getTweets';
+import { GetBoicotesType } from '../../utils/getBoicotes';
+import { GetVisitanteVotosType } from '../../utils/getVisitanteVotos';
+
 import styles from './styles.module.scss';
 
-type BoicoteType = {
-  id: string;
-  titulo: string;
-  marca: string;
-  texto: string;
-  tags: string[];
-  createdAt: string;
-  cimaVotos: number;
-  baixoVotos: number;
-  comentariosCount: number;
-  autor: string;
-}
-
-type VotoType = {
-  boicoteId: string;
-  cima: boolean;
-}
-
-type AuthorType = {
-  id: string;
-  name: string;
-  userName: string;
-  profileImageUrl: string;
-};
-
-type PublicMetricsType = {
-  replyCount: number;
-  retweetCount: number;
-  likeCount: number;
-};
-
-type TweetsType = {
-  id: string;
-  text: string;
-  createdAt: string;
-  author: AuthorType;
-  publicMetrics: PublicMetricsType;
-}
-
 type UltimosBoicotesType = {
-  boicotes: BoicoteType[];
-  votos: VotoType[];
-  tweets: TweetsType[];
+  boicotesData: GetBoicotesType;
+  visitanteVotos: GetVisitanteVotosType;
+  tweetsData: GetTweetsType;
 }
 
-const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({ boicotes, votos, tweets }) => {
+const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
+  boicotesData, visitanteVotos, tweetsData,
+}) => {
   const teste = null;
+  console.log(visitanteVotos.votos);
 
   return (
 
@@ -67,15 +35,17 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({ boicotes, votos
 
           <div className={styles.last_boicotes_content}>
 
-            {boicotes?.map((boicote) => (
+            {boicotesData.boicotes.map((boicote) => (
 
               <Boicote
                 key={boicote.id}
                 boicote={boicote}
                 compact
                 singleBoicote={false}
-                voto={votos.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
-                  ? Number(votos[votos.findIndex((voto) => voto.boicoteId === boicote.id)].cima)
+                voto={visitanteVotos.votos.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
+                  ? Number(visitanteVotos.votos[
+                    visitanteVotos.votos.findIndex((voto) => voto.boicoteId === boicote.id)
+                  ].cima)
                   : null}
               />
 
@@ -88,7 +58,7 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({ boicotes, votos
         </div>
 
         <div className={styles.tweets}>
-          <TweetsPanel tweets={tweets} />
+          <TweetsPanel tweetsData={tweetsData} />
         </div>
 
       </div>

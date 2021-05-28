@@ -45,6 +45,9 @@ p.text {
     &:visited {
       color: var(--black);
     }
+    b {
+      font-weight: bold;
+    }
   }
 }
 

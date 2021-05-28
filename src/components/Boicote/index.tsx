@@ -1,32 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
 
 import {
   FaArrowUp, FaArrowDown, FaRegCommentAlt,
 } from 'react-icons/fa';
 
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { BoicoteType } from '../../utils/getBoicotes';
 
 import styles from './styles.module.scss';
-
-type LinkType = {
-  link: string;
-  confiavel: boolean | null;
-}
-
-type BoicoteType = {
-  id: string;
-  titulo: string;
-  marca: string;
-  texto: string;
-  tags: string[];
-  createdAt: string;
-  cimaVotos: number;
-  baixoVotos: number;
-  comentariosCount: number;
-  autor: string;
-  links?: LinkType[];
-}
 
 type BoicotePropTypes = {
   boicote: BoicoteType;
@@ -46,7 +27,7 @@ const Boicote: React.FC<BoicotePropTypes> = ({
         <button type="button" className={`${styles.vote_btn} ${voto ? styles.voted : ''}`}>
           <FaArrowUp title="Votor para cima" />
         </button>
-        <span>{boicote.cimaVotos - boicote.baixoVotos}</span>
+        <span>{boicote.votos}</span>
         <button type="button" className={`${styles.vote_btn} ${voto === 0 ? styles.voted : ''}`}>
           <FaArrowDown title="Votor para baixo" />
         </button>
@@ -122,7 +103,7 @@ const Boicote: React.FC<BoicotePropTypes> = ({
           <button type="button" className={`${styles.vote_btn} ${voto ? styles.voted : ''}`}>
             <FaArrowUp title="Votor para cima" />
           </button>
-          <span>{boicote.cimaVotos - boicote.baixoVotos}</span>
+          <span>{boicote.votos}</span>
           <button type="button" className={`${styles.vote_btn} ${voto === 0 ? styles.voted : ''}`}>
             <FaArrowDown title="Votor para baixo" />
           </button>
