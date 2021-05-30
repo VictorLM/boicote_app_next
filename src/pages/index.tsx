@@ -11,6 +11,7 @@ import UltimosBoicotesSection from '../components/UltimosBoicotesSection';
 import getTweets, { GetTweetsType } from '../utils/getTweets';
 import getBoicotes, { GetBoicotesType } from '../utils/getBoicotes';
 import getVisitanteVotos, { GetVisitanteVotosType } from '../utils/getVisitanteVotos';
+import Footer from '../components/Footer';
 
 type HomePropsType = {
   boicotesData: GetBoicotesType;
@@ -45,13 +46,14 @@ const Home: React.FC<HomePropsType> = ({
         visitanteVotos={visitanteVotos}
         tweetsData={tweetsData}
       />
+      <Footer />
     </>
   );
 };
 
 // Não estou usando SSR por conta dos votos e dos tweets
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const boicotesData = await getBoicotes(5, null);
+  const boicotesData = await getBoicotes(4, null);
   const tweetsData = await getTweets('boicote,boicotem,boicotar');
   const visitanteVotos = await getVisitanteVotos(ctx);
 

@@ -1,6 +1,6 @@
 import api from '../services/api';
 
-type VisitanteVotoType = {
+export type VisitanteVotoType = {
   boicoteId: string;
   cima: boolean;
 }

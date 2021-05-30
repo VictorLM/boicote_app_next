@@ -1,6 +1,22 @@
 div.tweets_content {
   padding: calc(var(--padding) / 1.5);
   overflow-y: scroll;
+
+  scrollbar-color: var(--gray);
+  scrollbar-width: .8rem;
+
+  &::-webkit-scrollbar {
+    width: .8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1; //padrão
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+    border: 1px solid var(--white);
+  }
 }
 
 div.left {

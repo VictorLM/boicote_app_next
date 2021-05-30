@@ -1,60 +1,82 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaTwitter, FaInstagram, FaFacebookF } from 'react-icons/fa';
+import { CgArrowUpR } from 'react-icons/cg';
 
 import styles from './styles.module.scss';
 
-const Footer: React.FC = () => (
+const Footer: React.FC = () => {
+  const teste = '';
 
-  <footer className={styles.footer}>
+  return (
+    <footer className={`container ${styles.footer}`} id="footer">
 
-    <div className={`content ${styles.content_footer}`}>
+      <div className={styles.content_flex}>
 
-      <div className={styles.footer_left_div}>
+        <div className={styles.left}>
+          <img src="/images/logo-red.svg" alt="Logo Boicote.App" />
 
-        <div className="zoom-hover">
-          <span className="logo">
-            boicote.
-            <span>app</span>
-          </span>
+          <div className={styles.social}>
+            <ul>
+              <li>
+                <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a href="mailto:boicoteapp@gmail.com">
+                  Email
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <small>Consumir é um ato político</small>
         </div>
 
-        <p>Consumir é um ato político</p>
-
-      </div>
-
-      <div className={styles.footer_center_div}>
-
-        <div className={styles.social_div}>
-          <a href="https://twitter.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaTwitter className="social-icons twitter" title="Twitter" />
-          </a>
-          <a href="https://instagram.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaInstagram className="social-icons instagram" title="Instagram" />
-          </a>
-          <a href="https://facebook.com/boicoteapp/" target="_blank" rel="noreferrer">
-            <FaFacebookF className="social-icons facebook" title="Facebook" />
-          </a>
+        <div className={styles.center}>
+          <img src="/images/footer-img.png" alt="Mão segurando um megafone" />
         </div>
 
-        <p>Copyright © 2021 - Boicote.App - Todos os direitos reservados</p>
+        <div className={styles.right}>
+          <Link href="/">
+            <CgArrowUpR />
+          </Link>
+
+          <div className={styles.menu}>
+            <ul>
+              <li>
+                <Link href="/#entenda">Entenda</Link>
+              </li>
+              <li>
+                <Link href="/boicotes">Boicotes</Link>
+              </li>
+              <li>
+                <Link href="/boicotar">Boicotar</Link>
+              </li>
+              <li>
+                <Link href="/#sobre">Sobre</Link>
+              </li>
+            </ul>
+          </div>
+
+          <small>&copy; 2021 · Boicote.App</small>
+
+        </div>
 
       </div>
 
-      <div className={styles.footer_right_div}>
-
-        <ul>
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/boicotes">Boicotes</Link></li>
-          <li><Link href="/sobre">Sobre Nós</Link></li>
-          <li><Link href="/criar-boicote">Criar Boicote</Link></li>
-        </ul>
-
-      </div>
-
-    </div>
-
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

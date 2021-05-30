@@ -1,10 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 import Boicote from '../Boicote';
 import TweetsPanel from '../TweetsPanel';
 
 import { GetTweetsType } from '../../utils/getTweets';
 import { GetBoicotesType } from '../../utils/getBoicotes';
-import { GetVisitanteVotosType } from '../../utils/getVisitanteVotos';
+import { GetVisitanteVotosType, VisitanteVotoType } from '../../utils/getVisitanteVotos';
 
 import styles from './styles.module.scss';
 
@@ -18,7 +19,7 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
   boicotesData, visitanteVotos, tweetsData,
 }) => {
   const teste = null;
-  console.log(visitanteVotos.votos);
+  // console.log(visitanteVotos);
 
   return (
 
@@ -30,10 +31,17 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
 
           <div className={styles.headings}>
             <h2 className="heading">Últimos boicotes</h2>
-            <p className="sub-heading">Veja os últimos boicotes cadastrados. Veja todos aqui.</p>
+            <p className="sub-heading">
+              Veja os últimos boicotes cadastrados.
+              {' '}
+              <Link href="/boicotes">
+                Ver todos
+              </Link>
+              .
+            </p>
           </div>
 
-          <div className={styles.last_boicotes_content}>
+          <div className={styles.last_boicotes_content} id="last-boicotes">
 
             {boicotesData.boicotes.map((boicote) => (
 
@@ -42,18 +50,28 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
                 boicote={boicote}
                 compact
                 singleBoicote={false}
-                voto={visitanteVotos.votos.findIndex((voto) => voto.boicoteId === boicote.id) !== -1
-                  ? Number(visitanteVotos.votos[
-                    visitanteVotos.votos.findIndex((voto) => voto.boicoteId === boicote.id)
-                  ].cima)
-                  : null}
+                voto={
+                  visitanteVotos.votos.findIndex(
+                    (voto: VisitanteVotoType) => voto.boicoteId === boicote.id,
+                  ) !== -1
+                    ? Number(visitanteVotos.votos[
+                      visitanteVotos.votos.findIndex(
+                        (voto: VisitanteVotoType) => voto.boicoteId === boicote.id,
+                      )
+                    ].cima)
+                    : null
+                }
               />
 
             ))}
 
           </div>
 
-          <p>Ver todos boicotes</p>
+          <p className={styles.footer_link}>
+            <Link href="/boicotes">
+              Ver todos &#8594;
+            </Link>
+          </p>
 
         </div>
 

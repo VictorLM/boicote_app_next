@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { BsArrowUpRight } from 'react-icons/bs';
 import { FaRegComment, FaRetweet, FaRegHeart } from 'react-icons/fa';
@@ -12,8 +12,11 @@ type TweetsPanelType = {
 }
 
 const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
-  const teste = null; // TODO - APAGAR
-  // console.log(tweetsData);
+  useEffect(() => {
+    const height = document.getElementById('last-boicotes').clientHeight;
+    document.getElementById('tweets-content').style.height = `${height}px`;
+  }, []);
+
   return (
     <div>
       <div>
@@ -26,7 +29,7 @@ const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
         </p>
       </div>
 
-      <div className={`card ${styles.tweets_content}`}>
+      <div className={`card ${styles.tweets_content}`} id="tweets-content">
 
         {tweetsData.errors === null
           ? (
@@ -34,7 +37,7 @@ const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
 
               <div key={tweet.id} className={styles.card_tweet}>
                 <div className={styles.left}>
-                  <img src={tweet.author.profileImageUrl ?? 'images/twitter_egg_blue.png'} alt="Foto de perfil" />
+                  <img src={tweet.author.profileImageUrl} alt="Foto de perfil" />
                 </div>
                 <div className={styles.right}>
                   <div className={styles.headings}>
