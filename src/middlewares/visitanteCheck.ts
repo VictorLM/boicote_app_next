@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import api from '../services/api';
 
-async function visitanteCheck() : Promise<void> {
+async function visitanteCheck() : Promise<string> {
   let dominio = '';
 
   if (process.env.NODE_ENV === 'production') {
@@ -14,13 +14,16 @@ async function visitanteCheck() : Promise<void> {
 
   if (visitanteId === undefined) {
     try {
-      const response = await api.get('/visitantes/novo-visitante', { withCredentials: false });
-      Cookies.set('visitanteId', response.data, { domain: dominio, expires: 1825 }); // 5 anos
+      const { data } = await api.get('/visitantes/novo-visitante');
+      Cookies.set('visitanteId', data, { domain: dominio, expires: 1825 }); // 5 anos
+      return data;
     } catch (err) {
-      // TODO?
-      // console.error(err);
+      console.error(err);
+      return 'error';
     }
   }
+
+  return visitanteId;
 }
 
 export default visitanteCheck;

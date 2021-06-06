@@ -1,26 +1,21 @@
 import { GetServerSidePropsContext } from 'next';
-import api from '../services/api';
+import api from '../../services/api';
 
-export type VisitanteVotoType = {
-  boicoteId: string;
-  cima: boolean;
-}
-
-export type GetVisitanteVotosType = {
+type VotarType = {
   errors: string[] | null;
-  votos: VisitanteVotoType[] | [];
 };
 
-async function getVisitanteVotos(
-  ctx: GetServerSidePropsContext,
-): Promise<GetVisitanteVotosType> {
+// TODO - ADD OPÇÃO DE DESVOTAR - PRIMEIRO LÁ NA API
+async function votar(
+  boicoteId: string, votoIsCima: boolean, ctx: GetServerSidePropsContext,
+): Promise<VotarType> {
+  //
   try {
-    const { data } = await api.get('/visitantes/votos', {
+    await api.post(`/votos/${boicoteId}`, { cima: votoIsCima }, {
       headers: ctx.req ? { cookie: ctx.req.headers.cookie } : undefined,
     });
 
-    return ({ errors: null, votos: data });
-    //
+    return ({ errors: null });
   } catch (err) {
     //
     console.log(err);
@@ -32,8 +27,8 @@ async function getVisitanteVotos(
       // NÃO HOUVE RESPOSTA
       errors = ['Nossos servidores não estão respondendo. Tente novamente mais tarde.'];
     }
-    return ({ errors, votos: [] });
+    return ({ errors });
   }
 }
 
-export default getVisitanteVotos;
+export default votar;

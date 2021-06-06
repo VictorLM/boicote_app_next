@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 
-import visitanteCheck from '../middlewares/visitanteCheck';
+// import visitanteCheck from '../middlewares/visitanteCheck';
 import HeroSection from '../components/HeroSection';
 import EntendaSection from '../components/EntendaSection';
 import SobreSection from '../components/SobreSection';
@@ -11,7 +11,7 @@ import UltimosBoicotesSection from '../components/UltimosBoicotesSection';
 import getTweets, { GetTweetsType } from '../utils/getTweets';
 import getBoicotes, { GetBoicotesType } from '../utils/getBoicotes';
 import getVisitanteVotos, { GetVisitanteVotosType } from '../utils/getVisitanteVotos';
-import Footer from '../components/Footer';
+import VisitanteIdContext from '../contexts/VisitanteIdContext';
 
 type HomePropsType = {
   boicotesData: GetBoicotesType;
@@ -22,13 +22,15 @@ type HomePropsType = {
 const Home: React.FC<HomePropsType> = ({
   boicotesData, visitanteVotos, tweetsData,
 }) => {
-  useEffect(() => {
-    const visitantesCheckMiddleware = async () => {
-      // CHECA COOKIE VISITANTEID
-      await visitanteCheck();
-    };
-    visitantesCheckMiddleware();
-  }, []);
+  // useEffect(() => {
+  //   const visitantesCheckMiddleware = async () => {
+  //     // CHECA COOKIE VISITANTEID
+  //     await visitanteCheck();
+  //   };
+  //   visitantesCheckMiddleware();
+  // }, []);
+
+  const context = useContext(VisitanteIdContext);
 
   return (
     <>
@@ -37,7 +39,7 @@ const Home: React.FC<HomePropsType> = ({
         {/* meta tags - TODO */}
         {/* Google Analytics - TODO */}
       </Head>
-
+      <h1>{context.visitanteId}</h1>
       <HeroSection />
       <EntendaSection />
       <SobreSection />
@@ -46,7 +48,6 @@ const Home: React.FC<HomePropsType> = ({
         visitanteVotos={visitanteVotos}
         tweetsData={tweetsData}
       />
-      <Footer />
     </>
   );
 };
