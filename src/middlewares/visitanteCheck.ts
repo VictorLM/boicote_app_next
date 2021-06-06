@@ -1,21 +1,27 @@
-import Cookies from 'js-cookie';
+import Cookies from 'cookies';
+import { IncomingMessage, ServerResponse } from 'http';
 import api from '../services/api';
 
-async function visitanteCheck() : Promise<string> {
-  let dominio = '';
+async function visitanteCheck(req: IncomingMessage, res: ServerResponse) : Promise<string> {
+  let domain = '';
 
   if (process.env.NODE_ENV === 'production') {
-    dominio = '.boicote.app';
+    domain = '.boicote.app';
   } else if (process.env.NODE_ENV === 'development') {
-    dominio = 'localhost';
+    domain = 'localhost';
   }
 
-  const visitanteId = Cookies.get('visitanteId');
+  const cookies = new Cookies(req, res);
+
+  const visitanteId = cookies.get('visitanteId');
 
   if (visitanteId === undefined) {
     try {
       const { data } = await api.get('/visitantes/novo-visitante');
-      Cookies.set('visitanteId', data, { domain: dominio, expires: 1825 }); // 5 anos
+      cookies.set('visitanteId', data, {
+        domain,
+        expires: new Date(Date.now() + 10 * 100 * 60 * 60 * 24 * 3650), // 10 anos
+      });
       return data;
     } catch (err) {
       console.error(err);

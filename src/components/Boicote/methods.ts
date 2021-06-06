@@ -1,4 +1,3 @@
-import { GetServerSidePropsContext } from 'next';
 import api from '../../services/api';
 
 type VotarType = {
@@ -7,12 +6,12 @@ type VotarType = {
 
 // TODO - ADD OPÇÃO DE DESVOTAR - PRIMEIRO LÁ NA API
 async function votar(
-  boicoteId: string, votoIsCima: boolean, ctx: GetServerSidePropsContext,
+  boicoteId: string, votoIsCima: boolean, visitanteCookie: string,
 ): Promise<VotarType> {
   //
   try {
     await api.post(`/votos/${boicoteId}`, { cima: votoIsCima }, {
-      headers: ctx.req ? { cookie: ctx.req.headers.cookie } : undefined,
+      headers: { cookie: visitanteCookie },
     });
 
     return ({ errors: null });

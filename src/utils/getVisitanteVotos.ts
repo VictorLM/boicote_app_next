@@ -1,4 +1,3 @@
-import { GetServerSidePropsContext } from 'next';
 import api from '../services/api';
 
 export type VisitanteVotoType = {
@@ -11,12 +10,10 @@ export type GetVisitanteVotosType = {
   votos: VisitanteVotoType[] | [];
 };
 
-async function getVisitanteVotos(
-  ctx: GetServerSidePropsContext,
-): Promise<GetVisitanteVotosType> {
+async function getVisitanteVotos(visitanteCookie: string): Promise<GetVisitanteVotosType> {
   try {
     const { data } = await api.get('/visitantes/votos', {
-      headers: ctx.req ? { cookie: ctx.req.headers.cookie } : undefined,
+      headers: { cookie: visitanteCookie },
     });
 
     return ({ errors: null, votos: data });
