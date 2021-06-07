@@ -1,11 +1,13 @@
 import React from 'react';
 import App, { AppProps, AppContext } from 'next/app';
+import { ToastContainer } from 'react-toastify';
 import visitanteCheck from '../middlewares/visitanteCheck';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import '../styles/globals.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   return (
@@ -26,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
         <Header />
         <Component {...pageProps} />
         <Footer />
+        <ToastContainer />
       </>
     )
 

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import {
   FaArrowUp, FaArrowDown, FaRegCommentAlt,
 } from 'react-icons/fa';
-
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import votar from './methods';
 import { BoicoteType } from '../../utils/getBoicotes';
 
 import styles from './styles.module.scss';
@@ -13,14 +13,16 @@ type BoicotePropTypes = {
   boicote: BoicoteType;
   compact: boolean;
   singleBoicote: boolean;
-  voto: number | null;
+  visitanteVoto: number | null;
+  visitanteCookie: string;
 }
 
 const Boicote: React.FC<BoicotePropTypes> = ({
-  boicote, singleBoicote, compact, voto,
+  boicote, singleBoicote, compact, visitanteVoto, visitanteCookie,
 }) => {
   //
-  const [votoBoicote, setVotoBoicote] = useState(voto);
+  const [visitanteVote, setVisitanteVote] = useState(visitanteVoto);
+  const [boicoteVotosCount, setBoicoteVotosCount] = useState(boicote.votos);
 
   return (
 
@@ -28,12 +30,36 @@ const Boicote: React.FC<BoicotePropTypes> = ({
 
       <div className={`card-left ${styles.boicote_left}`}>
         <div className={styles.left_vote}>
-          <button type="button" className={`${styles.vote_btn} ${votoBoicote ? styles.voted : ''}`}>
-            <FaArrowUp title="Votor para cima" />
+          <button
+            type="button"
+            className={`${styles.vote_btn} ${visitanteVote ? styles.voted : ''}`}
+            onClick={() => votar(
+              boicote.id,
+              1,
+              visitanteCookie,
+              visitanteVote,
+              setVisitanteVote,
+              boicoteVotosCount,
+              setBoicoteVotosCount,
+            )}
+          >
+            <FaArrowUp title="Votar para cima" />
           </button>
-          <span>{boicote.votos}</span>
-          <button type="button" className={`${styles.vote_btn} ${votoBoicote === 0 ? styles.voted : ''}`}>
-            <FaArrowDown title="Votor para baixo" />
+          <span>{boicoteVotosCount}</span>
+          <button
+            type="button"
+            className={`${styles.vote_btn} ${visitanteVote === 0 ? styles.voted : ''}`}
+            onClick={() => votar(
+              boicote.id,
+              0,
+              visitanteCookie,
+              visitanteVote,
+              setVisitanteVote,
+              boicoteVotosCount,
+              setBoicoteVotosCount,
+            )}
+          >
+            <FaArrowDown title="Votar para baixo" />
           </button>
         </div>
         <div style={compact ? { display: 'none ' } : {}} />
@@ -104,12 +130,36 @@ const Boicote: React.FC<BoicotePropTypes> = ({
         <footer className={`${styles.footer} ${compact ? styles.footer_compact : ''}`}>
 
           <div className={styles.footer_vote}>
-            <button type="button" className={`${styles.vote_btn} ${votoBoicote ? styles.voted : ''}`}>
-              <FaArrowUp title="Votor para cima" />
+            <button
+              type="button"
+              className={`${styles.vote_btn} ${visitanteVote ? styles.voted : ''}`}
+              onClick={() => votar(
+                boicote.id,
+                1,
+                visitanteCookie,
+                visitanteVote,
+                setVisitanteVote,
+                boicoteVotosCount,
+                setBoicoteVotosCount,
+              )}
+            >
+              <FaArrowUp title="Votar para cima" />
             </button>
-            <span>{boicote.votos}</span>
-            <button type="button" className={`${styles.vote_btn} ${votoBoicote === 0 ? styles.voted : ''}`}>
-              <FaArrowDown title="Votor para baixo" />
+            <span>{boicoteVotosCount}</span>
+            <button
+              type="button"
+              className={`${styles.vote_btn} ${visitanteVote === 0 ? styles.voted : ''}`}
+              onClick={() => votar(
+                boicote.id,
+                0,
+                visitanteCookie,
+                visitanteVote,
+                setVisitanteVote,
+                boicoteVotosCount,
+                setBoicoteVotosCount,
+              )}
+            >
+              <FaArrowDown title="Votar para baixo" />
             </button>
           </div>
 

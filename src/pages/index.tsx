@@ -15,10 +15,11 @@ type HomePropsType = {
   boicotesData: GetBoicotesType;
   visitanteVotos: GetVisitanteVotosType;
   tweetsData: GetTweetsType;
+  visitanteCookie: string;
 }
 
 const Home: React.FC<HomePropsType> = ({
-  boicotesData, visitanteVotos, tweetsData,
+  boicotesData, visitanteVotos, tweetsData, visitanteCookie,
 }) => (
   <>
     <Head>
@@ -33,6 +34,7 @@ const Home: React.FC<HomePropsType> = ({
       boicotesData={boicotesData}
       visitanteVotos={visitanteVotos}
       tweetsData={tweetsData}
+      visitanteCookie={visitanteCookie}
     />
   </>
 );
@@ -41,11 +43,12 @@ const Home: React.FC<HomePropsType> = ({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const boicotesData = await getBoicotes(4, null);
   const tweetsData = await getTweets('boicotem,boicote,boicotar');
-  const visitanteVotos = await getVisitanteVotos(ctx.req.headers.cookie);
+  const visitanteVotos = await getVisitanteVotos(ctx.req?.headers.cookie);
+  const visitanteCookie = ctx.req?.headers.cookie;
 
   return {
     props: {
-      boicotesData, visitanteVotos, tweetsData,
+      boicotesData, visitanteVotos, tweetsData, visitanteCookie,
     },
   };
 };

@@ -48,9 +48,9 @@ const Footer: React.FC = () => {
         </div>
 
         <div className={styles.right}>
-          <Link href="/">
+          <button type="button" onClick={() => window.scrollTo(0, 0)}>
             <CgArrowUpR />
-          </Link>
+          </button>
 
           <div className={styles.menu}>
             <ul>
