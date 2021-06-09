@@ -4,6 +4,7 @@ import {
   FaArrowUp, FaArrowDown, FaRegCommentAlt,
 } from 'react-icons/fa';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import Link from 'next/link';
 import votar from './methods';
 import { BoicoteType } from '../../utils/getBoicotes';
 
@@ -14,11 +15,10 @@ type BoicotePropTypes = {
   compact: boolean;
   singleBoicote: boolean;
   visitanteVoto: number | null;
-  visitanteCookie: string;
 }
 
 const Boicote: React.FC<BoicotePropTypes> = ({
-  boicote, singleBoicote, compact, visitanteVoto, visitanteCookie,
+  boicote, singleBoicote, compact, visitanteVoto,
 }) => {
   //
   const [visitanteVote, setVisitanteVote] = useState(visitanteVoto);
@@ -36,7 +36,6 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             onClick={() => votar(
               boicote.id,
               1,
-              visitanteCookie,
               visitanteVote,
               setVisitanteVote,
               boicoteVotosCount,
@@ -52,7 +51,6 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             onClick={() => votar(
               boicote.id,
               0,
-              visitanteCookie,
               visitanteVote,
               setVisitanteVote,
               boicoteVotosCount,
@@ -62,12 +60,24 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             <FaArrowDown title="Votar para baixo" />
           </button>
         </div>
-        <div style={compact ? { display: 'none ' } : {}} />
-        <span className={styles.comments_count} style={compact ? { display: 'flex ' } : {}}>
-          <FaRegCommentAlt title="Comentários" />
-          {' '}
-          {boicote.comentariosCount}
-        </span>
+
+        <div className={styles.left_line_div} style={{ display: compact && 'none' }} />
+
+        <p className={styles.flex}>
+          <span className={styles.comments_count}>
+            <FaRegCommentAlt title="Comentários" />
+            &nbsp;&nbsp;
+            {boicote.comentariosCount}
+            &nbsp;
+            <span className={styles.comentario_text}>
+              {` ${boicote.comentariosCount === 1 ? ' Comentário' : ' Comentários'}`}
+            </span>
+          </span>
+          <Link href={`/boicotes/${boicote.id}`}>
+            <button className={styles.ver_tudo_btn} type="button">Ver tudo</button>
+          </Link>
+        </p>
+
       </div>
 
       <div className={styles.boicote_right}>
@@ -92,7 +102,7 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             <a href={`/boicotes/${boicote.id}`}>
               {boicote.titulo}
               {' '}
-              <small>Ver tudo</small>
+              {compact && <small>Ver tudo</small>}
             </a>
           </h3>
 
@@ -111,7 +121,13 @@ const Boicote: React.FC<BoicotePropTypes> = ({
           <p className={styles.text}>
             {singleBoicote
               ? boicote.texto
-              : `${boicote.texto.substr(0, 200)}...`}
+              : `${boicote.texto.substr(0, 155)}...`}
+
+            <Link href={`/boicotes/${boicote.id}`}>
+              <a style={{ display: singleBoicote && 'none' }}>
+                <small> Ver tudo &#8594;</small>
+              </a>
+            </Link>
           </p>
 
           {/* TODO LINK CONFIAVÉL - AJUSTAR API PRIMEIRO  */}
@@ -127,82 +143,33 @@ const Boicote: React.FC<BoicotePropTypes> = ({
         </div>
         )}
 
-        <footer className={`${styles.footer} ${compact ? styles.footer_compact : ''}`}>
+        {/* <footer className={styles.footer_mobile}>
+          teste
 
-          <div className={styles.footer_vote}>
-            <button
-              type="button"
-              className={`${styles.vote_btn} ${visitanteVote ? styles.voted : ''}`}
-              onClick={() => votar(
-                boicote.id,
-                1,
-                visitanteCookie,
-                visitanteVote,
-                setVisitanteVote,
-                boicoteVotosCount,
-                setBoicoteVotosCount,
-              )}
-            >
-              <FaArrowUp title="Votar para cima" />
-            </button>
-            <span>{boicoteVotosCount}</span>
-            <button
-              type="button"
-              className={`${styles.vote_btn} ${visitanteVote === 0 ? styles.voted : ''}`}
-              onClick={() => votar(
-                boicote.id,
-                0,
-                visitanteCookie,
-                visitanteVote,
-                setVisitanteVote,
-                boicoteVotosCount,
-                setBoicoteVotosCount,
-              )}
-            >
-              <FaArrowDown title="Votar para baixo" />
-            </button>
-          </div>
+        </footer> */}
 
-          <div className={`${styles.footer_right} ${compact ? styles.footer_right_compact : ''}`}>
+        {/* {singleBoicote ? (
+          <footer className={`${styles.footer} ${compact ? styles.footer_compact : ''}`}>
+            teste
 
-            {!compact
-              ? (
-                <>
-                  <div className={styles.footer_comments_count}>
-                    <FaRegCommentAlt title="Comentários" />
-                    <span>
-                      {' '}
-                      {boicote.comentariosCount}
-                      {boicote.comentariosCount === 1 ? ' comentário' : ' comentários'}
-                    </span>
-                  </div>
+          </footer>
 
-                  <div className={styles.footer_btns}>
-                    <button type="button">Comentar</button>
-                    <button type="button">Compartilhar</button>
-                    <button type="button">Denunciar</button>
-                  </div>
-                </>
+        ) : ('TESTEEEE')} */}
 
-              ) : (
-                <>
-                  <div className={styles.footer_comments_count}>
-                    <FaRegCommentAlt title="Comentários" />
-                    <span>
-                      {boicote.comentariosCount}
-                      {boicote.comentariosCount === 1 ? ' comentário' : ' comentários'}
-                    </span>
-                  </div>
+        { /* <div className={styles.footer_comments_count}>
+        <FaRegCommentAlt title="Comentários" />
+        <span>
+          {' '}
+          {boicote.comentariosCount}
+          {boicote.comentariosCount === 1 ? ' comentário' : ' comentários'}
+        </span>
+      </div>
 
-                  <div className={styles.footer_btns}>
-                    <button type="button">Ver tudo</button>
-                  </div>
-                </>
-              )}
-
-          </div>
-
-        </footer>
+      <div className={styles.footer_btns}>
+        <button type="button">Comentar</button>
+        <button type="button">Compartilhar</button>
+        <button type="button">Denunciar</button>
+      </div> */ }
 
       </div>
 

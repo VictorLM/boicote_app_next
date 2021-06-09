@@ -21,7 +21,6 @@ function changeVotoStates(
 async function votar(
   boicoteId: string,
   votoIsCima: number,
-  visitanteCookie: string, // TODO ??????????????????????????
   visitanteVote: number | null,
   setVotoBoicote: React.Dispatch<React.SetStateAction<number>>,
   boicoteVotosCount: number,
@@ -34,7 +33,6 @@ async function votar(
   try {
     await api.post(`/votos/${boicoteId}`, { cima: votoIsCima }, {
       withCredentials: true,
-      // headers: { cookie: visitanteCookie },
     });
     //
     changeVotoStates(

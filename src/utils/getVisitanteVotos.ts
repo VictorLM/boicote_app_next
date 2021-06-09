@@ -13,7 +13,7 @@ export type GetVisitanteVotosType = {
 async function getVisitanteVotos(visitanteCookie: string): Promise<GetVisitanteVotosType> {
   try {
     const { data } = await api.get('/visitantes/votos', {
-      headers: { cookie: visitanteCookie },
+      headers: { cookie: visitanteCookie }, // Aqui tem que meter o cookie pq essa req é server-side
     });
 
     return ({ errors: null, votos: data });

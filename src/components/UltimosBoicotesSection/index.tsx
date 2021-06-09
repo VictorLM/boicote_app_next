@@ -13,11 +13,10 @@ type UltimosBoicotesType = {
   boicotesData: GetBoicotesType;
   visitanteVotos: GetVisitanteVotosType;
   tweetsData: GetTweetsType;
-  visitanteCookie: string;
 }
 
 const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
-  boicotesData, visitanteVotos, tweetsData, visitanteCookie,
+  boicotesData, visitanteVotos, tweetsData,
 }) => {
   const teste = null;
   // console.log(visitanteVotos);
@@ -51,7 +50,6 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
                 boicote={boicote}
                 compact
                 singleBoicote={false}
-                visitanteCookie={visitanteCookie}
                 visitanteVoto={
                   visitanteVotos.votos.findIndex(
                     (voto: VisitanteVotoType) => voto.boicoteId === boicote.id,
@@ -69,7 +67,7 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
 
           </div>
 
-          <p className={styles.footer_link}>
+          <p>
             <Link href="/boicotes">
               Ver todos &#8594;
             </Link>

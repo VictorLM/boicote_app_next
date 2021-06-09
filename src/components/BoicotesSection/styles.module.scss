@@ -1,0 +1,65 @@
+section.boicotes_section {
+  padding: var(--padding);
+}
+
+div.content_flex {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+div.boicotes {
+  width: 100%;
+  flex-grow: 2;
+  flex-basis: 0;
+}
+
+div.top_btns {
+  display: flex;
+  margin-bottom: 1.4rem;
+  &:last-of-type button {
+    margin-right: .5rem;
+  }
+  ol {
+    margin-left: 1rem;
+  }
+
+  button {
+    a {
+      color: var(--black);
+      text-decoration: none;
+    }
+    &.active {
+      background: var(--black);
+      a {
+        color: var(--white);
+      }
+      &:hover {
+        background: var(--white);
+        a {
+          color: var(--black);
+        }
+      }
+    }
+    &:hover {
+      background: var(--black);
+      a {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+div.tweets {
+  display: none;
+}
+
+@media only screen and (min-width: 1366px) {
+
+  div.tweets {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+}

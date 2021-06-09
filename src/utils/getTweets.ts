@@ -33,7 +33,7 @@ function queryHighlight(query: string, str: string) :string {
 }
 
 // Param: query = string; palavras únicas separadas por vírgula sem espaços.
-// Ex: boicote,boicotem,boicotar
+// Ex: boicotem,boicote,boicotar
 async function getTweets(query: string): Promise<GetTweetsType> {
   try {
     const { data } = await api.get('/tweets', {

@@ -1,0 +1,44 @@
+ol.pagination {
+  display: flex;
+}
+
+li.pagination_item {
+  border: solid 1px var(--black);
+  border-right: none;
+  transition: all .2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: var(--black);
+    a {
+      color: var(--white);
+    }
+  }
+
+  &:last-child {
+    border-right: solid 1px var(--black);
+  }
+
+  &.active{
+    background: var(--black);
+    a {
+      color: var(--white);
+    }
+    &:hover {
+      background: var(--white);
+      a {
+        color: var(--black);
+      }
+    }
+  }
+
+  a {
+    color: var(--black);
+    display: block;
+    padding: .3rem .8em;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+  }
+}

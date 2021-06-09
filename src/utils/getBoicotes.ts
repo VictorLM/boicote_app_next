@@ -25,11 +25,24 @@ export type GetBoicotesType = {
   boicotesTotalCount: number;
 };
 
-async function getBoicotes(limite: number | null, pagina: number | null): Promise<GetBoicotesType> {
-  const params = limite ? { limite } : { pagina };
+async function getBoicotes(
+  limite: number | null,
+  pagina: number | null,
+  ordenarMaisVotados: boolean,
+): Promise<GetBoicotesType> {
+  // SE ENVIAR LIMITE, NÃO PRECISA ENVIAR A PÁGINA
+  // LIMITE DA API É 5 POR PÁGINA
+  // const params = limite ? { limite } : { pagina };
 
   try {
-    const { data } = await api.get('/boicotes', { params });
+    const { data } = await api.get('/boicotes', {
+      params: {
+        limite,
+        pagina,
+        ordenar: ordenarMaisVotados && 'mais_votados',
+      },
+
+    });
 
     const boicotes = data.boicotes.map((boicote) => ({
       id: boicote.id,
