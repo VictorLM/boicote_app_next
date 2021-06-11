@@ -69,7 +69,7 @@ const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
 
           <p>
             <Link href="/boicotes">
-              Ver todos &#8594;
+              <a>Ver todos &#8594;</a>
             </Link>
           </p>
 

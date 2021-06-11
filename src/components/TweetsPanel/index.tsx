@@ -13,6 +13,7 @@ type TweetsPanelType = {
 
 const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
   useEffect(() => {
+    // Gamb pra igualar o tamanho da div
     const height = document.getElementById('last-boicotes').clientHeight;
     document.getElementById('tweets-content').style.height = `${height}px`;
   }, []);

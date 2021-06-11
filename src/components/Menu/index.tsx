@@ -15,7 +15,7 @@ type MenuProps = {
 }
 
 const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
-  const defaultIllustration = 'images/menu-lg.svg';
+  const defaultIllustration = '/images/menu-lg.svg';
   const [illustration, setIllustration] = useState(defaultIllustration);
   const [tlMenu, setTlMenu] = useState(new TimelineLite({ paused: true }));
 
@@ -65,7 +65,7 @@ const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
           <ul className={styles.nav_items}>
             <li
               className={useRouter().asPath === '/' ? styles.active : ''}
-              onMouseEnter={() => setIllustration('images/home-lg.svg')}
+              onMouseEnter={() => setIllustration('/images/home-lg.svg')}
               onMouseLeave={() => setIllustration(defaultIllustration)}
             >
               <Link href="/">
@@ -74,7 +74,7 @@ const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
             </li>
             <li
               className={useRouter().asPath === '/#entenda' ? styles.active : ''}
-              onMouseEnter={() => setIllustration('images/entenda-lg.svg')}
+              onMouseEnter={() => setIllustration('/images/entenda-lg.svg')}
               onMouseLeave={() => setIllustration(defaultIllustration)}
             >
               <Link href="/#entenda">
@@ -83,7 +83,7 @@ const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
             </li>
             <li
               className={useRouter().asPath === '/boicotes' ? styles.active : ''}
-              onMouseEnter={() => setIllustration('images/boicotes-lg.svg')}
+              onMouseEnter={() => setIllustration('/images/boicotes-lg.svg')}
               onMouseLeave={() => setIllustration(defaultIllustration)}
             >
               <Link href="/boicotes">
@@ -92,7 +92,7 @@ const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
             </li>
             <li
               className={useRouter().asPath === '/boicotar' ? styles.active : ''}
-              onMouseEnter={() => setIllustration('images/boicotar-lg.svg')}
+              onMouseEnter={() => setIllustration('/images/boicotar-lg.svg')}
               onMouseLeave={() => setIllustration(defaultIllustration)}
             >
               <Link href="/boicotar">
@@ -101,7 +101,7 @@ const Menu : React.FC<MenuProps> = ({ toggleMenu, setToggleMenu }) => {
             </li>
             <li
               className={useRouter().asPath === '/#sobre' ? styles.active : ''}
-              onMouseEnter={() => setIllustration('images/sobre-lg.svg')}
+              onMouseEnter={() => setIllustration('/images/sobre-lg.svg')}
               onMouseLeave={() => setIllustration(defaultIllustration)}
             >
               <Link href="/#sobre">

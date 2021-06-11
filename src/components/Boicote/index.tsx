@@ -59,23 +59,49 @@ const Boicote: React.FC<BoicotePropTypes> = ({
           >
             <FaArrowDown title="Votar para baixo" />
           </button>
+
+          {singleBoicote && (
+            <span className={`${styles.comments_count} ${styles.comments_count_left}`}>
+              <FaRegCommentAlt title="Comentários" />
+              &nbsp;&nbsp;
+              {boicote.comentariosCount}
+            </span>
+          )}
+
         </div>
 
         <div className={styles.left_line_div} style={{ display: compact && 'none' }} />
 
+        <span className={styles.gamb_padding_left} style={{ display: !singleBoicote && 'none' }}>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+
         <p className={styles.flex}>
-          <span className={styles.comments_count}>
-            <FaRegCommentAlt title="Comentários" />
-            &nbsp;&nbsp;
-            {boicote.comentariosCount}
-            &nbsp;
-            <span className={styles.comentario_text}>
-              {` ${boicote.comentariosCount === 1 ? ' Comentário' : ' Comentários'}`}
-            </span>
-          </span>
-          <Link href={`/boicotes/${boicote.id}`}>
-            <button className={styles.ver_tudo_btn} type="button">Ver tudo</button>
-          </Link>
+
+          {singleBoicote ? (
+            <>
+              <button type="button" className={styles.left_btns}>Comentar</button>
+              <button type="button" className={styles.left_btns}>Compartilhar</button>
+              <button type="button" className={styles.left_btns}>Denunciar</button>
+            </>
+          ) : (
+            <>
+              <span className={styles.comments_count}>
+                <FaRegCommentAlt title="Comentários" />
+                &nbsp;&nbsp;
+                {boicote.comentariosCount}
+                &nbsp;
+                <span className={styles.comentario_text}>
+                  {` ${boicote.comentariosCount === 1 ? ' Comentário' : ' Comentários'}`}
+                </span>
+              </span>
+
+              <Link href={`/boicotes/${boicote.id}`}>
+                <button className={styles.ver_tudo_btn} type="button">Ver tudo</button>
+              </Link>
+            </>
+          )}
+
         </p>
 
       </div>
@@ -87,8 +113,11 @@ const Boicote: React.FC<BoicotePropTypes> = ({
           <div className={styles.smalls}>
             <small>
               {'# '}
-              {boicote.tags.map((tag, key) => (
-                `${tag}${boicote.tags.length !== key + 1 ? ',' : ''} `
+              {boicote.tags?.map((tag, key) => (
+                <span key={tag}>
+                  {tag}
+                  {boicote.tags.length !== key + 1 ? ', ' : ''}
+                </span>
               ))}
             </small>
             <small className={styles.posted_by}>
@@ -130,46 +159,42 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             </Link>
           </p>
 
-          {/* TODO LINK CONFIAVÉL - AJUSTAR API PRIMEIRO  */}
-          {singleBoicote && (
-            boicote.links?.map((link) => (
-              <a href={link.link} target="_blank" rel="noreferrer">
-                {link.link.substr(0, 100)}
-                ...
-              </a>
-            ))
-          )}
-
+        </div>
+        )}
+        {singleBoicote && <hr />}
+        {/* TODO LINK CONFIAVÉL - AJUSTAR API PRIMEIRO  */}
+        {singleBoicote && (
+        <div className={styles.links}>
+          {boicote.links?.map((link) => (
+            <a href={link.link} key={link.link.substr(0, 80)} target="_blank" rel="noreferrer">
+              {link.link.substr(0, 80)}
+              ...
+            </a>
+          ))}
         </div>
         )}
 
-        {/* <footer className={styles.footer_mobile}>
-          teste
+        {singleBoicote && (
+          <footer className={styles.footer}>
+            <div className={styles.footer_comments_count}>
+              <FaRegCommentAlt title="Comentários" />
+              <span style={{ display: 'contents' }}>
+                &nbsp;&nbsp;
+                {boicote.comentariosCount}
+                &nbsp;
+                <span className={styles.comment_text}>
+                  {boicote.comentariosCount === 1 ? ' comentário' : ' comentários'}
+                </span>
+              </span>
+            </div>
 
-        </footer> */}
-
-        {/* {singleBoicote ? (
-          <footer className={`${styles.footer} ${compact ? styles.footer_compact : ''}`}>
-            teste
-
+            <div className={styles.footer_btns}>
+              <button type="button">Comentar</button>
+              <button type="button">Compartilhar</button>
+              <button type="button">Denunciar</button>
+            </div>
           </footer>
-
-        ) : ('TESTEEEE')} */}
-
-        { /* <div className={styles.footer_comments_count}>
-        <FaRegCommentAlt title="Comentários" />
-        <span>
-          {' '}
-          {boicote.comentariosCount}
-          {boicote.comentariosCount === 1 ? ' comentário' : ' comentários'}
-        </span>
-      </div>
-
-      <div className={styles.footer_btns}>
-        <button type="button">Comentar</button>
-        <button type="button">Compartilhar</button>
-        <button type="button">Denunciar</button>
-      </div> */ }
+        )}
 
       </div>
 

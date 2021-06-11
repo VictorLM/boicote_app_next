@@ -31,7 +31,7 @@ const BoicotesSection: React.FC<BoicotesSectionType> = ({
 
   return (
 
-    <section className={`${styles.boicotes_section} container full-vh`} id="ultimos-boicotes">
+    <section className={`${styles.boicotes_section} container`} id="ultimos-boicotes">
 
       <div className={styles.content_flex}>
 

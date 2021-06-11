@@ -5,6 +5,7 @@ div.card_boicote {
 }
 
 div.boicote_left {
+  padding: calc(var(--padding) / 2);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -45,11 +46,24 @@ p.flex {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  button {
+    color: var(--white);
+  }
 }
 
 span.comments_count {
   display: flex;
   align-items: center;
+  margin-top: .8rem !important;
+  font-size: .9rem;
+}
+
+span.comments_count_left {
+  font-size: 1rem;
+}
+
+span.gamb_padding_left {
+  display: none;
 }
 
 button.ver_tudo_btn {
@@ -122,14 +136,18 @@ p.text {
   margin-bottom: var(--padding);
 }
 
-// footer.footer {
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: var(--padding);
-//   // margin-top: 1.5rem;
-//   background: var(--black);
-// }
+div.links {
+  padding: var(--padding);
+  overflow-wrap: break-word;
+  a {
+    display: block;
+    margin-bottom: .4rem;
+  }
+}
+
+footer.footer {
+  display: none;
+}
 
 // div.footer_vote {
 //   display: flex;
@@ -245,8 +263,50 @@ p.text {
     padding-top: 1rem;
   }
 
+  button.left_btns, span.comments_count_left {
+    display: none;
+  }
+
   button.ver_tudo_btn, span.comentario_text {
     display: none;
+  }
+
+  span.gamb_padding_left {
+    display: block;
+  }
+
+  footer.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding);
+    color: var(--white);
+    background: var(--black);
+    button {
+      color: var(--white);
+    }
+  }
+
+  div.footer_comments_count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      font-size: .9rem;
+    }
+  }
+
+  span.comment_text {
+    display: none;
+  }
+
+  div.footer_btns {
+    button {
+      margin-right: .5rem;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
   }
 
   // div.boicote_left {
@@ -346,6 +406,10 @@ p.text {
 
   p.text {
     line-height: 1.4rem;
+  }
+
+  span.comment_text {
+    display: block;
   }
 }
 

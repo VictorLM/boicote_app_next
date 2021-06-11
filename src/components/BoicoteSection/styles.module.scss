@@ -1,0 +1,29 @@
+section.boicote_section {
+  padding: var(--padding);
+}
+
+div.content_flex {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+div.boicote {
+  width: 100%;
+  flex-grow: 2;
+  flex-basis: 0;
+}
+
+div.tweets {
+  display: none;
+}
+
+@media only screen and (min-width: 1366px) {
+
+  div.tweets {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+}

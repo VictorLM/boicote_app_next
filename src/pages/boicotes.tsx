@@ -12,7 +12,6 @@ type BoicotesPropsType = {
   boicotesData: GetBoicotesType;
   visitanteVotos: GetVisitanteVotosType;
   tweetsData: GetTweetsType;
-  visitanteCookie: string;
   pagina: number;
   boicotesPorPagina: number;
   ordenarMaisVotados: boolean;
