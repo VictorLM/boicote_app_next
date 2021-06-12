@@ -20,9 +20,13 @@ div.content_flex {
 }
 
 div.left {
-  padding-bottom: var(--padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-grow: 1;
   flex-basis: 0;
+  padding-bottom: var(--padding);
   img {
     height: 2rem;
   }
@@ -37,10 +41,14 @@ div.center {
 }
 
 div.right {
-  padding-bottom: var(--padding);
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
   flex-grow: 1;
   flex-basis: 0;
+  padding-bottom: var(--padding);
+  text-align: right;
   button {
     color: var(--white);
     border: none;
@@ -82,10 +90,6 @@ div.right {
   }
 
   div.left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
     img {
       height: 3rem;
     }
@@ -98,10 +102,6 @@ div.right {
   }
 
   div.right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
     svg {
       font-size: 3rem;
     }

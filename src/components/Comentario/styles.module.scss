@@ -1,0 +1,53 @@
+div.card {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+div.card_left {
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+}
+
+div.card_right{
+  width: 100%;
+  padding: var(--padding);
+}
+
+header.header {
+  span, small {
+    display: block;
+  }
+  span {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  small {
+    margin-top: .5rem;
+    color: var(--gray);
+  }
+}
+
+p.texto {
+  text-align: justify;
+  margin: 1rem 0;
+}
+
+div.btn_div {
+  width: 100%;
+  text-align: right;
+}
+
+@media only screen and (min-width: 540px) {
+  header.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    span, small {
+      display: inline;
+    }
+  }
+}

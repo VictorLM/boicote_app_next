@@ -1,0 +1,62 @@
+div.card {
+  display: flex;
+}
+
+div.card_left {
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+  }
+}
+
+div.card_right {
+  padding: var(--padding);
+  width: 100%;
+  form {
+    input, textarea, small {
+      display: block;
+      width: 100%;
+    }
+    input, textarea {
+      margin: .2rem 0;
+      height: 1.5rem;
+    }
+    small {
+      color: var(--gray);
+    }
+  }
+}
+
+div.input_group {
+  margin-bottom: .6rem;
+}
+
+textarea.comentario {
+  height: 3rem !important;
+  resize: none;
+}
+
+div.btn_div {
+  width: 100%;
+  text-align: right;
+}
+
+@media only screen and (min-width: 768px) {
+  div.input_group {
+    flex-grow: 1;
+  }
+
+  div.flex {
+    display: flex;
+    width: 100%;
+    div {
+      &:first-of-type {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+}

@@ -14,6 +14,20 @@ div.boicote {
   flex-basis: 0;
 }
 
+p.disclaimer {
+  color: var(--gray);
+  font-size: .9rem;
+  text-align: justify;
+  margin: 1.5rem 0;
+}
+
+div.comentarios_headings {
+  margin: 1.5rem 0;
+  h3 {
+    font-size: 2rem;
+  }
+}
+
 div.tweets {
   display: none;
 }
@@ -24,6 +38,11 @@ div.tweets {
     display: flex;
     flex-grow: 1;
     flex-basis: 0;
+    align-self: flex-start;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    margin-bottom: 1rem;
   }
 
 }

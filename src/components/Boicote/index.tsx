@@ -80,9 +80,9 @@ const Boicote: React.FC<BoicotePropTypes> = ({
 
           {singleBoicote ? (
             <>
-              <button type="button" className={styles.left_btns}>Comentar</button>
-              <button type="button" className={styles.left_btns}>Compartilhar</button>
-              <button type="button" className={styles.left_btns}>Denunciar</button>
+              <button type="button" className={`btn-white ${styles.left_btns}`}>Comentar</button>
+              <button type="button" className={`btn-white ${styles.left_btns}`}>Compartilhar</button>
+              <button type="button" className={`btn-white ${styles.left_btns}`}>Denunciar</button>
             </>
           ) : (
             <>
@@ -97,7 +97,7 @@ const Boicote: React.FC<BoicotePropTypes> = ({
               </span>
 
               <Link href={`/boicotes/${boicote.id}`}>
-                <button className={styles.ver_tudo_btn} type="button">Ver tudo</button>
+                <button className={`btn-white ${styles.ver_tudo_btn}`} type="button">Ver tudo</button>
               </Link>
             </>
           )}
@@ -189,9 +189,9 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             </div>
 
             <div className={styles.footer_btns}>
-              <button type="button">Comentar</button>
-              <button type="button">Compartilhar</button>
-              <button type="button">Denunciar</button>
+              <button className="btn-white" type="button">Comentar</button>
+              <button className="btn-white" type="button">Compartilhar</button>
+              <button className="btn-white" type="button">Denunciar</button>
             </div>
           </footer>
         )}

@@ -7,17 +7,20 @@ import BoicoteSection from '../../components/BoicoteSection';
 import getTweets, { GetTweetsType } from '../../utils/getTweets';
 import getBoicote, { GetBoicoteType } from '../../utils/getBoicote';
 import getVisitanteVotos, { GetVisitanteVotosType } from '../../utils/getVisitanteVotos';
+import getComentarios, { GetComentariosType } from '../../utils/getComentarios';
 
 type BoicotesPropsType = {
   boicoteData: GetBoicoteType;
   visitanteVotos: GetVisitanteVotosType;
   tweetsData: GetTweetsType;
+  comentariosData: GetComentariosType;
 }
 
 const Boicotes: React.FC<BoicotesPropsType> = ({
   boicoteData,
   visitanteVotos,
   tweetsData,
+  comentariosData,
 }) => (
   <>
     <Head>
@@ -39,6 +42,7 @@ const Boicotes: React.FC<BoicotesPropsType> = ({
       boicote={boicoteData.boicote}
       visitanteVotos={visitanteVotos}
       tweetsData={tweetsData}
+      comentarios={comentariosData.comentarios}
     />
   </>
 );
@@ -49,14 +53,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   // Enviando como query somente a primeira palavra do nome da marca
   const tweetsData = await getTweets(boicoteData.boicote.marca.split(' ')[0]);
   const visitanteVotos = await getVisitanteVotos(ctx.req?.headers.cookie);
-
-  // console.log(boicote);
+  const comentariosData = await getComentarios(boicoteData.boicote.id);
 
   return {
     props: {
       boicoteData,
       visitanteVotos,
       tweetsData,
+      comentariosData,
     },
   };
 };
