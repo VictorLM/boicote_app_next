@@ -1,0 +1,128 @@
+div.modal_window {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+div.card {
+  display: flex;
+  width: 85vw;
+}
+
+div.card_left {
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+  }
+}
+
+div.card_right {
+  padding: var(--padding);
+  width: 100%;
+  form {
+    margin-top: 1.5rem;
+    input, textarea, small {
+      display: block;
+      width: 100%;
+    }
+    input, textarea {
+      margin: .2rem 0;
+      height: 1.5rem;
+    }
+    small {
+      color: var(--gray);
+    }
+  }
+}
+
+div.input_group {
+  margin-bottom: .6rem;
+}
+
+textarea.motivo {
+  height: 3rem !important;
+  resize: none;
+}
+
+div.btn_div {
+  width: 100%;
+  text-align: right;
+}
+
+div.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white);
+  min-width: 250px;
+  h4 {
+    font-size: 1.5rem;
+    margin: 3rem 0 1rem 0;
+  }
+  button {
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+button.fechar {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  right: -3%;
+  color: var(--black);
+  border: none;
+}
+
+@media only screen and (min-width: 768px) {
+
+  div.input_group {
+    flex-grow: 1;
+  }
+
+  button.fechar {
+    right: -1%;
+  }
+
+  div.flex {
+    display: flex;
+    width: 100%;
+    div {
+      &:first-of-type {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+  div.card {
+    width: auto;
+  }
+
+  div.card_right {
+    form {
+      margin-top: 1rem;
+    }
+  }
+}

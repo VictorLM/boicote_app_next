@@ -6,14 +6,25 @@ import styles from './styles.module.scss';
 type ComentarioPropTypes = {
   comentario: ComentarioType;
   index: number;
+  setToggleDenunciarModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setDenunciarComentarioId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Comentario: React.FC<ComentarioPropTypes> = ({ comentario, index }) => {
-  const teste = 'teste';
+const Comentario: React.FC<ComentarioPropTypes> = ({
+  comentario,
+  index,
+  setToggleDenunciarModal,
+  setDenunciarComentarioId,
+
+}) => {
+  function setupDenuncia() {
+    setToggleDenunciarModal(true);
+    setDenunciarComentarioId(String(comentario.id));
+  }
 
   return (
 
-    <div className={`card ${styles.card}`}>
+    <div className={`card ${styles.card}`} id={`comentario-${comentario.id}`}>
       <div className={`card-left ${styles.card_left}`}>
         <span>{`#${index}`}</span>
         <div />
@@ -34,8 +45,13 @@ const Comentario: React.FC<ComentarioPropTypes> = ({ comentario, index }) => {
         </p>
 
         <div className={styles.btn_div}>
-          {/* onClick={() => denunciar()} */}
-          <button type="button" className="btn-black">Denunciar</button>
+          <button
+            type="button"
+            className="btn-black"
+            onClick={() => setupDenuncia()}
+          >
+            Denunciar
+          </button>
         </div>
 
       </div>

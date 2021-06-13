@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Boicote from '../Boicote';
 import TweetsPanel from '../TweetsPanel';
 
@@ -10,6 +10,7 @@ import { ComentarioType } from '../../utils/getComentarios';
 import styles from './styles.module.scss';
 import ComentarForm from '../ComentarForm';
 import Comentario from '../Comentario';
+import DenunciarModal from '../DenunciarModal';
 
 type BoicoteSectionType = {
   boicote: BoicoteType;
@@ -24,11 +25,14 @@ const BoicoteSection: React.FC<BoicoteSectionType> = ({
   tweetsData,
   comentarios,
 }) => {
-  const teste = 'teste';
+  const [comentariosState, setComentariosState] = useState(comentarios);
+  //
+  const [toggleDenunciarModal, setToggleDenunciarModal] = useState(false);
+  const [denunciarComentarioId, setDenunciarComentarioId] = useState('');
 
   return (
 
-    <section className={`${styles.boicote_section} container`} id="ultimos-boicotes">
+    <section className={`${styles.boicote_section} container`}>
 
       <div className={styles.content_flex}>
 
@@ -39,7 +43,7 @@ const BoicoteSection: React.FC<BoicoteSectionType> = ({
             <p className="sub-heading">&nbsp;</p>
           </div>
 
-          <div className={styles.boicote_content} id="last-boicotes">
+          <div className={styles.boicote_content}>
 
             <Boicote
               boicote={boicote}
@@ -69,21 +73,27 @@ const BoicoteSection: React.FC<BoicoteSectionType> = ({
 
           <ComentarForm
             boicoteId={boicote.id}
+            comentarios={comentariosState}
+            setComentarios={setComentariosState}
           />
 
           <div className={styles.comentarios_headings}>
-            <h3 className="heading">Comentários</h3>
+            <h3 className="heading" id="comentarios-header">Comentários</h3>
           </div>
 
-          {comentarios.map((comentario, index) => (
-
-            <Comentario
-              key={comentario.id}
-              comentario={comentario}
-              index={index + 1}
-            />
-
-          ))}
+          {comentariosState.length > 0 ? (
+            comentariosState.map((comentario, index) => (
+              <Comentario
+                key={comentario.id}
+                comentario={comentario}
+                index={index + 1}
+                setToggleDenunciarModal={setToggleDenunciarModal}
+                setDenunciarComentarioId={setDenunciarComentarioId}
+              />
+            ))
+          ) : (
+            <h3>Nenhum comentário. Seja o(a) primeiro(a) a comentar!</h3>
+          )}
 
         </div>
 
@@ -92,6 +102,13 @@ const BoicoteSection: React.FC<BoicoteSectionType> = ({
         </div>
 
       </div>
+
+      <DenunciarModal
+        tipo="comentario"
+        id={denunciarComentarioId}
+        toggle={toggleDenunciarModal}
+        setToggle={setToggleDenunciarModal}
+      />
 
     </section>
 

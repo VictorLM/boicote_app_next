@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   FaArrowUp, FaArrowDown, FaRegCommentAlt,
 } from 'react-icons/fa';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
-import Link from 'next/link';
 import votar from './methods';
 import { BoicoteType } from '../../utils/getBoicotes';
 
+import CompartilharBoicoteModal from '../CompartilharBoicoteModal';
 import styles from './styles.module.scss';
+import DenunciarModal from '../DenunciarModal';
 
 type BoicotePropTypes = {
   boicote: BoicoteType;
@@ -23,6 +26,14 @@ const Boicote: React.FC<BoicotePropTypes> = ({
   //
   const [visitanteVote, setVisitanteVote] = useState(visitanteVoto);
   const [boicoteVotosCount, setBoicoteVotosCount] = useState(boicote.votos);
+  //
+  const [toggleCompartilharModal, setToggleCompartilharModal] = useState(false);
+  const [toggleDenunciarModal, setToggleDenunciarModal] = useState(false);
+
+  function scrollToComentarioForm() {
+    const element = document.getElementById('comentar');
+    element?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
 
   return (
 
@@ -80,9 +91,27 @@ const Boicote: React.FC<BoicotePropTypes> = ({
 
           {singleBoicote ? (
             <>
-              <button type="button" className={`btn-white ${styles.left_btns}`}>Comentar</button>
-              <button type="button" className={`btn-white ${styles.left_btns}`}>Compartilhar</button>
-              <button type="button" className={`btn-white ${styles.left_btns}`}>Denunciar</button>
+              <button
+                type="button"
+                className={`btn-white ${styles.left_btns}`}
+                onClick={() => scrollToComentarioForm()}
+              >
+                Comentar
+              </button>
+              <button
+                className={`btn-white ${styles.left_btns}`}
+                type="button"
+                onClick={() => setToggleCompartilharModal(!toggleCompartilharModal)}
+              >
+                Compartilhar
+              </button>
+              <button
+                className={`btn-white ${styles.left_btns}`}
+                type="button"
+                onClick={() => setToggleDenunciarModal(!toggleDenunciarModal)}
+              >
+                Denunciar
+              </button>
             </>
           ) : (
             <>
@@ -166,8 +195,8 @@ const Boicote: React.FC<BoicotePropTypes> = ({
         {singleBoicote && (
         <div className={styles.links}>
           {boicote.links?.map((link) => (
-            <a href={link.link} key={link.link.substr(0, 80)} target="_blank" rel="noreferrer">
-              {link.link.substr(0, 80)}
+            <a href={link.link} key={link.link.substr(0, 50)} target="_blank" rel="noreferrer">
+              {link.link}
               ...
             </a>
           ))}
@@ -189,14 +218,49 @@ const Boicote: React.FC<BoicotePropTypes> = ({
             </div>
 
             <div className={styles.footer_btns}>
-              <button className="btn-white" type="button">Comentar</button>
-              <button className="btn-white" type="button">Compartilhar</button>
-              <button className="btn-white" type="button">Denunciar</button>
+              <button
+                type="button"
+                className="btn-white"
+                onClick={() => scrollToComentarioForm()}
+              >
+                Comentar
+              </button>
+              <button
+                className="btn-white"
+                type="button"
+                onClick={() => setToggleCompartilharModal(!toggleCompartilharModal)}
+              >
+                Compartilhar
+              </button>
+              <button
+                className="btn-white"
+                type="button"
+                onClick={() => setToggleDenunciarModal(!toggleDenunciarModal)}
+              >
+                Denunciar
+              </button>
             </div>
           </footer>
         )}
 
       </div>
+
+      {singleBoicote && (
+        <>
+          <CompartilharBoicoteModal
+            url={`https://boicote.app${useRouter().asPath}`}
+            toggle={toggleCompartilharModal}
+            setToggle={setToggleCompartilharModal}
+          />
+
+          <DenunciarModal
+            tipo="boicote"
+            id={boicote.id}
+            toggle={toggleDenunciarModal}
+            setToggle={setToggleDenunciarModal}
+          />
+        </>
+      )}
 
     </div>
 

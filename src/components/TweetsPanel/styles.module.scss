@@ -45,6 +45,7 @@ div.headings {
   display: flex;
   justify-content: space-between;
   p {
+    overflow-wrap: anywhere;
     small {
       font-size: .8rem;
       font-style: italic;
@@ -58,6 +59,7 @@ p.text {
   a {
     text-decoration: none;
     color: var(--black);
+    overflow-wrap: anywhere;
     &:visited {
       color: var(--black);
     }

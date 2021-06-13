@@ -1,0 +1,96 @@
+div.modal_window {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+div.card {
+  display: flex;
+}
+
+div.card_left {
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+  }
+}
+
+div.card_right {
+  padding: var(--padding);
+  padding-bottom: .5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+div.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white);
+  min-width: 250px;
+  h4 {
+    font-size: 1.5rem;
+    margin: 3rem 0 1rem 0;
+  }
+  button {
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+div.social_btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+
+button.social_btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 33.333333%;
+  margin-bottom: 1rem;
+}
+
+svg.social_icons {
+  border: solid 1px var(--black);
+  border-radius: 50%;
+}
+
+button.fechar {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  right: -3%;
+  color: var(--black);
+  border: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  button.fechar {
+    right: -2%;
+  }
+  div.social_btns {
+    margin-top: 1rem;
+  }
+}

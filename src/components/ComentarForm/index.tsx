@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { isEmail } from 'validator';
+import { format, parseISO } from 'date-fns';
 import { toast } from 'react-toastify';
+import { ComentarioType } from '../../utils/getComentarios';
 
 import styles from './styles.module.scss';
 import api from '../../services/api';
 
 type ComentarFormType = {
   boicoteId: string;
-  // setNovoComentario: React.Dispatch<React.SetStateAction<number>>;
+  comentarios: ComentarioType[];
+  setComentarios: React.Dispatch<ComentarioType[]>;
 }
 
 const ComentarForm: React.FC<ComentarFormType> = ({
   boicoteId,
-  // setNovoComentario,
+  comentarios,
+  setComentarios,
 }) => {
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
   const [comentario, setComentario] = useState('');
 
   async function comentar() {
-    console.log(boicoteId);
-
     let formErrors = false;
 
     if (nome.length < 3 || nome.length > 255) {
@@ -46,12 +48,22 @@ const ComentarForm: React.FC<ComentarFormType> = ({
     try {
       const { data } = await api.post(`/comentarios/${boicoteId}`, body, { withCredentials: true });
 
-      // setComentarios([data, ...comentarios]);
+      const novoComentario = {
+        id: data.id,
+        comentario: data.comentario,
+        createdAt: format(parseISO(data.createdAt), 'dd/MM/yyyy'),
+        autor: data.Autor.nome,
+      };
+
+      setComentarios([...comentarios, novoComentario]);
       // LIMPAR FORM
       setNome('');
       setEmail('');
       setComentario('');
       toast.success('Comentário cadastrado com sucesso.');
+      // scroll to novo comentário
+      const element = document.getElementById(`comentario-${novoComentario.id}`);
+      element?.scrollIntoView({ block: 'end', behavior: 'smooth' });
     } catch (err) {
       //
       console.log(err);
@@ -69,7 +81,7 @@ const ComentarForm: React.FC<ComentarFormType> = ({
 
   return (
 
-    <div className={`card ${styles.card}`}>
+    <div className={`card ${styles.card}`} id="comentar">
       <div className={`card-left ${styles.card_left}`}>
         <span>Comentar</span>
         <div />

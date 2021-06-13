@@ -100,11 +100,11 @@ div.social {
   @media (orientation: landscape) {
 
     div.card_left {
-      padding: calc(var(--padding) / 2);
+      padding: var(--padding) calc(var(--padding) / 2);
     }
 
     div.card_right {
-      padding: calc(var(--padding) / 2);
+      // padding: calc(var(--padding) / 2);
       p {
         line-height: 1.4rem;
       }
