@@ -27,7 +27,7 @@ const Boicotes: React.FC<BoicotesPropsType> = ({
 }) => (
   <>
     <Head>
-      <title>Boicote.App | Consumir é um ato político</title>
+      <title>Boicotes | Boicote.App | Consumir é um ato político</title>
       {/* Open Graph */}
       <meta property="og:title" content="Boicotes | Boicote.App | Consumir é um ato político" />
       <meta property="og:description" content="Aqui você encontra e organiza seus boicotes online" />
