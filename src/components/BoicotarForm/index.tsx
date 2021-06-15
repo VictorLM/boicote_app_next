@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { isEmail, isURL } from 'validator';
 import { toast } from 'react-toastify';
-import { FaBullhorn } from 'react-icons/fa';
+import { FaBullhorn, FaCheckSquare } from 'react-icons/fa';
 
+import Link from 'next/link';
 import styles from './styles.module.scss';
 import api from '../../services/api';
 
@@ -14,6 +15,8 @@ const BoicotarForm: React.FC = () => {
   const [texto, setTexto] = useState('');
   const [tags, setTags] = useState('');
   const [links, setLinks] = useState('');
+  //
+  const [sucesso, setSucesso] = useState(false);
 
   function montaArray(stringao) {
     if (stringao === null || stringao === '') {
@@ -60,7 +63,7 @@ const BoicotarForm: React.FC = () => {
     });
     if (links.length < 10) {
       formErrors = true;
-      toast.error('Poste ao menos um Link.');
+      toast.error('Insira ao menos um Link.');
     }
     const linksArray = montaArray(links);
     if (linksArray.length > 3) {
@@ -90,8 +93,7 @@ const BoicotarForm: React.FC = () => {
     };
 
     try {
-      const { data } = await api.post('/boicotes', body, { withCredentials: true });
-      console.log(data);
+      await api.post('/boicotes', body, { withCredentials: true });
       // LIMPAR FORM
       setNome('');
       setEmail('');
@@ -100,7 +102,8 @@ const BoicotarForm: React.FC = () => {
       setTexto('');
       setTags('');
       setLinks('');
-      toast.success('Boicote cadastrado com sucesso.');
+      // toast.success('Boicote cadastrado com sucesso.');
+      setSucesso(true);
     } catch (err) {
       //
       console.log(err);
@@ -126,65 +129,84 @@ const BoicotarForm: React.FC = () => {
         <div />
       </div>
       <div className={styles.card_right}>
-        <form>
 
-          <div className={styles.flex}>
-            <div className={styles.input_group}>
-              <label htmlFor="nome">Seu nome</label>
-              <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+        {!sucesso ? (
+
+          <form>
+            <div className={styles.flex}>
+              <div className={styles.input_group}>
+                <label htmlFor="nome">Seu nome</label>
+                <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+              </div>
+              <div className={styles.input_group}>
+                <label htmlFor="email">Seu email</label>
+                <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <small>Seu e-mail não será exibido</small>
+              </div>
             </div>
-            <div className={styles.input_group}>
-              <label htmlFor="email">Seu email</label>
-              <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <small>Seu e-mail não será exibido</small>
+            <h3 className="heading">Boicote</h3>
+            <div className={styles.flex}>
+              <div className={styles.input_group}>
+                <label htmlFor="marca">Marca/Empresa</label>
+                <input type="text" id="marca" value={marca} onChange={(e) => setMarca(e.target.value)} />
+              </div>
+              <div className={styles.input_group}>
+                <label htmlFor="titulo">Título</label>
+                <input type="text" id="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+              </div>
             </div>
-          </div>
-          <h3 className="heading">Boicote</h3>
-          <div className={styles.flex}>
+
             <div className={styles.input_group}>
-              <label htmlFor="marca">Marca/Empresa</label>
-              <input type="text" id="marca" value={marca} onChange={(e) => setMarca(e.target.value)} />
+              <label htmlFor="texto">Texto</label>
+              <textarea id="texto" className={styles.texto} value={texto} onChange={(e) => setTexto(e.target.value)} />
+              <small>Máximo 2000 caracteres</small>
             </div>
+
             <div className={styles.input_group}>
-              <label htmlFor="titulo">Título</label>
-              <input type="text" id="titulo" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+              <label htmlFor="tags">Tags</label>
+              <input
+                type="text"
+                placeholder="Separe as tags com uma vírgula: Racismo, Desigualdade, etc"
+                id="tags"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+              />
             </div>
-          </div>
 
-          <div className={styles.input_group}>
-            <label htmlFor="texto">Texto</label>
-            <textarea id="texto" className={styles.texto} value={texto} onChange={(e) => setTexto(e.target.value)} />
-            <small>Máximo 2000 caracteres</small>
-          </div>
+            <div className={styles.input_group}>
+              <label htmlFor="links">Links</label>
+              <textarea
+                id="links"
+                placeholder="Separe on Links com uma vírgula: https://site.com/noticia-um, https://site.com/noticia-dois"
+                className={styles.links}
+                value={links}
+                onChange={(e) => setLinks(e.target.value)}
+              />
+              <small>Máximo 3 links</small>
+            </div>
 
-          <div className={styles.input_group}>
-            <label htmlFor="tags">Tags</label>
-            <input
-              type="text"
-              placeholder="Separe as tags com uma vírgula: Racismo, Desigualdade, etc"
-              id="tags"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
-            />
-          </div>
+            <div className={styles.btn_div}>
+              <button type="button" className="btn-black" onClick={() => boicotar()}>Boicotar</button>
+            </div>
+          </form>
 
-          <div className={styles.input_group}>
-            <label htmlFor="links">Links</label>
-            <textarea
-              id="links"
-              placeholder="Separe on Links com uma vírgula: https://site.com/noticia-um, https://site.com/noticia-dois"
-              className={styles.links}
-              value={links}
-              onChange={(e) => setLinks(e.target.value)}
-            />
-            <small>Máximo 3 links</small>
+        ) : (
+          <div className={styles.sucesso}>
+            <FaCheckSquare />
+            <h2>Boicote cadastrado com sucesso!</h2>
+            <p>
+              Agora é só confirmar o e-mail que lhe
+              enviamos para que seu boicote seja publicado.
+              Verifique sua caixa de entrada.
+            </p>
+            <button type="button" className="btn-black">
+              <Link href="/">
+                <a>Voltar</a>
+              </Link>
+            </button>
           </div>
+        )}
 
-          <div className={styles.btn_div}>
-            <button type="button" className="btn-black" onClick={() => boicotar()}>Boicotar</button>
-          </div>
-
-        </form>
       </div>
     </div>
 

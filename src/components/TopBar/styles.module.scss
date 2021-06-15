@@ -3,6 +3,10 @@ div.icons {
   justify-content: space-between;
   align-items: center;
 
+  a {
+    opacity: 0; //gsap
+  }
+
   img {
     height: 2rem;
   }
@@ -11,6 +15,7 @@ div.icons {
     border: none;
     padding: 0;
     cursor: pointer;
+    opacity: 0; //gsap
 
     &:hover {
       color: var(--gray);

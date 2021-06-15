@@ -10,8 +10,8 @@ const EntendaSection: React.FC = () => {
   const ulRefs = useRef<HTMLUListElement>();
 
   const scrollIntoView = () => {
-    ulRefs.current.childNodes[currentItem].scrollIntoView({ inline: 'center', block: 'nearest' });
-    setCurrentItem(currentItem === (ulRefs.current.childNodes.length - 1) ? 0 : currentItem + 1);
+    ulRefs.current.children[currentItem].scrollIntoView({ inline: 'center', block: 'nearest' });
+    setCurrentItem(currentItem === (ulRefs.current.children.length - 1) ? 0 : currentItem + 1);
   };
 
   return (

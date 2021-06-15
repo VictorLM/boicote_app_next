@@ -91,11 +91,11 @@ const DenunciarModal: React.FC<DenunciarModalType> = ({
           <form>
             <div className={styles.flex}>
               <div className={styles.input_group}>
-                <label htmlFor="nome">Nome</label>
+                <label htmlFor="nome">Seu nome</label>
                 <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
               </div>
               <div className={styles.input_group}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Seu email</label>
                 <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <small>Seu e-mail não será exibido</small>
               </div>

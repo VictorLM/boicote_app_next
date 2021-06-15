@@ -157,11 +157,13 @@ const Boicote: React.FC<BoicotePropTypes> = ({
           </div>
 
           <h3>
-            <a href={`/boicotes/${boicote.id}`}>
-              {boicote.titulo}
-              {' '}
-              {compact && <small>Ver tudo</small>}
-            </a>
+            <Link href={`/boicotes/${boicote.id}`}>
+              <a>
+                {boicote.titulo}
+                {' '}
+                {compact && <small>Ver tudo</small>}
+              </a>
+            </Link>
           </h3>
 
           <div className={styles.marca}>

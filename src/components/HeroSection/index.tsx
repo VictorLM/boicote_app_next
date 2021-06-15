@@ -1,20 +1,25 @@
 import Link from 'next/link';
 import React, { useRef, useEffect } from 'react';
 import { HiOutlineArrowDown } from 'react-icons/hi';
-import { TimelineLite } from 'gsap';
+import { gsap, TimelineLite } from 'gsap';
 
 import styles from './styles.module.scss';
 
+gsap.registerPlugin(TimelineLite);
+
 const HeroSection: React.FC = () => {
-  const redDivRef = useRef<HTMLInputElement>();
-  const textH1Ref = useRef<HTMLInputElement>();
+  const redDivRef = useRef<HTMLDivElement>();
+  const textH1Ref = useRef<HTMLHeadingElement>();
+  const footerRef = useRef<HTMLDivElement>();
+
   const timeline = new TimelineLite();
 
   useEffect(() => {
     timeline.fromTo(redDivRef.current, { y: -100 }, {
       opacity: 1,
       y: 0,
-      duration: 0.5,
+      duration: 0.4,
+      delay: 0.6,
     });
 
     textH1Ref.current.childNodes.forEach((el) => {
@@ -23,6 +28,14 @@ const HeroSection: React.FC = () => {
         duration: 0,
         ease: 'none',
         delay: 0.3,
+      });
+    });
+
+    footerRef.current.childNodes.forEach((el) => {
+      timeline.fromTo(el, { y: -100 }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
       });
     });
   }, []);
@@ -42,11 +55,13 @@ const HeroSection: React.FC = () => {
         </h1>
       </div>
 
-      <div className={styles.footer}>
+      <div className={styles.footer} ref={footerRef}>
         <div className={styles.red_line} />
-        <a href="/#entenda">
-          <HiOutlineArrowDown className={styles.arrow_down} />
-        </a>
+        <Link href="/#entenda">
+          <a className={styles.link_footer}>
+            <HiOutlineArrowDown className={styles.arrow_down} />
+          </a>
+        </Link>
       </div>
 
     </section>

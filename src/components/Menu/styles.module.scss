@@ -2,15 +2,15 @@ nav.nav {
   background: var(--white);
   position: fixed;
   height: 100vh;
-  width: 100vw;
+  // width: 100vw;
   top: 0;
-  left: 0;
-  // right: 0;
+  right: 0;
   margin: auto;
-  // padding: var(--padding);
-  padding: var(--padding) calc(var(--padding) + 1rem); // BUG BARALHO DA SCROLLBAR
+  padding: var(--padding);
+  // padding: var(--padding) calc(var(--padding) + 1rem); // BUG BARALHO DA SCROLLBAR
   z-index: 2;
-  transform: translateY(-100vh); //gsap
+  transform: translateX(100vw); //gsap
+  box-shadow: 1rem 0 2rem 1rem var(--black);
 }
 
 div.container {
@@ -22,12 +22,26 @@ div.container {
 }
 
 header.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
   height: 10vh;
   width: 100%;
-}
 
-div.illustrations {
-  display: none;
+  button {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--gray);
+    }
+
+    svg {
+      font-size: 2rem;
+      vertical-align: middle;
+    }
+  }
 }
 
 ul.nav_items {
@@ -35,7 +49,7 @@ ul.nav_items {
 
   li {
     padding: 0 1rem;
-    transition: all .2s ease-in-out;
+    transition: background .2s ease-in-out, color .2s ease-in-out;
 
     &:hover {
       background: var(--black);
@@ -72,18 +86,7 @@ div.footer {
   min-height: 10vh; // TODO - VERIFICAR SE ESTÁ SEMPRE DO MESMO TAMANHO DO NAVBAR
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-}
-
-div.red_line {
-  width: 50px;
-  height: 5px;
-  background: var(--red);
-  margin-bottom: .1rem;
-  transition: transform .2s ease-in-out;
-  &:hover{
-    transform: rotate(45deg);
-  }
+  justify-content: flex-end;
 }
 
 @media only screen and (min-width: 360px) {
@@ -143,45 +146,11 @@ div.red_line {
       align-items: center;
     }
 
-    div.illustrations {
-      display: block;
-      width: calc(50vw - (var(--padding) * 2) - 10px);
-      height: calc(80vh - (var(--padding) * 2) - 10px);
-      border: calc(var(--line-height) * 2) solid var(--black);
-      padding: var(--padding);
-      position: relative;
-
-      &:before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: calc(var(--line-height) * 2) solid var(--red);
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    }
   }
 
 }
 
 @media only screen and (min-width: 1600px) {
-  div.illustrations {
-    border: calc(var(--line-height) * 2) solid var(--black);
-    width: calc(50vw - (var(--padding) * 2) - 20px);
-    height: calc(80vh - (var(--padding) * 2) - 20px);
-    padding: calc(var(--padding) * 2 );
-    &:before {
-      border: calc(var(--line-height) * 2) solid var(--red);
-    }
-  }
   ul.nav_items {
     li {
       a {

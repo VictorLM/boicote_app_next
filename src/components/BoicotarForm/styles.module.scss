@@ -49,6 +49,36 @@ div.btn_div {
   text-align: right;
 }
 
+div.sucesso {
+  text-align: center;
+  padding: var(--padding);
+
+  svg {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    text-align: justify;
+    margin: 2rem 0;
+  }
+
+  button {
+    padding: 0;
+    &:hover {
+      a {
+        color: var(--white);
+      }
+    }
+    a {
+      padding: 0.25rem 1rem;
+      color: var(--black);
+      text-decoration: none;
+      display: block;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   div.input_group {
     flex-grow: 1;
@@ -62,6 +92,10 @@ div.btn_div {
         margin-right: 1rem;
       }
     }
+  }
+
+  div.sucesso {
+    padding: 6rem;
   }
 
 }
