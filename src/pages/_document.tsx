@@ -24,7 +24,7 @@ class MyDocument extends Document {
           <meta httpEquiv="content-language" content="pt-br" />
           <link rel="canonical" href="https://boicote.app/" />
           {/* Open Graph */}
-          <meta property="og:image" content="/images/logo-red.svg" />
+          <meta property="og:image" content="https://boicote.app/images/logo-red.svg" />
           <meta property="og:site_name" content="Boicote.App" />
           <meta property="og:locale" content="pt_BR" />
           {/* Twitter Cards */}
