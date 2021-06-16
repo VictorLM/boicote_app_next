@@ -37,7 +37,7 @@ const Boicote: React.FC<BoicotePropTypes> = ({
 
   return (
 
-    <div className={`${styles.card_boicote} card`}>
+    <div className={`${styles.card_boicote} card boicote`}>
 
       <div className={`card-left ${styles.boicote_left}`}>
         <div className={styles.left_vote}>

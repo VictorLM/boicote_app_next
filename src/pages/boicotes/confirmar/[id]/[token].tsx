@@ -18,7 +18,7 @@ const Confirmar: React.FC<ConfirmarPropsType> = ({ boicoteConfirmado, boicoteId 
       toast.success('Boicote confirmado com sucesso');
       router.push(`/boicotes/${boicoteId}`);
     } else {
-      boicoteConfirmado.errors.map((error) => toast.error(error.message ?? error));
+      boicoteConfirmado.errors.map((error) => toast.error(error.message));
       router.push('/');
     }
   }, []);

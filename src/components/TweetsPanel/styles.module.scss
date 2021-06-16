@@ -1,6 +1,7 @@
 div.tweets_content {
   padding: calc(var(--padding) / 1.5);
   overflow-y: scroll;
+  opacity: 0; //gsap
 
   scrollbar-color: var(--gray);
   scrollbar-width: .8rem;
@@ -38,6 +39,12 @@ div.card_tweet {
   margin-bottom: 1rem;
   &:last-child {
     border-bottom: none;
+  }
+}
+
+div.headings_top {
+  p, h2 {
+    opacity: 0; //gsap
   }
 }
 

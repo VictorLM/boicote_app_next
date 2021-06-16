@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap, TimelineLite } from 'gsap';
 import { isEmail } from 'validator';
 import { format, parseISO } from 'date-fns';
 import { toast } from 'react-toastify';
@@ -6,6 +7,8 @@ import { ComentarioType } from '../../utils/getComentarios';
 
 import styles from './styles.module.scss';
 import api from '../../services/api';
+
+gsap.registerPlugin(TimelineLite);
 
 type ComentarFormType = {
   boicoteId: string;
@@ -21,6 +24,18 @@ const ComentarForm: React.FC<ComentarFormType> = ({
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
   const [comentario, setComentario] = useState('');
+
+  const formRef = useRef<HTMLParagraphElement>();
+
+  const timeline = new TimelineLite();
+
+  useEffect(() => {
+    timeline.to(formRef.current, {
+      opacity: 1,
+      duration: 0.3,
+      delay: 1,
+    });
+  }, []);
 
   async function comentar() {
     let formErrors = false;
@@ -81,7 +96,7 @@ const ComentarForm: React.FC<ComentarFormType> = ({
 
   return (
 
-    <div className={`card ${styles.card}`} id="comentar">
+    <div className={`card ${styles.card}`} id="comentar" ref={formRef}>
       <div className={`card-left ${styles.card_left}`}>
         <span>Comentar</span>
         <div />

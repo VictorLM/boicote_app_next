@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useRef } from 'react';
+import { gsap, TimelineLite } from 'gsap';
 import { BsArrowUpRight } from 'react-icons/bs';
 import { FaRegComment, FaRetweet, FaRegHeart } from 'react-icons/fa';
 
 import { GetTweetsType } from '../../utils/getTweets';
 
 import styles from './styles.module.scss';
+
+gsap.registerPlugin(TimelineLite);
 
 type TweetsPanelType = {
   tweetsData: GetTweetsType;
@@ -22,9 +24,29 @@ const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
     }
   }, []);
 
+  const headingsTweetsRef = useRef<HTMLDivElement>();
+  const tweetsContent = useRef<HTMLDivElement>();
+
+  const timeline = new TimelineLite();
+
+  useEffect(() => {
+    headingsTweetsRef.current.childNodes.forEach((el) => {
+      timeline.to(el, {
+        opacity: 1,
+        duration: 0.3,
+        delay: 0.3,
+      });
+    });
+
+    timeline.to(tweetsContent.current, {
+      opacity: 1,
+      duration: 0.3,
+    });
+  }, []);
+
   return (
     <div>
-      <div>
+      <div className={styles.headings_top} ref={headingsTweetsRef}>
         <h2 className="heading">Tweets</h2>
         <p className="sub-heading">
           Veja o que está acontecendo no
@@ -34,7 +56,7 @@ const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
         </p>
       </div>
 
-      <div className={`card ${styles.tweets_content}`} id="tweets-content">
+      <div className={`card ${styles.tweets_content}`} id="tweets-content" ref={tweetsContent}>
 
         {tweetsData.errors === null
           ? (

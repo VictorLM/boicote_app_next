@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Boicote from '../Boicote';
 import TweetsPanel from '../TweetsPanel';
@@ -18,8 +18,12 @@ type UltimosBoicotesType = {
 const UltimosBoicotesSection: React.FC<UltimosBoicotesType> = ({
   boicotesData, visitanteVotos, tweetsData,
 }) => {
-  const teste = null;
-  // console.log(visitanteVotos);
+  useEffect(() => {
+    const boicotes = Array.from(document.getElementsByClassName('boicote') as HTMLCollectionOf<HTMLElement>);
+    for (let i = 0; i < boicotes.length; i += 1) {
+      boicotes[i].style.opacity = '1';
+    }
+  }, []);
 
   return (
 

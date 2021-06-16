@@ -35,6 +35,8 @@ header.header {
 
     &:hover {
       color: var(--gray);
+      transform: rotate(180deg) !important;
+      transition: transform .2s ease;
     }
 
     svg {

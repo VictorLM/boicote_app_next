@@ -1,22 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { gsap, TimelineLite } from 'gsap';
+import { gsap, TweenLite } from 'gsap';
 
 import styles from './styles.module.scss';
 
-gsap.registerPlugin(TimelineLite);
+gsap.registerPlugin(TweenLite);
 
 const TopBar: React.FC = ({ children }) => {
   const divRef = useRef<HTMLDivElement>();
 
-  const timeline = new TimelineLite();
-
   useEffect(() => {
     divRef.current.childNodes.forEach((el) => {
-      timeline.fromTo(el, { y: -100 }, {
+      TweenLite.fromTo(el, { y: -100 }, {
         opacity: 1,
         y: 0,
-        duration: 0.2,
+        duration: 0.5,
       });
     });
   }, []);

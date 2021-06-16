@@ -1,11 +1,22 @@
-section.boicote_section {
+section.boicotar_section {
   padding: var(--padding);
+  margin-bottom: 2rem;
 }
 
 div.content_flex {
   display: flex;
   justify-content: space-evenly;
   gap: 2rem;
+}
+
+div.headings {
+  h2, p {
+    opacity: 0; //gsap
+  }
+}
+
+div.form {
+  opacity: 0; //gsap
 }
 
 div.boicotar_form {

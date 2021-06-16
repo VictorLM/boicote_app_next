@@ -1,5 +1,6 @@
 section.boicote_section {
   padding: var(--padding);
+  margin-bottom: 1rem;
 }
 
 div.content_flex {
@@ -7,6 +8,13 @@ div.content_flex {
   justify-content: space-evenly;
   gap: 2rem;
 }
+
+div.headings {
+  h2, p {
+    opacity: 0; //gsap
+  }
+}
+
 
 div.boicote {
   width: 100%;
@@ -19,6 +27,7 @@ p.disclaimer {
   font-size: .9rem;
   text-align: justify;
   margin: 1.5rem 0;
+  opacity: 0; //gsap
 }
 
 div.comentarios_headings {

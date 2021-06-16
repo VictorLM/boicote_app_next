@@ -14,9 +14,15 @@ div.boicotes {
   flex-basis: 0;
 }
 
+h2.h2 {
+  opacity: 0; //gsap
+}
+
 div.top_btns {
   display: flex;
   margin-bottom: 1.4rem;
+  opacity: 0; //gsap
+
   &:last-of-type button {
     margin-right: .5rem;
   }
@@ -30,18 +36,6 @@ div.top_btns {
       text-decoration: none;
     }
     &.active {
-      background: var(--black);
-      a {
-        color: var(--white);
-      }
-      &:hover {
-        background: var(--white);
-        a {
-          color: var(--black);
-        }
-      }
-    }
-    &:hover {
       background: var(--black);
       a {
         color: var(--white);
@@ -60,6 +54,30 @@ div.tweets {
     display: flex;
     flex-grow: 1;
     flex-basis: 0;
+  }
+
+}
+
+// IGNORE HOVER ON MOBILE
+@media (hover: hover) {
+
+  div.top_btns {
+    button {
+      &.active {
+        &:hover {
+          background: var(--white);
+          a {
+            color: var(--black);
+          }
+        }
+      }
+      &:hover {
+        background: var(--black);
+        a {
+          color: var(--white);
+        }
+      }
+    }
   }
 
 }

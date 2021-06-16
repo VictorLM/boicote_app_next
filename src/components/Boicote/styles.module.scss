@@ -2,6 +2,7 @@ div.card_boicote {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column-reverse;
+  opacity: 0; //gsap
 }
 
 div.boicote_left {

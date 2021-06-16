@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { gsap, TimelineLite } from 'gsap';
 import Boicote from '../Boicote';
 import TweetsPanel from '../TweetsPanel';
 
@@ -9,6 +10,8 @@ import { GetVisitanteVotosType, VisitanteVotoType } from '../../utils/getVisitan
 
 import styles from './styles.module.scss';
 import BoicotesPagination from '../BoicotesPagination';
+
+gsap.registerPlugin(TimelineLite);
 
 type BoicotesSectionType = {
   boicotesData: GetBoicotesType;
@@ -27,7 +30,27 @@ const BoicotesSection: React.FC<BoicotesSectionType> = ({
   boicotesPorPagina,
   ordenarMaisVotados,
 }) => {
-  const teste = 'teste';
+  const headingsBoicotesRef = useRef<HTMLDivElement>();
+  const boicotesRef = useRef<HTMLDivElement>();
+
+  const timeline = new TimelineLite();
+
+  useEffect(() => {
+    headingsBoicotesRef.current.childNodes.forEach((el) => {
+      timeline.to(el, {
+        opacity: 1,
+        duration: 0.3,
+        delay: 0.4,
+      });
+    });
+
+    boicotesRef.current.childNodes.forEach((el) => {
+      timeline.to(el, {
+        opacity: 1,
+        duration: 0.2,
+      });
+    });
+  }, [boicotesData]);
 
   return (
 
@@ -37,8 +60,8 @@ const BoicotesSection: React.FC<BoicotesSectionType> = ({
 
         <div className={styles.boicotes}>
 
-          <div className={styles.headings}>
-            <h2 className="heading">Boicotes</h2>
+          <div className={styles.headings} ref={headingsBoicotesRef}>
+            <h2 className={`${styles.h2} heading`}>Boicotes</h2>
             <div className={styles.top_btns}>
               <button className={!ordenarMaisVotados ? styles.active : ''} type="button">
                 <Link href="/boicotes">
@@ -67,7 +90,7 @@ const BoicotesSection: React.FC<BoicotesSectionType> = ({
             </div>
           </div>
 
-          <div className={styles.last_boicotes_content} id="last-boicotes">
+          <div className={styles.last_boicotes_content} id="last-boicotes" ref={boicotesRef}>
 
             {boicotesData.boicotes.map((boicote) => (
 

@@ -82,7 +82,7 @@ a {
 }
 
 img.logo {
-  transition: all .2s ease-in-out;
+  transition: background .2s ease-in-out;
   &:hover {
     background: var(--red);
   }
@@ -201,5 +201,13 @@ img.logo {
 @media only screen and (min-height: 1081px) {
   .full-vh, .ninety-vh, .ten-vh {
     min-height: auto;
+  }
+}
+
+// IGNORE HOVER ON MOBILE
+@media (hover: none) {
+  img:hover {
+    color: initial !important;
+    background: initial !important;
   }
 }
