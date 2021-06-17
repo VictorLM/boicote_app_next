@@ -28,7 +28,7 @@ class MyDocument extends Document {
           <meta property="og:site_name" content="Boicote.App" />
           <meta property="og:locale" content="pt_BR" />
           {/* Twitter Cards */}
-          <meta name="twitter:card" content="/images/logo-red.svg"/>
+          <meta name="twitter:card" content="https://boicote.app/images/logo-red.svg"/>
           <meta name="twitter:site" content="@boicoteapp"/>
           <meta name="twitter:image" content="https://boicote.app/images/logo-red.svg"/>
           <meta name="twitter:creator" content="@boicoteapp"/>
