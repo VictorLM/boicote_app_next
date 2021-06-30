@@ -14,15 +14,15 @@ type TweetsPanelType = {
 }
 
 const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
-  useEffect(() => {
-    // Gamb pra igualar o tamanho da div
+  // Gamb pra igualar o tamanho da div
+  function setHeightTweetsDiv() {
     const height = document.getElementById('last-boicotes')?.clientHeight;
     if (height) {
       document.getElementById('tweets-content').style.height = `${height}px`;
     } else {
       document.getElementById('tweets-content').style.height = '80vh';
     }
-  }, []);
+  }
 
   const headingsTweetsRef = useRef<HTMLDivElement>();
   const tweetsContent = useRef<HTMLDivElement>();
@@ -42,10 +42,12 @@ const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
       opacity: 1,
       duration: 0.3,
     });
+
+    setInterval(setHeightTweetsDiv, 1000);
   }, []);
 
   return (
-    <div>
+    <>
       <div className={styles.headings_top} ref={headingsTweetsRef}>
         <h2 className="heading">Tweets</h2>
         <p className="sub-heading">
@@ -115,7 +117,7 @@ const TweetsPanel: React.FC<TweetsPanelType> = ({ tweetsData }) => {
           )}
 
       </div>
-    </div>
+    </>
   );
 };
 export default TweetsPanel;
